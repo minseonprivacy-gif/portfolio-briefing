@@ -1,0 +1,41 @@
+name: Daily Portfolio Briefing
+
+on:
+  schedule:
+    # 매일 오전 9:30 KST = 00:30 UTC (평일만)
+    - cron: '30 0 * * 1-5'
+  workflow_dispatch:
+    # 수동 실행 허용 (테스트용)
+
+permissions:
+  contents: write
+
+jobs:
+  generate:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Python 3.11
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install dependencies
+        run: |
+          pip install --upgrade pip
+          pip install yfinance pykrx pandas requests
+
+      - name: Generate briefing
+        run: python generate_briefing.py
+
+      - name: Commit and push
+        run: |
+          git config user.email "minseon.privacy@gmail.com"
+          git config user.name "브리핑봇"
+          git add index.html
+          git diff --staged --quiet && echo "No changes." || \
+            git commit -m "📊 브리핑 자동 업데이트 $(date +'%Y.%m.%d %H:%M KST' -d '+9 hours')"
+          git push
