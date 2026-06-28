@@ -226,23 +226,23 @@ body { font-family: -apple-system, 'Apple SD Gothic Neo', 'Noto Sans KR', 'Malgu
     <div class="sec-title">오늘 시장 한눈에 보기</div>
     <div class="market-grid">
       <div class="market-card">
-        <div class="m-label">나스닥</div>
-        <div class="m-val c-down">26,536</div>
-        <div class="m-chg c-down">이번 주 ▼3.0% · 5일 연속 하락</div>
+        <div class="m-label">나스닥 종합 <span style="font-weight:400;font-size:10px">(6/26 종가)</span></div>
+        <div class="m-val c-down">25,297</div>
+        <div class="m-chg c-down">▼5일 연속 하락 · 칩주 급락</div>
       </div>
       <div class="market-card">
-        <div class="m-label">코스닥</div>
-        <div class="m-val c-down">장중 하락</div>
-        <div class="m-chg c-down">6/26 ▼5.81%</div>
+        <div class="m-label">코스닥 <span style="font-weight:400;font-size:10px">(6/26 종가)</span></div>
+        <div class="m-val c-down">851.37</div>
+        <div class="m-chg c-down">6/26 ▼4.10% · 코스피는 ▼5.81%</div>
       </div>
       <div class="market-card">
-        <div class="m-label">USD/KRW</div>
-        <div class="m-val c-up">≈ 1,380원</div>
-        <div class="m-chg c-neu">달러 강세 유지 중 → 미국주식 유리</div>
+        <div class="m-label">USD/KRW <span style="font-weight:400;font-size:10px">(6월 기준)</span></div>
+        <div class="m-val c-up">≈ 1,530원</div>
+        <div class="m-chg c-neu">달러 강세 · 미국주식 환차익 발생 중</div>
       </div>
     </div>
     <div class="sumbox">
-      <strong>이번 주 핵심 흐름:</strong> 나스닥이 <strong>PCE(미 물가지표) 발표 경계감</strong>으로 약세를 이어갔고, 코스닥은 반기 말 기관 매도와 외국인 이탈로 크게 빠졌습니다. AI 관련 종목은 Warsh 달러 강세(6/17) 이후 조정을 받았지만, <strong>NVDA·AMZN 매수 기회 구간</strong>이라는 시각도 있습니다. 코스닥 6/22 ▼5.81% 급락 이후 <strong>기술적 반등 시도 가능</strong> — 단, 미국 PCE 결과에 따라 방향이 갈립니다. <strong>현금 확보 유지, 추가 매도보다 관망</strong>이 적절한 구간입니다.
+      <strong>이번 주 핵심 흐름:</strong> 나스닥 종합지수가 25,297까지 하락하며 5거래일 연속 내렸습니다. 반도체·AI 칩주가 급락을 이끌었고, 코스피는 6/26에 ▼5.81%, 코스닥도 ▼4.10% (851.37) 하락했습니다. 삼성전자·SK하이닉스 등 반도체 대형주가 8~9% 급락하며 한국 시장을 끌어내렸습니다. 달러-원 환율은 6월 기준 <strong>약 1,530원대</strong>로 달러 강세가 지속되어 미국 주식 보유자에게는 환차익이 발생 중입니다. <strong>6/28 오늘 PCE(미 물가지표) 발표 결과에 따라 반등 또는 추가 하락이 결정</strong>됩니다. 지금은 현금 비중 유지, 추가 매수보다 관망이 적절합니다.
     </div>
     <div class="sc-grid">
       <div class="sc bad">
@@ -535,11 +535,42 @@ body { font-family: -apple-system, 'Apple SD Gothic Neo', 'Noto Sans KR', 'Malgu
   <div class="section" id="stocks">
     <div class="sec-title">내 22개 종목 현황 + 전략 + 최신 뉴스</div>
 
+    <!-- 전략 등급 안내 -->
+    <div style="background:var(--surface);border:1px solid var(--border2);border-radius:var(--r);padding:14px 16px;margin-bottom:14px;box-shadow:var(--shadow)">
+      <div style="font-size:11px;font-weight:800;color:var(--text3);letter-spacing:.07em;margin-bottom:10px">📌 전략 등급 읽는 법</div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:7px">
+        <div style="display:flex;gap:8px;align-items:flex-start">
+          <span class="tag t-red" style="flex-shrink:0;margin-top:2px">매도 권장</span>
+          <span style="font-size:11px;color:var(--text2);line-height:1.5">지금 파세요. 손실이 더 커지기 전에 행동할 시점.</span>
+        </div>
+        <div style="display:flex;gap:8px;align-items:flex-start">
+          <span class="tag t-red" style="flex-shrink:0;margin-top:2px">매도 검토</span>
+          <span style="font-size:11px;color:var(--text2);line-height:1.5">오늘 중 판매 여부 결정 권장. 더 내리면 손절 고려.</span>
+        </div>
+        <div style="display:flex;gap:8px;align-items:flex-start">
+          <span class="tag t-amber" style="flex-shrink:0;margin-top:2px">홀드 ⚠️</span>
+          <span style="font-size:11px;color:var(--text2);line-height:1.5">당장 팔진 말되 손절 기준 미리 정해두세요. 예의주시 필요.</span>
+        </div>
+        <div style="display:flex;gap:8px;align-items:flex-start">
+          <span class="tag t-gray" style="flex-shrink:0;margin-top:2px">홀드</span>
+          <span style="font-size:11px;color:var(--text2);line-height:1.5">지금 아무 행동도 필요 없습니다. 그냥 유지하세요.</span>
+        </div>
+        <div style="display:flex;gap:8px;align-items:flex-start">
+          <span class="tag t-green" style="flex-shrink:0;margin-top:2px">홀드+</span>
+          <span style="font-size:11px;color:var(--text2);line-height:1.5">유지하면서, 더 내리면 소량 추가 매수 기회가 생길 수 있는 종목.</span>
+        </div>
+        <div style="display:flex;gap:8px;align-items:flex-start">
+          <span class="tag t-blue" style="flex-shrink:0;margin-top:2px">분할매수</span>
+          <span style="font-size:11px;color:var(--text2);line-height:1.5">한 번에 사지 말고 2~3번 나눠서 조금씩 매수하세요.</span>
+        </div>
+      </div>
+    </div>
+
     <div class="group-lbl">🇺🇸 미국주식 13종목</div>
     <div class="card">
 
       <div class="stk-item">
-        <div class="stk-top"><div class="stk-info"><div class="stk-name">NVDA</div><div class="stk-meta">3주 · 평단가 25.1만원</div></div><div class="stk-tag"><span class="tag t-blue">중장기 핵심+</span></div></div>
+        <div class="stk-top"><div class="stk-info"><div class="stk-name">NVDA</div><div class="stk-meta">3주 · 평단가 25.1만원</div></div><div class="stk-tag"><span class="tag t-blue">홀드+</span></div></div>
         <div class="stk-strategy">AI 반도체 1등 주식. 나스닥 25,000 회복하면 1주씩 추가 매수. 지금은 분할 매수 기다리는 중.</div>
         <div class="news-blk"><div class="news-lbl">최신 뉴스</div>
           <div class="news-li">Oracle FY2027 설비투자 $90~95B 발표 → NVDA GPU 수요 급증 확인, AI 사업 가속</div>
@@ -549,7 +580,7 @@ body { font-family: -apple-system, 'Apple SD Gothic Neo', 'Noto Sans KR', 'Malgu
       </div>
 
       <div class="stk-item">
-        <div class="stk-top"><div class="stk-info"><div class="stk-name">AAPL</div><div class="stk-meta">10주 · 평단가 14.1만원</div></div><div class="stk-tag"><span class="tag t-blue">중장기 핵심</span></div></div>
+        <div class="stk-top"><div class="stk-info"><div class="stk-name">AAPL</div><div class="stk-meta">10주 · 평단가 14.1만원</div></div><div class="stk-tag"><span class="tag t-gray">홀드</span></div></div>
         <div class="stk-strategy">AI 기능 탑재 + 서비스 매출 확대 기대. 매수 유지, 큰 하락 나오면 1~2주 추가.</div>
         <div class="news-blk"><div class="news-lbl">최신 뉴스</div>
           <div class="news-li">서비스 부문 매출 $27.4B 사상 최고 → 실제 수익 다변화 진행 중</div>
@@ -559,7 +590,7 @@ body { font-family: -apple-system, 'Apple SD Gothic Neo', 'Noto Sans KR', 'Malgu
       </div>
 
       <div class="stk-item">
-        <div class="stk-top"><div class="stk-info"><div class="stk-name">AMZN</div><div class="stk-meta">1주 · 평단가 40.5만원</div></div><div class="stk-tag"><span class="tag t-blue">중장기 핵심+</span></div></div>
+        <div class="stk-top"><div class="stk-info"><div class="stk-name">AMZN</div><div class="stk-meta">1주 · 평단가 40.5만원</div></div><div class="stk-tag"><span class="tag t-blue">홀드+</span></div></div>
         <div class="stk-strategy">AWS AI + 광고 + 물류. 분할 매수 유지, 1주 추가 매수 대기.</div>
         <div class="news-blk"><div class="news-lbl">최신 뉴스</div>
           <div class="news-li">올해 설비투자 $244.39B 계획 → SA 특허 수출 갈등에도 본업 강화</div>
@@ -569,7 +600,7 @@ body { font-family: -apple-system, 'Apple SD Gothic Neo', 'Noto Sans KR', 'Malgu
       </div>
 
       <div class="stk-item">
-        <div class="stk-top"><div class="stk-info"><div class="stk-name">PLTR</div><div class="stk-meta">1주 · 평단가 23.2만원</div></div><div class="stk-tag"><span class="tag t-blue">중장기 핵심</span></div></div>
+        <div class="stk-top"><div class="stk-info"><div class="stk-name">PLTR</div><div class="stk-meta">1주 · 평단가 23.2만원</div></div><div class="stk-tag"><span class="tag t-gray">홀드</span></div></div>
         <div class="stk-strategy">정부·군용 AI 데이터 분석 1등. 1주 보유 유지.</div>
         <div class="news-blk"><div class="news-lbl">최신 뉴스</div>
           <div class="news-li">국방부 추가 계약 수주 → AI 정보 분석 솔루션 수요 계속 증가</div>
@@ -579,7 +610,7 @@ body { font-family: -apple-system, 'Apple SD Gothic Neo', 'Noto Sans KR', 'Malgu
       </div>
 
       <div class="stk-item">
-        <div class="stk-top"><div class="stk-info"><div class="stk-name">ORCL</div><div class="stk-meta">3주 · 평단가 22.3만원</div></div><div class="stk-tag"><span class="tag t-blue">중장기 핵심</span></div></div>
+        <div class="stk-top"><div class="stk-info"><div class="stk-name">ORCL</div><div class="stk-meta">3주 · 평단가 22.3만원</div></div><div class="stk-tag"><span class="tag t-gray">홀드</span></div></div>
         <div class="stk-strategy">ERP + AI 클라우드 전환 수혜. 3주 보유.</div>
         <div class="news-blk"><div class="news-lbl">최신 뉴스</div>
           <div class="news-li">FY2026 실적 발표 → 25년 만에 가장 강한 성장률 기록</div>
@@ -589,7 +620,7 @@ body { font-family: -apple-system, 'Apple SD Gothic Neo', 'Noto Sans KR', 'Malgu
       </div>
 
       <div class="stk-item">
-        <div class="stk-top"><div class="stk-info"><div class="stk-name">UNH</div><div class="stk-meta">2주 · 평단가 40.4만원</div></div><div class="stk-tag"><span class="tag t-red">매수 중지 · 매도 검토</span></div></div>
+        <div class="stk-top"><div class="stk-info"><div class="stk-name">UNH</div><div class="stk-meta">2주 · 평단가 40.4만원</div></div><div class="stk-tag"><span class="tag t-red">매도 검토</span></div></div>
         <div class="stk-strategy">지금 1차 매도 검토 중. 실적(7/16) 전에 일부 손절하고 현금 확보 권장.</div>
         <div class="news-blk"><div class="news-lbl">최신 뉴스</div>
           <div class="news-li">$1.5B AI 투자 발표 → 주가 단기 지지 역할. 단, 구조적 문제는 해결 안 됨</div>
@@ -599,7 +630,7 @@ body { font-family: -apple-system, 'Apple SD Gothic Neo', 'Noto Sans KR', 'Malgu
       </div>
 
       <div class="stk-item">
-        <div class="stk-top"><div class="stk-info"><div class="stk-name">MU</div><div class="stk-meta">1주 · 평단가 146.9만원</div></div><div class="stk-tag"><span class="tag t-amber">추가 매수 검토</span></div></div>
+        <div class="stk-top"><div class="stk-info"><div class="stk-name">MU</div><div class="stk-meta">1주 · 평단가 146.9만원</div></div><div class="stk-tag"><span class="tag t-green">홀드+</span></div></div>
         <div class="stk-strategy">실적 +16% 호조로 AI 투자 지속 신호. 1주 추가 매수 고려 → 1주차에 추가 진입.</div>
         <div class="news-blk"><div class="news-lbl">최신 뉴스</div>
           <div class="news-li">Q3 실적 +16% 사상 최고 → YTD +325%, HBM 장기 수요 호조</div>
@@ -609,7 +640,7 @@ body { font-family: -apple-system, 'Apple SD Gothic Neo', 'Noto Sans KR', 'Malgu
       </div>
 
       <div class="stk-item">
-        <div class="stk-top"><div class="stk-info"><div class="stk-name">TSLA</div><div class="stk-meta">1주 · 평단가 31.1만원</div></div><div class="stk-tag"><span class="tag t-blue">중장기 핵심</span></div></div>
+        <div class="stk-top"><div class="stk-info"><div class="stk-name">TSLA</div><div class="stk-meta">1주 · 평단가 31.1만원</div></div><div class="stk-tag"><span class="tag t-gray">홀드</span></div></div>
         <div class="stk-strategy">로봇택시·FSD 기반 AI 사업 기대. 1주 보유. 실적 발표 후 방향 결정.</div>
         <div class="news-blk"><div class="news-lbl">최신 뉴스</div>
           <div class="news-li">SA 특허 수출 제재 대상 → Q2 대비 Q2 매출 대폭 증가 + FSD 기능 글로벌 출시</div>
@@ -619,7 +650,7 @@ body { font-family: -apple-system, 'Apple SD Gothic Neo', 'Noto Sans KR', 'Malgu
       </div>
 
       <div class="stk-item">
-        <div class="stk-top"><div class="stk-info"><div class="stk-name">IONQ</div><div class="stk-meta">9주 · 평단가 8.5만원</div></div><div class="stk-tag"><span class="tag t-amber">손절선 관찰</span></div></div>
+        <div class="stk-top"><div class="stk-info"><div class="stk-name">IONQ</div><div class="stk-meta">9주 · 평단가 8.5만원</div></div><div class="stk-tag"><span class="tag t-amber">홀드 ⚠️</span></div></div>
         <div class="stk-strategy">양자컴 선도 기업. -25% 손절선 지키기. 정부 계약 $857M 호재 반등 주목.</div>
         <div class="news-blk"><div class="news-lbl">최신 뉴스</div>
           <div class="news-li">Q1 실적 +755%, 순수익률 95.99% → 정부 계약 $857M 수주 확인</div>
@@ -629,7 +660,7 @@ body { font-family: -apple-system, 'Apple SD Gothic Neo', 'Noto Sans KR', 'Malgu
       </div>
 
       <div class="stk-item">
-        <div class="stk-top"><div class="stk-info"><div class="stk-name">RGTI</div><div class="stk-meta">2주 · 평단가 6.6만원</div></div><div class="stk-tag"><span class="tag t-amber">손절선 관찰</span></div></div>
+        <div class="stk-top"><div class="stk-info"><div class="stk-name">RGTI</div><div class="stk-meta">2주 · 평단가 6.6만원</div></div><div class="stk-tag"><span class="tag t-amber">홀드 ⚠️</span></div></div>
         <div class="stk-strategy">CHIPS법 수혜 종목. 급락시 -25% 손절 후 현금 확보.</div>
         <div class="news-blk"><div class="news-lbl">최신 뉴스</div>
           <div class="news-li">CHIPS법 LOI 공개(6/22) → 3년 후 LOI 내용 반영 시 시장 재평가</div>
@@ -639,7 +670,7 @@ body { font-family: -apple-system, 'Apple SD Gothic Neo', 'Noto Sans KR', 'Malgu
       </div>
 
       <div class="stk-item">
-        <div class="stk-top"><div class="stk-info"><div class="stk-name">IREN</div><div class="stk-meta">17주 · 평단가 8.3만원</div></div><div class="stk-tag"><span class="tag t-red">손절 진행 중 · 조정</span></div></div>
+        <div class="stk-top"><div class="stk-info"><div class="stk-name">IREN</div><div class="stk-meta">17주 · 평단가 8.3만원</div></div><div class="stk-tag"><span class="tag t-red">매도 검토</span></div></div>
         <div class="stk-strategy">17주차 손절 중. 5~7주 보유 후 반등 없으면 전량 정리.</div>
         <div class="news-blk"><div class="news-lbl">최신 뉴스</div>
           <div class="news-li">Jefferies Buy 등급(6/18) "AI 데이터센터 확장 강점" → 단기 반등 기대감</div>
@@ -649,7 +680,7 @@ body { font-family: -apple-system, 'Apple SD Gothic Neo', 'Noto Sans KR', 'Malgu
       </div>
 
       <div class="stk-item">
-        <div class="stk-top"><div class="stk-info"><div class="stk-name">ARKK</div><div class="stk-meta">1주 · 평단가 12.3만원</div></div><div class="stk-tag"><span class="tag t-blue">중장기 핵심</span></div></div>
+        <div class="stk-top"><div class="stk-info"><div class="stk-name">ARKK</div><div class="stk-meta">1주 · 평단가 12.3만원</div></div><div class="stk-tag"><span class="tag t-gray">홀드</span></div></div>
         <div class="stk-strategy">혁신 ETF. 코스피 50만원 이상 → 중장기 보유.</div>
         <div class="news-blk"><div class="news-lbl">최신 뉴스</div>
           <div class="news-li">나스닥 50만원 이상 → ARKK ETF 성장주 비중 확대 → 매수 유지</div>
@@ -659,7 +690,7 @@ body { font-family: -apple-system, 'Apple SD Gothic Neo', 'Noto Sans KR', 'Malgu
       </div>
 
       <div class="stk-item">
-        <div class="stk-top"><div class="stk-info"><div class="stk-name">INTC</div><div class="stk-meta">5주 · 평단가 17.7만원</div></div><div class="stk-tag"><span class="tag t-red">손절 중</span></div></div>
+        <div class="stk-top"><div class="stk-info"><div class="stk-name">INTC</div><div class="stk-meta">5주 · 평단가 17.7만원</div></div><div class="stk-tag"><span class="tag t-red">매도 검토</span></div></div>
         <div class="stk-strategy">최신 뉴스 확인 후 매도 여부 결정. MU·NVDA 대비 수율 개선 속도 느림.</div>
         <div class="news-blk"><div class="news-lbl">최신 뉴스</div>
           <div class="news-li">6/26 -3.24% → 18A-P 수율 개선에도 주가 하락 지속</div>
@@ -674,7 +705,7 @@ body { font-family: -apple-system, 'Apple SD Gothic Neo', 'Noto Sans KR', 'Malgu
     <div class="card">
 
       <div class="stk-item">
-        <div class="stk-top"><div class="stk-info"><div class="stk-name">삼성바이오로직스</div><div class="stk-meta">13주 · 평단가 14.3만원</div></div><div class="stk-tag"><span class="tag t-red">매수 중지 · 매도 검토</span></div></div>
+        <div class="stk-top"><div class="stk-info"><div class="stk-name">삼성바이오로직스</div><div class="stk-meta">13주 · 평단가 14.3만원</div></div><div class="stk-tag"><span class="tag t-red">매도 검토</span></div></div>
         <div class="stk-strategy">달러 강세 수혜 기업. 1주씩 1~2차 추가 손절 고려.</div>
         <div class="news-blk"><div class="news-lbl">최신 뉴스</div>
           <div class="news-li">6/23 -8.2%, 6/26 -5.3% 연속 하락 → 코스닥 급락 직격탄</div>
@@ -684,7 +715,7 @@ body { font-family: -apple-system, 'Apple SD Gothic Neo', 'Noto Sans KR', 'Malgu
       </div>
 
       <div class="stk-item">
-        <div class="stk-top"><div class="stk-info"><div class="stk-name">한미반도체코리아</div><div class="stk-meta">2주 · 평단가 142만원</div></div><div class="stk-tag"><span class="tag t-green">중장기 핵심 매수</span></div></div>
+        <div class="stk-top"><div class="stk-info"><div class="stk-name">한미반도체코리아</div><div class="stk-meta">2주 · 평단가 142만원</div></div><div class="stk-tag"><span class="tag t-green">홀드+</span></div></div>
         <div class="stk-strategy">K2금리 수혜. 달러 강세에 매출 증가. 중장기 보유.</div>
         <div class="news-blk"><div class="news-lbl">최신 뉴스</div>
           <div class="news-li">한미반도체 4분기 연속 100% 가동 → (6/24 기사) 한미반도체 주가 +23.2%</div>
@@ -694,7 +725,7 @@ body { font-family: -apple-system, 'Apple SD Gothic Neo', 'Noto Sans KR', 'Malgu
       </div>
 
       <div class="stk-item">
-        <div class="stk-top"><div class="stk-info"><div class="stk-name">카카오뱅크</div><div class="stk-meta">1주 · 평단가 70.9만원</div></div><div class="stk-tag"><span class="tag t-blue">중장기 핵심</span></div></div>
+        <div class="stk-top"><div class="stk-info"><div class="stk-name">카카오뱅크</div><div class="stk-meta">1주 · 평단가 70.9만원</div></div><div class="stk-tag"><span class="tag t-gray">홀드</span></div></div>
         <div class="stk-strategy">디지털금융 + AI 뱅킹. 1주 보유 중장기.</div>
         <div class="news-blk"><div class="news-lbl">최신 뉴스</div>
           <div class="news-li">카카오 계열 매각 이슈 → 카카오뱅크 독립성 강화·소비자 신뢰 상승</div>
@@ -704,7 +735,7 @@ body { font-family: -apple-system, 'Apple SD Gothic Neo', 'Noto Sans KR', 'Malgu
       </div>
 
       <div class="stk-item">
-        <div class="stk-top"><div class="stk-info"><div class="stk-name">NAVER</div><div class="stk-meta">4주 · 평단가 30.2만원</div></div><div class="stk-tag"><span class="tag t-blue">중장기 핵심</span></div></div>
+        <div class="stk-top"><div class="stk-info"><div class="stk-name">NAVER</div><div class="stk-meta">4주 · 평단가 30.2만원</div></div><div class="stk-tag"><span class="tag t-gray">홀드</span></div></div>
         <div class="stk-strategy">AI 검색 + 커머스 성장. 4주 보유. 실적 발표 후 방향 결정.</div>
         <div class="news-blk"><div class="news-lbl">최신 뉴스</div>
           <div class="news-li">카카오 계열 이슈 속에서 NAVER AI 검색 점유율 확대 → AI 검색·생성형 AI 수혜</div>
@@ -714,7 +745,7 @@ body { font-family: -apple-system, 'Apple SD Gothic Neo', 'Noto Sans KR', 'Malgu
       </div>
 
       <div class="stk-item">
-        <div class="stk-top"><div class="stk-info"><div class="stk-name">카카오뱅크우선주</div><div class="stk-meta">1주 · 평단가 2.15만원</div></div><div class="stk-tag"><span class="tag t-green">중장기 핵심 매수</span></div></div>
+        <div class="stk-top"><div class="stk-info"><div class="stk-name">카카오뱅크우선주</div><div class="stk-meta">1주 · 평단가 2.15만원</div></div><div class="stk-tag"><span class="tag t-green">홀드+</span></div></div>
         <div class="stk-strategy">K2금리 수혜·공매도 반환 시 반등. 중장기 보유.</div>
         <div class="news-blk"><div class="news-lbl">최신 뉴스</div>
           <div class="news-li">한미반도체 4분기 매출 100% 가동(6/24) → 한미반도체우선주도 상승</div>
@@ -724,7 +755,7 @@ body { font-family: -apple-system, 'Apple SD Gothic Neo', 'Noto Sans KR', 'Malgu
       </div>
 
       <div class="stk-item">
-        <div class="stk-top"><div class="stk-info"><div class="stk-name">KODEX S&P500</div><div class="stk-meta">5주 · 평단가 2.26만원</div></div><div class="stk-tag"><span class="tag t-blue">중장기 핵심+</span></div></div>
+        <div class="stk-top"><div class="stk-info"><div class="stk-name">KODEX S&P500</div><div class="stk-meta">5주 · 평단가 2.26만원</div></div><div class="stk-tag"><span class="tag t-blue">홀드+</span></div></div>
         <div class="stk-strategy">S&P 500 연동. 달러 자산 헤지. 정기 적립식 매수 유지.</div>
         <div class="news-blk"><div class="news-lbl">최신 뉴스</div>
           <div class="news-li">나스닥 -3% → KODEX S&P500 달러 강세 수혜로 상대적 방어적</div>
@@ -734,7 +765,7 @@ body { font-family: -apple-system, 'Apple SD Gothic Neo', 'Noto Sans KR', 'Malgu
       </div>
 
       <div class="stk-item">
-        <div class="stk-top"><div class="stk-info"><div class="stk-name">LG이노텍</div><div class="stk-meta">1주 · 평단가 45.9만원</div></div><div class="stk-tag"><span class="tag t-amber">손절선 관찰</span></div></div>
+        <div class="stk-top"><div class="stk-info"><div class="stk-name">LG이노텍</div><div class="stk-meta">1주 · 평단가 45.9만원</div></div><div class="stk-tag"><span class="tag t-amber">홀드 ⚠️</span></div></div>
         <div class="stk-strategy">애플 카메라 모듈 1등. 실적 발표 후 방향 결정.</div>
         <div class="news-blk"><div class="news-lbl">최신 뉴스</div>
           <div class="news-li">카카오 계열 이슈 속에서 LG이노텍 AI 파트너십 → LG이노텍·LG CNS 이슈</div>
@@ -744,7 +775,7 @@ body { font-family: -apple-system, 'Apple SD Gothic Neo', 'Noto Sans KR', 'Malgu
       </div>
 
       <div class="stk-item">
-        <div class="stk-top"><div class="stk-info"><div class="stk-name">삼성바이오에피스</div><div class="stk-meta">4주 · 평단가 4.14만원</div></div><div class="stk-tag"><span class="tag t-red">급락 · 손절 검토</span></div></div>
+        <div class="stk-top"><div class="stk-info"><div class="stk-name">삼성바이오에피스</div><div class="stk-meta">4주 · 평단가 4.14만원</div></div><div class="stk-tag"><span class="tag t-red">매도 검토</span></div></div>
         <div class="stk-strategy">바이오시밀러 경쟁 심화. 매수 중지·손절 기준 재확인.</div>
         <div class="news-blk"><div class="news-lbl">최신 뉴스</div>
           <div class="news-li">6/25 장중 -18.43% → 바이오시밀러 경쟁 기업 3주 연속 -18% 이상 하락</div>
@@ -754,7 +785,7 @@ body { font-family: -apple-system, 'Apple SD Gothic Neo', 'Noto Sans KR', 'Malgu
       </div>
 
       <div class="stk-item">
-        <div class="stk-top"><div class="stk-info"><div class="stk-name">금양글로벌</div><div class="stk-meta">5주 · 평단가 4.68만원</div></div><div class="stk-tag"><span class="tag t-amber">손절선 관찰</span></div></div>
+        <div class="stk-top"><div class="stk-info"><div class="stk-name">금양글로벌</div><div class="stk-meta">5주 · 평단가 4.68만원</div></div><div class="stk-tag"><span class="tag t-amber">홀드 ⚠️</span></div></div>
         <div class="stk-strategy">52주 손절 구간. 실적(8주 후) 전까지 관망.</div>
         <div class="news-blk"><div class="news-lbl">최신 뉴스</div>
           <div class="news-li">6/9 배당기준일 9,000주, 52주 손절선 진입 → 매도 기준 재설정</div>
@@ -916,8 +947,8 @@ body { font-family: -apple-system, 'Apple SD Gothic Neo', 'Noto Sans KR', 'Malgu
         return;
       } catch(e) {}
     }
-    // Fallback: estimated value based on current market (NASDAQ -3% week, extreme sell-off)
-    applyFNG(23, 'Extreme Fear', 31, 49, 52, true);
+    // Fallback: confirmed 25 (Fear) as of June 26 2026 per search
+    applyFNG(25, 'Fear', 40, 49, 52, true);
   }
 
   loadFNG();
