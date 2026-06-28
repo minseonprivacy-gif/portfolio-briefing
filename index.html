@@ -2,1045 +2,813 @@
 <html lang="ko">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
-<meta name="apple-mobile-web-app-capable" content="yes">
-<title>포트폴리오 브리핑 — 2026.06.28</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+<title>포트폴리오 브리핑 — 2026.06.29</title>
 <style>
 :root {
-  --bg:#f4f4f2;--surface:#fff;--surface2:#f0efeb;
-  --border:rgba(0,0,0,.07);--border2:rgba(0,0,0,.12);
-  --text:#1a1a18;--text2:#5c5c58;--text3:#9a9a96;
-  --red:#b83229;--red-bg:#fdf0ef;--red-bd:#f5c4c0;
-  --green:#1f6636;--green-bg:#edf7f1;--green-bd:#aedbbf;
-  --amber:#7a4a08;--amber-bg:#fdf5e6;--amber-bd:#f4d595;
-  --blue:#154c8c;--blue-bg:#edf4fd;--blue-bd:#aed0f5;
-  --purple:#5b2d8e;--purple-bg:#f3edfb;--purple-bd:#c9a8ec;
-  --r:12px;--r-sm:7px;--shadow:0 1px 3px rgba(0,0,0,.07);
+  --bg:#f4f4f2; --surface:#ffffff; --surface2:#f0efeb;
+  --border:rgba(0,0,0,0.07); --border2:rgba(0,0,0,0.12);
+  --text:#1a1a18; --text2:#5c5c58; --text3:#9a9a96;
+  --red:#b83229; --red-bg:#fdf0ef; --red-bd:#f5c4c0;
+  --green:#1f6636; --green-bg:#edf7f1; --green-bd:#aedbbf;
+  --amber:#7a4a08; --amber-bg:#fdf5e6; --amber-bd:#f4d595;
+  --blue:#154c8c; --blue-bg:#edf4fd; --blue-bd:#aed0f5;
+  --purple:#5b2d8e; --purple-bg:#f3edfb; --purple-bd:#c9a8ec;
+  --r:12px; --r-sm:7px;
+  --shadow:0 1px 3px rgba(0,0,0,0.07),0 1px 2px rgba(0,0,0,0.05);
 }
-*{box-sizing:border-box;margin:0;padding:0;-webkit-text-size-adjust:100%}
-html{scroll-behavior:smooth}
-body{font-family:-apple-system,'Apple SD Gothic Neo','Noto Sans KR',sans-serif;background:var(--bg);color:var(--text);font-size:15px;line-height:1.6}
-.page{max-width:900px;margin:0 auto;padding:24px 16px 80px}
-
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--bg);color:var(--text);font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;font-size:14px;line-height:1.6;padding:0 0 60px}
+.container{max-width:900px;margin:0 auto;padding:0 16px}
 /* Header */
-.header{margin-bottom:20px}
-.header-meta{display:flex;align-items:center;justify-content:space-between;margin-bottom:8px;flex-wrap:wrap;gap:6px}
-.header-date{font-size:12px;color:var(--text3);font-weight:500;letter-spacing:.04em}
-.badge{font-size:11px;font-weight:700;border-radius:20px;padding:3px 11px;background:var(--red-bg);color:var(--red);border:1px solid var(--red-bd)}
-.header h1{font-size:clamp(20px,5vw,28px);font-weight:800;letter-spacing:-.03em;line-height:1.25}
-.header-sub{font-size:13px;color:var(--text2);margin-top:4px}
-
+.header{background:var(--text);color:#fff;padding:28px 16px 24px;text-align:center}
+.header-date{font-size:11px;font-weight:700;letter-spacing:.08em;opacity:.6;margin-bottom:6px}
+.header-title{font-size:26px;font-weight:900;line-height:1.2;margin-bottom:10px}
+.header-badge{display:inline-block;background:var(--red);color:#fff;font-size:11px;font-weight:700;padding:4px 10px;border-radius:20px;letter-spacing:.04em;margin-bottom:8px}
+.header-sub{font-size:12px;opacity:.65}
 /* TOC */
-.toc{position:sticky;top:0;z-index:100;background:rgba(244,244,242,.92);backdrop-filter:blur(10px);border-bottom:1px solid var(--border2);margin:0 -16px 20px;overflow-x:auto;white-space:nowrap;scrollbar-width:none}
-.toc::-webkit-scrollbar{display:none}
-.toc-inner{display:inline-flex;gap:2px;padding:8px 16px}
-.toc a{font-size:12px;font-weight:600;color:var(--text2);padding:5px 11px;border-radius:20px;text-decoration:none;white-space:nowrap;transition:background .15s,color .15s}
-.toc a:hover,.toc a:active{background:var(--surface);color:var(--text)}
-
-/* Market grid */
-.market-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-bottom:12px}
-.market-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--r);padding:14px 16px;box-shadow:var(--shadow)}
-.m-label{font-size:11px;color:var(--text3);font-weight:600;letter-spacing:.04em;margin-bottom:4px}
-.m-val{font-size:clamp(16px,4vw,22px);font-weight:800;line-height:1.1}
-.m-chg{font-size:12px;margin-top:3px}
-.c-up{color:var(--green)}.c-down{color:var(--red)}.c-neu{color:var(--text2)}
-
+.toc{background:var(--surface);border-bottom:1px solid var(--border);padding:10px 16px;position:sticky;top:0;z-index:100;overflow-x:auto;white-space:nowrap}
+.toc a{font-size:12px;font-weight:600;color:var(--text2);text-decoration:none;margin-right:14px;display:inline-block}
+.toc a:hover{color:var(--text)}
 /* Section */
-.section{margin-bottom:28px;scroll-margin-top:50px}
-.sec-title{font-size:11px;font-weight:700;color:var(--text3);letter-spacing:.08em;text-transform:uppercase;padding-bottom:10px;border-bottom:1px solid var(--border2);margin-bottom:14px}
-.card{background:var(--surface);border:1px solid var(--border);border-radius:var(--r);box-shadow:var(--shadow);overflow:hidden;margin-bottom:8px}
-.sumbox{background:var(--surface);border:1px solid var(--border);border-radius:var(--r);padding:14px 16px;margin-bottom:12px;box-shadow:var(--shadow);font-size:14px;line-height:1.75}
-.sumbox strong{font-weight:700}
-
+.section{max-width:900px;margin:0 auto;padding:20px 16px 0}
+.sec-title{font-size:16px;font-weight:800;color:var(--text);margin-bottom:12px;padding-bottom:8px;border-bottom:2px solid var(--border2)}
+/* Card */
+.card{background:var(--surface);border:1px solid var(--border);border-radius:var(--r);box-shadow:var(--shadow);margin-bottom:12px;overflow:hidden}
+.card-body{padding:14px 16px}
+/* Market cards */
+.market-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-bottom:12px}
+@media(max-width:500px){.market-grid{grid-template-columns:1fr 1fr}}
+.mcard{background:var(--surface);border:1px solid var(--border);border-radius:var(--r-sm);padding:12px;text-align:center}
+.mcard-label{font-size:10px;font-weight:700;color:var(--text3);letter-spacing:.04em;margin-bottom:4px}
+.mcard-val{font-size:20px;font-weight:900;line-height:1}
+.mcard-chg{font-size:11px;font-weight:600;margin-top:3px}
+.up{color:var(--green)}.dn{color:var(--red)}.neu{color:var(--text3)}
 /* Tags */
-.tag{display:inline-block;font-size:11px;font-weight:700;padding:2px 9px;border-radius:20px;white-space:nowrap}
+.tag{display:inline-block;font-size:11px;font-weight:700;padding:2px 8px;border-radius:20px;margin:2px}
 .t-red{background:var(--red-bg);color:var(--red);border:1px solid var(--red-bd)}
 .t-green{background:var(--green-bg);color:var(--green);border:1px solid var(--green-bd)}
 .t-amber{background:var(--amber-bg);color:var(--amber);border:1px solid var(--amber-bd)}
 .t-blue{background:var(--blue-bg);color:var(--blue);border:1px solid var(--blue-bd)}
 .t-purple{background:var(--purple-bg);color:var(--purple);border:1px solid var(--purple-bd)}
 .t-gray{background:var(--surface2);color:var(--text2);border:1px solid var(--border2)}
-
-/* Stock items */
-.group-lbl{background:var(--surface2);border:1px solid var(--border);border-radius:var(--r-sm);padding:9px 14px;margin:14px 0 8px;font-size:12px;font-weight:700;color:var(--text2)}
-.stk-item{border-bottom:1px solid var(--border)}
-.stk-item:last-child{border-bottom:none}
-.stk-top{display:flex;gap:10px;align-items:flex-start;padding:13px 16px 4px}
-.stk-info{min-width:0;flex:1}
-.stk-name{font-size:14px;font-weight:800}
-.stk-meta{font-size:11px;color:var(--text3);margin-top:1px}
-.stk-tag{flex-shrink:0}
-
-/* Metric grid */
-.met-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:6px;margin:10px 0}
-.met{background:var(--surface2);border-radius:6px;padding:7px 10px}
-.met-l{font-size:10px;color:var(--text3);font-weight:600;margin-bottom:2px}
-.met-v{font-size:13px;font-weight:700;color:var(--text)}
-
-/* 52w range */
-.rng-wrap{margin:8px 0 10px}
-.rng-lbl{display:flex;justify-content:space-between;font-size:10px;color:var(--text3);margin-bottom:3px}
-.rng-track{height:5px;background:var(--surface2);border-radius:3px;overflow:hidden}
-.rng-fill{height:5px;background:linear-gradient(to right,var(--red),var(--amber),var(--green));border-radius:3px}
-
-/* Analyst */
-.analyst-row{display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin:8px 0 4px}
-
-/* Investor flow */
-.inv-section{background:var(--surface2);border-radius:8px;padding:10px 12px;margin:8px 0}
-.inv-title{font-size:10px;font-weight:700;color:var(--text3);letter-spacing:.05em;margin-bottom:6px}
-.inv-row{display:flex;align-items:center;justify-content:space-between;padding:3px 0}
-.inv-who{font-size:12px;font-weight:600;color:var(--text2)}
-
-/* Strategy desc */
-.strat-desc{font-size:12px;color:var(--text2);background:var(--surface2);border-radius:6px;padding:7px 10px;margin:6px 0 2px;line-height:1.55}
-
+/* Todo */
+.todo-item{display:flex;align-items:flex-start;gap:10px;padding:10px 0;border-bottom:1px solid var(--border)}
+.todo-item:last-child{border-bottom:none}
+.todo-num{width:24px;height:24px;border-radius:50%;background:var(--text);color:#fff;font-size:11px;font-weight:800;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:1px}
+.todo-text{font-size:13px;color:var(--text2);line-height:1.5}
+.todo-text strong{color:var(--text)}
+/* Signal */
+.signal-item{padding:10px 0;border-bottom:1px solid var(--border);display:flex;gap:10px;align-items:flex-start}
+.signal-item:last-child{border-bottom:none}
+.signal-icon{font-size:18px;flex-shrink:0;margin-top:1px}
+.signal-text{font-size:13px;color:var(--text2);line-height:1.5}
+.signal-text strong{color:var(--text)}
 /* News */
-.news-blk{margin:0 16px 12px;background:var(--surface2);border-radius:var(--r-sm);padding:9px 12px}
-.news-lbl{font-size:10px;font-weight:800;color:var(--text3);letter-spacing:.07em;text-transform:uppercase;margin-bottom:6px}
-.news-li{font-size:12px;color:var(--text);line-height:1.55;padding:3px 0;display:flex;gap:6px;align-items:flex-start}
-.news-li::before{content:"·";color:var(--text3);flex-shrink:0;font-size:14px;line-height:1.4}
-.news-li a{color:var(--text);text-decoration:none}
-.news-li a:hover{text-decoration:underline}
-.news-pub{font-size:10px;color:var(--text3);white-space:nowrap}
-
-/* Legend */
-.legend-box{background:var(--surface);border:1px solid var(--border2);border-radius:var(--r);padding:14px 16px;margin-bottom:14px;box-shadow:var(--shadow)}
-.legend-title{font-size:11px;font-weight:800;color:var(--text3);letter-spacing:.07em;margin-bottom:10px}
-.legend-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px}
-.legend-item{display:flex;gap:8px;align-items:flex-start}
-.legend-desc{font-size:11px;color:var(--text2);line-height:1.5;margin-top:2px}
-
-/* Footer */
-.footer{text-align:center;font-size:11px;color:var(--text3);margin-top:48px;padding-top:18px;border-top:1px solid var(--border2);line-height:1.8}
-
-/* Mobile */
-@media(max-width:520px){
-  .page{padding:16px 12px 80px}
-  .market-grid{grid-template-columns:1fr 1fr}
-  .market-grid .market-card:nth-child(5),
-  .market-grid .market-card:nth-child(6){grid-column:span 1}
-  .met-grid{grid-template-columns:repeat(2,1fr)}
-  .legend-grid{grid-template-columns:1fr}
-}
+.news-item{padding:12px 0;border-bottom:1px solid var(--border)}
+.news-item:last-child{border-bottom:none}
+.news-num{font-size:10px;font-weight:800;color:var(--text3);margin-bottom:4px}
+.news-title{font-size:14px;font-weight:700;color:var(--text);margin-bottom:5px;line-height:1.4}
+.news-impact{font-size:12px;color:var(--text2);line-height:1.6;margin-bottom:6px}
+/* Issue stocks */
+.issue-item{padding:12px 0;border-bottom:1px solid var(--border);display:flex;gap:12px;align-items:flex-start}
+.issue-item:last-child{border-bottom:none}
+.issue-rank{width:28px;height:28px;border-radius:8px;background:var(--text);color:#fff;font-size:13px;font-weight:900;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.issue-body{flex:1}
+.issue-name{font-size:14px;font-weight:800;color:var(--text);margin-bottom:3px}
+.issue-reason{font-size:12px;color:var(--text2);line-height:1.5;margin-bottom:4px}
+.issue-strategy{font-size:12px;font-weight:700;color:var(--blue)}
+/* Stock table */
+.stock-item{padding:12px 0;border-bottom:1px solid var(--border)}
+.stock-item:last-child{border-bottom:none}
+.stock-header{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:4px;flex-wrap:wrap;gap:4px}
+.stock-name{font-size:14px;font-weight:800;color:var(--text)}
+.stock-ticker{font-size:11px;font-weight:600;color:var(--text3);background:var(--surface2);padding:2px 6px;border-radius:4px;margin-left:5px}
+.stock-price{text-align:right}
+.stock-cur{font-size:15px;font-weight:900;color:var(--text)}
+.stock-chg{font-size:11px;font-weight:700}
+.stock-strategy{font-size:12px;color:var(--text2);line-height:1.5;margin-bottom:6px}
+.stock-news{font-size:11px;color:var(--text3);padding-left:10px;border-left:2px solid var(--border2);line-height:1.6}
+.stock-news li{margin-bottom:2px;list-style:none;padding-left:6px;position:relative}
+.stock-news li::before{content:"·";position:absolute;left:-4px}
+/* Bar chart */
+.bar-row{display:flex;align-items:center;gap:8px;margin-bottom:8px}
+.bar-label{font-size:11px;font-weight:600;color:var(--text2);width:140px;flex-shrink:0;text-align:right}
+.bar-track{flex:1;background:var(--surface2);border-radius:4px;height:18px;overflow:hidden}
+.bar-fill{height:100%;border-radius:4px;display:flex;align-items:center;padding-left:8px;font-size:10px;font-weight:700;color:#fff}
+/* Calendar */
+.cal-item{display:flex;gap:12px;align-items:flex-start;padding:8px 0;border-bottom:1px solid var(--border)}
+.cal-item:last-child{border-bottom:none}
+.cal-date{font-size:11px;font-weight:800;color:var(--blue);width:60px;flex-shrink:0}
+.cal-event{font-size:12px;color:var(--text2);line-height:1.5}
+/* Strategy points */
+.strategy-point{display:flex;gap:10px;padding:10px 0;border-bottom:1px solid var(--border);align-items:flex-start}
+.strategy-point:last-child{border-bottom:none}
+.strategy-star{font-size:16px;flex-shrink:0}
+.strategy-text{font-size:13px;color:var(--text2);line-height:1.5}
+.strategy-text strong{color:var(--text)}
 </style>
 </head>
 <body>
-<div class="page">
 
+<!-- HEADER -->
 <div class="header">
-  <div class="header-meta">
-    <div class="header-date">2026년 06월 28일 일요일 — 자동 생성 브리핑</div>
-    <div class="badge">📊 실시간 데이터</div>
-  </div>
-  <h1>포트폴리오 투자 브리핑<br><span style="color:var(--text2);font-weight:600">— 22종목 펀더멘털 종합 진단</span></h1>
-  <div class="header-sub">미국 13 · 한국 9 · PER/PBR/PSR · 수급 · 애널리스트 · 종합 전략</div>
+  <div class="header-date">2026년 6월 29일 월요일</div>
+  <div class="header-title">민선의 포트폴리오 브리핑</div>
+  <div><span class="header-badge">⚠️ AI 기술주 조정 주의</span></div>
+  <div class="header-sub">나스닥 6% 하락 · Fear &amp; Greed 25 (공포) · 오늘의 전략을 확인하세요</div>
 </div>
 
-<nav class="toc" aria-label="목차">
-  <div class="toc-inner">
-    <a href="#market">📊 시장</a>
-    <a href="#fng">😨 공포탐욕</a>
-    <a href="#us-stocks">🇺🇸 미국 종목</a>
-    <a href="#kr-stocks">🇰🇷 한국 종목</a>
-    <a href="#footer">📋 안내</a>
-  </div>
-</nav>
+<!-- TOC -->
+<div class="toc">
+  <a href="#market">📊 시장요약</a>
+  <a href="#fng">😨 공포탐욕지수</a>
+  <a href="#todo">✅ 오늘할일</a>
+  <a href="#strategy">⭐ 내종목전략</a>
+  <a href="#signals">🚨 주목신호</a>
+  <a href="#us-news">🇺🇸 나스닥뉴스</a>
+  <a href="#kr-news">🇰🇷 코스닥뉴스</a>
+  <a href="#issues">🔥 이슈종목</a>
+  <a href="#stocks">📋 내종목</a>
+  <a href="#alloc">💰 투자배분</a>
+  <a href="#calendar">📅 일정</a>
+</div>
 
-<!-- ① 시장 요약 -->
+<!-- MARKET SUMMARY -->
 <div class="section" id="market">
-  <div class="sec-title">시장 지수 — 2026.06.26 기준 (직전 거래일)</div>
+  <div class="sec-title">📊 시장 요약</div>
   <div class="market-grid">
-    <div class="market-card">
-          <div class="m-label">나스닥 종합지수 (COMP)</div>
-          <div class="m-val c-down">25,297.62</div>
-          <div class="m-chg"><span class="c-down">▼0.24%</span></div>
-          
+    <div class="mcard">
+      <div class="mcard-label">나스닥 종합</div>
+      <div class="mcard-val dn">25,297</div>
+      <div class="mcard-chg dn">▼ -6.1% (고점 대비)</div>
+    </div>
+    <div class="mcard">
+      <div class="mcard-label">코스닥</div>
+      <div class="mcard-val dn">851.37</div>
+      <div class="mcard-chg dn">▼ -4.10%</div>
+    </div>
+    <div class="mcard">
+      <div class="mcard-label">원·달러 환율</div>
+      <div class="mcard-val neu">1,538</div>
+      <div class="mcard-chg neu">원/달러</div>
+    </div>
+  </div>
+  <div class="card">
+    <div class="card-body">
+      <div style="font-size:13px;color:var(--text2);line-height:1.7;margin-bottom:12px">
+        <strong style="color:var(--text)">📌 이번 주 시장 분위기:</strong> AI 기술주 중심 글로벌 매도세가 지속되고 있습니다. 나스닥은 6월 2일 사상 최고치 대비 6% 이상 하락했고, 매그니피센트7 전체가 조정 또는 약세장에 진입했습니다. AI 인프라 수익성에 대한 의구심, 이란 전쟁에 따른 호르무즈 해협 봉쇄 우려로 인플레이션·금리 리스크가 부각되고 있습니다. 국내 코스피도 외국인 대규모 매도로 5.8% 급락한 상태입니다.
+      </div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px">
+        <div style="background:var(--green-bg);border:1px solid var(--green-bd);border-radius:var(--r-sm);padding:10px">
+          <div style="font-size:11px;font-weight:800;color:var(--green);margin-bottom:4px">🟢 낙관 시나리오</div>
+          <div style="font-size:12px;color:var(--text2);line-height:1.6">AI 인프라 투자 지속 → 반도체 수요 견조. 미 정부 양자컴퓨팅 20억 달러 지원으로 IONQ·RGTI 수혜. 기술주 과매도 후 단기 반등 가능.</div>
         </div>
-    <div class="market-card">
-          <div class="m-label">S&P 500</div>
-          <div class="m-val c-down">7,354.02</div>
-          <div class="m-chg"><span class="c-down">▼0.05%</span></div>
-          
+        <div style="background:var(--red-bg);border:1px solid var(--red-bd);border-radius:var(--r-sm);padding:10px">
+          <div style="font-size:11px;font-weight:800;color:var(--red);margin-bottom:4px">🔴 비관 시나리오</div>
+          <div style="font-size:12px;color:var(--text2);line-height:1.6">AI 수익성 의구심 → 고밸류에이션 기술주 추가 하락. 호르무즈 봉쇄 지속 시 에너지 가격 상승 → 인플레이션 → 금리 재인상 우려. NVDA·AAPL 10%+ 추가 조정 가능.</div>
         </div>
-    <div class="market-card">
-          <div class="m-label">USD/KRW 환율</div>
-          <div class="m-val c-neu">1,535.0원</div>
-          <div class="m-chg"></div>
-          
-        </div>
-    <div class="market-card">
-          <div class="m-label">코스피 (KOSPI)</div>
-          <div class="m-val c-neu">—</div>
-          <div class="m-chg"></div>
-          
-        </div>
-    <div class="market-card">
-          <div class="m-label">코스닥 (KOSDAQ)</div>
-          <div class="m-val c-neu">—</div>
-          <div class="m-chg"></div>
-          
-        </div>
+      </div>
+    </div>
   </div>
 </div>
 
-<!-- ② 공포탐욕지수 -->
-
-  <div class="section" id="fng">
-    <div class="sec-title">😨 공포탐욕지수 — CNN Fear &amp; Greed Index (미국 주식시장 심리)</div>
-    <div class="card"><div style="padding:16px">
+<!-- FEAR & GREED INDEX -->
+<div class="section" id="fng">
+  <div class="sec-title">공포탐욕지수 — CNN Fear &amp; Greed Index</div>
+  <div class="card">
+    <div style="padding:16px">
       <div style="display:flex;align-items:flex-start;justify-content:space-between;margin-bottom:14px;gap:10px">
         <div style="flex:1">
-          <div style="font-size:11px;font-weight:700;color:var(--text3);margin-bottom:6px">미국 주식시장 투자자 심리 (0=극도공포 / 100=극도탐욕)</div>
+          <div style="font-size:11px;font-weight:700;color:var(--text3);letter-spacing:.04em;margin-bottom:6px">현재 시장의 심리 상태</div>
           <div style="display:flex;align-items:baseline;gap:10px;flex-wrap:wrap">
-            <span style="font-size:42px;font-weight:900;line-height:1;color:#c0663a">25</span>
+            <span id="fng-score" style="font-size:42px;font-weight:900;line-height:1;color:#c0663a">25</span>
             <div>
-              <div style="font-size:15px;font-weight:800;color:#c0663a">공포</div>
-              <div style="font-size:11px;color:var(--text3);margin-top:2px">Fear · CNN</div>
+              <div id="fng-rating" style="font-size:15px;font-weight:800;color:#c0663a">공포</div>
+              <div id="fng-eng" style="font-size:11px;color:var(--text3);margin-top:2px">Fear</div>
             </div>
           </div>
         </div>
-        <div style="font-size:48px;line-height:1;flex-shrink:0">😰</div>
+        <div id="fng-emoji" style="font-size:48px;line-height:1;flex-shrink:0">😰</div>
       </div>
-      <div style="position:relative;height:12px;border-radius:6px;background:linear-gradient(to right,#b83229 0%,#d4652b 25%,#c8a000 50%,#6aab5e 75%,#1f6636 100%);overflow:visible;margin-bottom:4px">
-        <div style="position:absolute;top:-5px;width:6px;height:22px;background:var(--text);border-radius:3px;transform:translateX(-50%);left:25%;box-shadow:0 1px 4px rgba(0,0,0,.35)"></div>
+      <div style="margin-bottom:4px">
+        <div style="position:relative;height:12px;border-radius:6px;background:linear-gradient(to right,#b83229 0%,#d4652b 20%,#c8a000 35%,#e8c200 50%,#6aab5e 65%,#1f6636 100%);overflow:visible">
+          <div id="fng-needle" style="position:absolute;top:-5px;width:6px;height:22px;background:var(--text);border-radius:3px;transform:translateX(-50%);left:25%;box-shadow:0 1px 4px rgba(0,0,0,.35)"></div>
+        </div>
       </div>
-      <div style="display:flex;justify-content:space-between;font-size:10px;color:var(--text3);padding:0 2px;margin-bottom:14px">
+      <div style="display:flex;justify-content:space-between;font-size:10px;color:var(--text3);margin-bottom:14px;padding:0 2px">
         <span>😱 극도공포</span><span>😰 공포</span><span>😐 중립</span><span>😏 탐욕</span><span>🤑 극도탐욕</span>
       </div>
-      <div style="display:flex;gap:6px;flex-wrap:wrap;margin-bottom:12px">
-        
-        
-        
+      <div style="font-size:11px;font-weight:700;color:var(--text3);letter-spacing:.04em;margin-bottom:8px">과거 대비 변화</div>
+      <div id="fng-history" style="display:flex;gap:6px;flex-wrap:wrap;margin-bottom:14px">
+        <span class="tag t-gray">1주 전: 33 (공포)</span>
+        <span class="tag t-gray">1달 전: ~48 (중립)</span>
       </div>
-      <div style="background:var(--surface2);border-radius:8px;padding:11px 14px;font-size:12px;color:var(--text2);line-height:1.65">투자자 심리가 <strong>위축</strong>돼 있습니다. 무리한 추가 매수보다 현금 비중 유지가 안전합니다.</div>
-    </div></div>
-  </div>
-
-<!-- ③ 미국 종목 -->
-<div class="section" id="us-stocks">
-  <div class="sec-title">🇺🇸 미국 보유 종목 — 13개 · 펀더멘털 종합 진단</div>
-  
-    <div class="legend-box">
-      <div class="legend-title">📌 전략 등급 읽는 법</div>
-      <div class="legend-grid">
-        <div class="legend-item"><span class="tag t-green">홀드+</span><span class="legend-desc">유지하면서 추가 매수 기회를 볼 수 있는 종목</span></div>
-        <div class="legend-item"><span class="tag t-gray">홀드</span><span class="legend-desc">지금 아무 행동도 필요 없습니다. 그냥 유지</span></div>
-        <div class="legend-item"><span class="tag t-amber">홀드 ⚠️</span><span class="legend-desc">유지하되 손절 기준 미리 정해두고 예의주시</span></div>
-        <div class="legend-item"><span class="tag t-red">매도 검토</span><span class="legend-desc">복수 지표 약세. 매도를 진지하게 검토할 시점</span></div>
-      </div>
-      <div style="font-size:10px;color:var(--text3);margin-top:8px">
-        ※ 등급은 PER·PBR·PSR·매출성장·수익성장·ROE·애널리스트컨센서스·목표주가·수급 데이터를 종합한 자동 진단입니다. 최종 투자 결정은 본인 판단으로 하세요.
+      <div id="fng-interp" style="background:var(--surface2);border-radius:8px;padding:11px 14px;font-size:12px;color:var(--text2);line-height:1.65">
+        <strong>공포 구간 (25점):</strong> 투자자들이 AI 기술주 급락과 지정학적 리스크에 겁을 먹고 있는 상태입니다. 무조건 팔거나 사지 말고, <strong>보유 종목 중 손절 기준을 미리 정해두는 것</strong>이 좋습니다. 공포 구간은 역설적으로 장기 분할 매수 기회가 될 수 있지만, 추가 하락 가능성이 남아있으므로 일단 관망 유지를 권장합니다.
       </div>
     </div>
+  </div>
+</div>
+
+<!-- TODAY TODO -->
+<div class="section" id="todo">
+  <div class="sec-title">✅ 오늘 할 일 (우선순위 순)</div>
   <div class="card">
-    
-      <div class="stk-item">
-        <div class="stk-top">
-          <div class="stk-info">
-            <div class="stk-name">NVDA <span style="font-weight:500;color:var(--text2)">NVIDIA</span></div>
-            <div class="stk-meta">3주 보유 · 평단 251,000원</div>
-          </div>
-          <div class="stk-tag"><span class="tag t-green">홀드+</span></div>
-        </div>
-        <div style="padding:4px 16px 10px">
-          <div style="display:flex;align-items:baseline;gap:8px;margin-bottom:6px;flex-wrap:wrap">
-            <span style="font-size:22px;font-weight:900">$192.53</span>
-            <span class="c-down">▼1.64%</span>
-            <span class="c-up" style="font-size:11px"> ▲평단 대비 17.7%</span>
-          </div>
-          
-    <div class="rng-wrap">
-      <div class="rng-lbl"><span>$151</span><span style="font-size:10px;color:var(--text3)">52주 범위</span><span>$237</span></div>
-      <div class="rng-track"><div class="rng-fill" style="width:48%"></div></div>
-    </div>
-          
-    <div class="met-grid">
-      <div class="met"><div class="met-l">PER(현재)</div><div class="met-v"><span class="tag t-amber" style="font-size:11px;padding:1px 6px">29.5x</span></div></div>
-      <div class="met"><div class="met-l">PER(예상)</div><div class="met-v"><span class="tag t-blue" style="font-size:11px;padding:1px 6px">15.1x</span></div></div>
-      <div class="met"><div class="met-l">PBR</div><div class="met-v"><span class="tag t-red" style="font-size:11px;padding:1px 6px">23.9x</span></div></div>
-      <div class="met"><div class="met-l">PSR</div><div class="met-v">18.4x</div></div>
-      <div class="met"><div class="met-l">EPS(현재)</div><div class="met-v">6.53$</div></div>
-      <div class="met"><div class="met-l">EPS(예상)</div><div class="met-v">12.73$</div></div>
-      <div class="met"><div class="met-l">매출성장</div><div class="met-v">+85.2%</div></div>
-      <div class="met"><div class="met-l">순익성장</div><div class="met-v">+214.5%</div></div>
-      <div class="met"><div class="met-l">ROE</div><div class="met-v">114.3%</div></div>
-      <div class="met"><div class="met-l">부채비율</div><div class="met-v">6.6</div></div>
-      <div class="met"><div class="met-l">배당수익률</div><div class="met-v">52.0%</div></div>
-    </div>
-          
-    <div class="analyst-row">
-      <span class="tag t-t-green">강력 매수</span>
-      <span style="font-size:12px;color:var(--text2)">목표가 $300.59 → 현재가 대비 <strong>+56.1%</strong> (58명)</span>
-    </div>
-          <div class="strat-desc">펀더멘털 양호. 현재 포지션 유지하면서 추가 매수 기회를 볼 수 있는 종목입니다.</div>
-        </div>
-        
+    <div class="card-body">
+      <div class="todo-item">
+        <div class="todo-num">1</div>
+        <div class="todo-text"><strong>NVDA / AAPL 손절선 재확인</strong> — AI 기술주 조정이 지속되고 있습니다. 내 매수 단가 기준으로 -10% 또는 -15% 손절선을 설정해두고, 자동 손절 주문을 확인하세요.</div>
       </div>
-      <div class="stk-item">
-        <div class="stk-top">
-          <div class="stk-info">
-            <div class="stk-name">AMZN <span style="font-weight:500;color:var(--text2)">Amazon</span></div>
-            <div class="stk-meta">1주 보유 · 평단 405,000원</div>
-          </div>
-          <div class="stk-tag"><span class="tag t-green">홀드+</span></div>
-        </div>
-        <div style="padding:4px 16px 10px">
-          <div style="display:flex;align-items:baseline;gap:8px;margin-bottom:6px;flex-wrap:wrap">
-            <span style="font-size:22px;font-weight:900">$232.69</span>
-            <span class="c-up">▲2.50%</span>
-            <span class="c-down" style="font-size:11px"> ▼평단 대비 11.8%</span>
-          </div>
-          
-    <div class="rng-wrap">
-      <div class="rng-lbl"><span>$196</span><span style="font-size:10px;color:var(--text3)">52주 범위</span><span>$279</span></div>
-      <div class="rng-track"><div class="rng-fill" style="width:44%"></div></div>
-    </div>
-          
-    <div class="met-grid">
-      <div class="met"><div class="met-l">PER(현재)</div><div class="met-v"><span class="tag t-amber" style="font-size:11px;padding:1px 6px">31.7x</span></div></div>
-      <div class="met"><div class="met-l">PER(예상)</div><div class="met-v"><span class="tag t-blue" style="font-size:11px;padding:1px 6px">23.6x</span></div></div>
-      <div class="met"><div class="met-l">PBR</div><div class="met-v"><span class="tag t-amber" style="font-size:11px;padding:1px 6px">5.7x</span></div></div>
-      <div class="met"><div class="met-l">PSR</div><div class="met-v">3.4x</div></div>
-      <div class="met"><div class="met-l">EPS(현재)</div><div class="met-v">7.35$</div></div>
-      <div class="met"><div class="met-l">EPS(예상)</div><div class="met-v">9.88$</div></div>
-      <div class="met"><div class="met-l">매출성장</div><div class="met-v">+16.6%</div></div>
-      <div class="met"><div class="met-l">순익성장</div><div class="met-v">+74.8%</div></div>
-      <div class="met"><div class="met-l">ROE</div><div class="met-v">24.3%</div></div>
-      <div class="met"><div class="met-l">부채비율</div><div class="met-v">53.3</div></div>
-      <div class="met"><div class="met-l">배당수익률</div><div class="met-v">—</div></div>
-    </div>
-          
-    <div class="analyst-row">
-      <span class="tag t-t-green">강력 매수</span>
-      <span style="font-size:12px;color:var(--text2)">목표가 $312.99 → 현재가 대비 <strong>+34.5%</strong> (63명)</span>
-    </div>
-          <div class="strat-desc">펀더멘털 양호. 현재 포지션 유지하면서 추가 매수 기회를 볼 수 있는 종목입니다.</div>
-        </div>
-        
+      <div class="todo-item">
+        <div class="todo-num">2</div>
+        <div class="todo-text"><strong>IONQ / RGTI 차익 일부 실현 고려</strong> — 미 정부 양자컴퓨팅 지원 발표로 급등했습니다. 수익이 나고 있다면 일부 차익 실현 후 나머지 보유를 검토하세요.</div>
       </div>
-      <div class="stk-item">
-        <div class="stk-top">
-          <div class="stk-info">
-            <div class="stk-name">AAPL <span style="font-weight:500;color:var(--text2)">Apple</span></div>
-            <div class="stk-meta">10주 보유 · 평단 141,000원</div>
-          </div>
-          <div class="stk-tag"><span class="tag t-gray">홀드</span></div>
-        </div>
-        <div style="padding:4px 16px 10px">
-          <div style="display:flex;align-items:baseline;gap:8px;margin-bottom:6px;flex-wrap:wrap">
-            <span style="font-size:22px;font-weight:900">$283.78</span>
-            <span class="c-up">▲3.14%</span>
-            <span class="c-up" style="font-size:11px"> ▲평단 대비 208.9%</span>
-          </div>
-          
-    <div class="rng-wrap">
-      <div class="rng-lbl"><span>$199</span><span style="font-size:10px;color:var(--text3)">52주 범위</span><span>$317</span></div>
-      <div class="rng-track"><div class="rng-fill" style="width:72%"></div></div>
-    </div>
-          
-    <div class="met-grid">
-      <div class="met"><div class="met-l">PER(현재)</div><div class="met-v"><span class="tag t-amber" style="font-size:11px;padding:1px 6px">34.4x</span></div></div>
-      <div class="met"><div class="met-l">PER(예상)</div><div class="met-v"><span class="tag t-amber" style="font-size:11px;padding:1px 6px">29.5x</span></div></div>
-      <div class="met"><div class="met-l">PBR</div><div class="met-v"><span class="tag t-red" style="font-size:11px;padding:1px 6px">39.1x</span></div></div>
-      <div class="met"><div class="met-l">PSR</div><div class="met-v">9.2x</div></div>
-      <div class="met"><div class="met-l">EPS(현재)</div><div class="met-v">8.26$</div></div>
-      <div class="met"><div class="met-l">EPS(예상)</div><div class="met-v">9.61$</div></div>
-      <div class="met"><div class="met-l">매출성장</div><div class="met-v">+16.6%</div></div>
-      <div class="met"><div class="met-l">순익성장</div><div class="met-v">+21.8%</div></div>
-      <div class="met"><div class="met-l">ROE</div><div class="met-v">141.5%</div></div>
-      <div class="met"><div class="met-l">부채비율</div><div class="met-v">79.5</div></div>
-      <div class="met"><div class="met-l">배당수익률</div><div class="met-v">38.0%</div></div>
-    </div>
-          
-    <div class="analyst-row">
-      <span class="tag t-t-green">매수</span>
-      <span style="font-size:12px;color:var(--text2)">목표가 $315.09 → 현재가 대비 <strong>+11.0%</strong> (42명)</span>
-    </div>
-          <div class="strat-desc">특별한 행동 없이 유지하세요. 현재 매도/매수 시점이 아닙니다.</div>
-        </div>
-        
+      <div class="todo-item">
+        <div class="todo-num">3</div>
+        <div class="todo-text"><strong>한국 ETF (KODEX/TIGER 나스닥100) 평가손익 확인</strong> — 나스닥 하락의 영향이 국내 ETF에도 반영됩니다. 현재 손익과 분할 매수 계획을 재점검하세요.</div>
       </div>
-      <div class="stk-item">
-        <div class="stk-top">
-          <div class="stk-info">
-            <div class="stk-name">ORCL <span style="font-weight:500;color:var(--text2)">Oracle</span></div>
-            <div class="stk-meta">3주 보유 · 평단 223,000원</div>
-          </div>
-          <div class="stk-tag"><span class="tag t-green">홀드+</span></div>
-        </div>
-        <div style="padding:4px 16px 10px">
-          <div style="display:flex;align-items:baseline;gap:8px;margin-bottom:6px;flex-wrap:wrap">
-            <span style="font-size:22px;font-weight:900">$148.53</span>
-            <span class="c-down">▼2.58%</span>
-            <span class="c-up" style="font-size:11px"> ▲평단 대비 2.2%</span>
-          </div>
-          
-    <div class="rng-wrap">
-      <div class="rng-lbl"><span>$135</span><span style="font-size:10px;color:var(--text3)">52주 범위</span><span>$346</span></div>
-      <div class="rng-track"><div class="rng-fill" style="width:7%"></div></div>
-    </div>
-          
-    <div class="met-grid">
-      <div class="met"><div class="met-l">PER(현재)</div><div class="met-v"><span class="tag t-amber" style="font-size:11px;padding:1px 6px">25.4x</span></div></div>
-      <div class="met"><div class="met-l">PER(예상)</div><div class="met-v"><span class="tag t-green" style="font-size:11px;padding:1px 6px">13.6x</span></div></div>
-      <div class="met"><div class="met-l">PBR</div><div class="met-v"><span class="tag t-red" style="font-size:11px;padding:1px 6px">11.4x</span></div></div>
-      <div class="met"><div class="met-l">PSR</div><div class="met-v">6.4x</div></div>
-      <div class="met"><div class="met-l">EPS(현재)</div><div class="met-v">5.84$</div></div>
-      <div class="met"><div class="met-l">EPS(예상)</div><div class="met-v">10.92$</div></div>
-      <div class="met"><div class="met-l">매출성장</div><div class="met-v">+20.6%</div></div>
-      <div class="met"><div class="met-l">순익성장</div><div class="met-v">+21.9%</div></div>
-      <div class="met"><div class="met-l">ROE</div><div class="met-v">53.4%</div></div>
-      <div class="met"><div class="met-l">부채비율</div><div class="met-v">388.9</div></div>
-      <div class="met"><div class="met-l">배당수익률</div><div class="met-v">135.0%</div></div>
-    </div>
-          
-    <div class="analyst-row">
-      <span class="tag t-t-green">매수</span>
-      <span style="font-size:12px;color:var(--text2)">목표가 $252.64 → 현재가 대비 <strong>+70.1%</strong> (39명)</span>
-    </div>
-          <div class="strat-desc">펀더멘털 양호. 현재 포지션 유지하면서 추가 매수 기회를 볼 수 있는 종목입니다.</div>
-        </div>
-        
+      <div class="todo-item">
+        <div class="todo-num">4</div>
+        <div class="todo-text"><strong>UNH 보유 유지 판단</strong> — UnitedHealth는 최근 경영진 이슈에도 $426 수준 유지 중입니다. 의료/헬스케어 섹터는 기술주 하락기 방어적 성격이 있어 당분간 보유 유지가 적절합니다.</div>
       </div>
-      <div class="stk-item">
-        <div class="stk-top">
-          <div class="stk-info">
-            <div class="stk-name">INTC <span style="font-weight:500;color:var(--text2)">Intel</span></div>
-            <div class="stk-meta">5주 보유 · 평단 177,000원</div>
-          </div>
-          <div class="stk-tag"><span class="tag t-red">매도 검토</span></div>
-        </div>
-        <div style="padding:4px 16px 10px">
-          <div style="display:flex;align-items:baseline;gap:8px;margin-bottom:6px;flex-wrap:wrap">
-            <span style="font-size:22px;font-weight:900">$128.32</span>
-            <span class="c-down">▼3.42%</span>
-            <span class="c-up" style="font-size:11px"> ▲평단 대비 11.3%</span>
-          </div>
-          
-    <div class="rng-wrap">
-      <div class="rng-lbl"><span>$19</span><span style="font-size:10px;color:var(--text3)">52주 범위</span><span>$141</span></div>
-      <div class="rng-track"><div class="rng-fill" style="width:89%"></div></div>
-    </div>
-          
-    <div class="met-grid">
-      <div class="met"><div class="met-l">PER(현재)</div><div class="met-v c-neu">—</div></div>
-      <div class="met"><div class="met-l">PER(예상)</div><div class="met-v"><span class="tag t-red" style="font-size:11px;padding:1px 6px">83.0x</span></div></div>
-      <div class="met"><div class="met-l">PBR</div><div class="met-v"><span class="tag t-amber" style="font-size:11px;padding:1px 6px">5.8x</span></div></div>
-      <div class="met"><div class="met-l">PSR</div><div class="met-v">12.0x</div></div>
-      <div class="met"><div class="met-l">EPS(현재)</div><div class="met-v">-0.6$</div></div>
-      <div class="met"><div class="met-l">EPS(예상)</div><div class="met-v">1.55$</div></div>
-      <div class="met"><div class="met-l">매출성장</div><div class="met-v">+7.2%</div></div>
-      <div class="met"><div class="met-l">순익성장</div><div class="met-v c-neu">—</div></div>
-      <div class="met"><div class="met-l">ROE</div><div class="met-v">-2.9%</div></div>
-      <div class="met"><div class="met-l">부채비율</div><div class="met-v">36.0</div></div>
-      <div class="met"><div class="met-l">배당수익률</div><div class="met-v">—</div></div>
-    </div>
-          
-    <div class="analyst-row">
-      <span class="tag t-t-amber">중립 유지</span>
-      <span style="font-size:12px;color:var(--text2)">목표가 $96.07 → 현재가 대비 <strong>-25.1%</strong> (42명)</span>
-    </div>
-          <div class="strat-desc">복수 지표가 약세를 가리킵니다. 매도 여부를 진지하게 검토하세요.</div>
-        </div>
-        
+      <div class="todo-item">
+        <div class="todo-num">5</div>
+        <div class="todo-text"><strong>HD한국조선해양 / 삼성바이오로직스 뉴스 체크</strong> — 조선·방산 섹터는 수혜 기대감이 남아있습니다. 오늘 장 시작 전 관련 뉴스를 확인하고 추가 매수 기회를 탐색하세요.</div>
       </div>
-      <div class="stk-item">
-        <div class="stk-top">
-          <div class="stk-info">
-            <div class="stk-name">IONQ <span style="font-weight:500;color:var(--text2)">IonQ</span></div>
-            <div class="stk-meta">9주 보유 · 평단 85,000원</div>
-          </div>
-          <div class="stk-tag"><span class="tag t-green">홀드+</span></div>
-        </div>
-        <div style="padding:4px 16px 10px">
-          <div style="display:flex;align-items:baseline;gap:8px;margin-bottom:6px;flex-wrap:wrap">
-            <span style="font-size:22px;font-weight:900">$49.31</span>
-            <span class="c-down">▼2.47%</span>
-            <span class="c-down" style="font-size:11px"> ▼평단 대비 11.0%</span>
-          </div>
-          
-    <div class="rng-wrap">
-      <div class="rng-lbl"><span>$26</span><span style="font-size:10px;color:var(--text3)">52주 범위</span><span>$85</span></div>
-      <div class="rng-track"><div class="rng-fill" style="width:40%"></div></div>
     </div>
-          
-    <div class="met-grid">
-      <div class="met"><div class="met-l">PER(현재)</div><div class="met-v"><span class="tag t-red" style="font-size:11px;padding:1px 6px">126.4x</span></div></div>
-      <div class="met"><div class="met-l">PER(예상)</div><div class="met-v"><span class="tag t-gray" style="font-size:11px;padding:1px 6px">-46.8x</span></div></div>
-      <div class="met"><div class="met-l">PBR</div><div class="met-v"><span class="tag t-amber" style="font-size:11px;padding:1px 6px">3.7x</span></div></div>
-      <div class="met"><div class="met-l">PSR</div><div class="met-v">98.4x</div></div>
-      <div class="met"><div class="met-l">EPS(현재)</div><div class="met-v">0.39$</div></div>
-      <div class="met"><div class="met-l">EPS(예상)</div><div class="met-v">-1.05$</div></div>
-      <div class="met"><div class="met-l">매출성장</div><div class="met-v">+754.7%</div></div>
-      <div class="met"><div class="met-l">순익성장</div><div class="met-v c-neu">—</div></div>
-      <div class="met"><div class="met-l">ROE</div><div class="met-v">11.3%</div></div>
-      <div class="met"><div class="met-l">부채비율</div><div class="met-v">0.6</div></div>
-      <div class="met"><div class="met-l">배당수익률</div><div class="met-v">—</div></div>
-    </div>
-          
-    <div class="analyst-row">
-      <span class="tag t-t-green">강력 매수</span>
-      <span style="font-size:12px;color:var(--text2)">목표가 $68.79 → 현재가 대비 <strong>+39.5%</strong> (13명)</span>
-    </div>
-          <div class="strat-desc">펀더멘털 양호. 현재 포지션 유지하면서 추가 매수 기회를 볼 수 있는 종목입니다.</div>
-        </div>
-        
-      </div>
-      <div class="stk-item">
-        <div class="stk-top">
-          <div class="stk-info">
-            <div class="stk-name">RGTI <span style="font-weight:500;color:var(--text2)">Rigetti</span></div>
-            <div class="stk-meta">2주 보유 · 평단 66,000원</div>
-          </div>
-          <div class="stk-tag"><span class="tag t-gray">홀드</span></div>
-        </div>
-        <div style="padding:4px 16px 10px">
-          <div style="display:flex;align-items:baseline;gap:8px;margin-bottom:6px;flex-wrap:wrap">
-            <span style="font-size:22px;font-weight:900">$18.36</span>
-            <span class="c-down">▼27.16%</span>
-            <span class="c-down" style="font-size:11px"> ▼평단 대비 57.3%</span>
-          </div>
-          
-    <div class="rng-wrap">
-      <div class="rng-lbl"><span>$11</span><span style="font-size:10px;color:var(--text3)">52주 범위</span><span>$58</span></div>
-      <div class="rng-track"><div class="rng-fill" style="width:15%"></div></div>
-    </div>
-          
-    <div class="met-grid">
-      <div class="met"><div class="met-l">PER(현재)</div><div class="met-v c-neu">—</div></div>
-      <div class="met"><div class="met-l">PER(예상)</div><div class="met-v"><span class="tag t-gray" style="font-size:11px;padding:1px 6px">-91.3x</span></div></div>
-      <div class="met"><div class="met-l">PBR</div><div class="met-v"><span class="tag t-red" style="font-size:11px;padding:1px 6px">10.5x</span></div></div>
-      <div class="met"><div class="met-l">PSR</div><div class="met-v">609.3x</div></div>
-      <div class="met"><div class="met-l">EPS(현재)</div><div class="met-v">-0.89$</div></div>
-      <div class="met"><div class="met-l">EPS(예상)</div><div class="met-v">-0.2$</div></div>
-      <div class="met"><div class="met-l">매출성장</div><div class="met-v">+198.9%</div></div>
-      <div class="met"><div class="met-l">순익성장</div><div class="met-v c-neu">—</div></div>
-      <div class="met"><div class="met-l">ROE</div><div class="met-v">-57.1%</div></div>
-      <div class="met"><div class="met-l">부채비율</div><div class="met-v">1.2</div></div>
-      <div class="met"><div class="met-l">배당수익률</div><div class="met-v">—</div></div>
-    </div>
-          
-    <div class="analyst-row">
-      <span class="tag t-t-green">매수</span>
-      <span style="font-size:12px;color:var(--text2)">목표가 $29.65 → 현재가 대비 <strong>+61.5%</strong> (12명)</span>
-    </div>
-          <div class="strat-desc">특별한 행동 없이 유지하세요. 현재 매도/매수 시점이 아닙니다.</div>
-        </div>
-        
-      </div>
-      <div class="stk-item">
-        <div class="stk-top">
-          <div class="stk-info">
-            <div class="stk-name">IREN <span style="font-weight:500;color:var(--text2)">IREN Ltd</span></div>
-            <div class="stk-meta">17주 보유 · 평단 83,000원</div>
-          </div>
-          <div class="stk-tag"><span class="tag t-gray">홀드</span></div>
-        </div>
-        <div style="padding:4px 16px 10px">
-          <div style="display:flex;align-items:baseline;gap:8px;margin-bottom:6px;flex-wrap:wrap">
-            <span style="font-size:22px;font-weight:900">$47.21</span>
-            <span class="c-down">▼1.11%</span>
-            <span class="c-down" style="font-size:11px"> ▼평단 대비 12.7%</span>
-          </div>
-          
-    <div class="rng-wrap">
-      <div class="rng-lbl"><span>$14</span><span style="font-size:10px;color:var(--text3)">52주 범위</span><span>$77</span></div>
-      <div class="rng-track"><div class="rng-fill" style="width:53%"></div></div>
-    </div>
-          
-    <div class="met-grid">
-      <div class="met"><div class="met-l">PER(현재)</div><div class="met-v"><span class="tag t-red" style="font-size:11px;padding:1px 6px">61.3x</span></div></div>
-      <div class="met"><div class="met-l">PER(예상)</div><div class="met-v"><span class="tag t-gray" style="font-size:11px;padding:1px 6px">-50.2x</span></div></div>
-      <div class="met"><div class="met-l">PBR</div><div class="met-v"><span class="tag t-amber" style="font-size:11px;padding:1px 6px">6.0x</span></div></div>
-      <div class="met"><div class="met-l">PSR</div><div class="met-v">22.3x</div></div>
-      <div class="met"><div class="met-l">EPS(현재)</div><div class="met-v">0.77$</div></div>
-      <div class="met"><div class="met-l">EPS(예상)</div><div class="met-v">-0.94$</div></div>
-      <div class="met"><div class="met-l">매출성장</div><div class="met-v c-neu">—</div></div>
-      <div class="met"><div class="met-l">순익성장</div><div class="met-v c-neu">—</div></div>
-      <div class="met"><div class="met-l">ROE</div><div class="met-v">7.7%</div></div>
-      <div class="met"><div class="met-l">부채비율</div><div class="met-v">148.8</div></div>
-      <div class="met"><div class="met-l">배당수익률</div><div class="met-v">—</div></div>
-    </div>
-          
-    <div class="analyst-row">
-      <span class="tag t-t-green">매수</span>
-      <span style="font-size:12px;color:var(--text2)">목표가 $80.93 → 현재가 대비 <strong>+71.4%</strong> (15명)</span>
-    </div>
-          <div class="strat-desc">특별한 행동 없이 유지하세요. 현재 매도/매수 시점이 아닙니다.</div>
-        </div>
-        
-      </div>
-      <div class="stk-item">
-        <div class="stk-top">
-          <div class="stk-info">
-            <div class="stk-name">RKLB <span style="font-weight:500;color:var(--text2)">Rocket Lab</span></div>
-            <div class="stk-meta">1주 보유</div>
-          </div>
-          <div class="stk-tag"><span class="tag t-green">홀드+</span></div>
-        </div>
-        <div style="padding:4px 16px 10px">
-          <div style="display:flex;align-items:baseline;gap:8px;margin-bottom:6px;flex-wrap:wrap">
-            <span style="font-size:22px;font-weight:900">$84.54</span>
-            <span class="c-up">▲4.77%</span>
-            
-          </div>
-          
-    <div class="rng-wrap">
-      <div class="rng-lbl"><span>$34</span><span style="font-size:10px;color:var(--text3)">52주 범위</span><span>$151</span></div>
-      <div class="rng-track"><div class="rng-fill" style="width:43%"></div></div>
-    </div>
-          
-    <div class="met-grid">
-      <div class="met"><div class="met-l">PER(현재)</div><div class="met-v c-neu">—</div></div>
-      <div class="met"><div class="met-l">PER(예상)</div><div class="met-v"><span class="tag t-gray" style="font-size:11px;padding:1px 6px">-4811.6x</span></div></div>
-      <div class="met"><div class="met-l">PBR</div><div class="met-v"><span class="tag t-red" style="font-size:11px;padding:1px 6px">21.5x</span></div></div>
-      <div class="met"><div class="met-l">PSR</div><div class="met-v">77.7x</div></div>
-      <div class="met"><div class="met-l">EPS(현재)</div><div class="met-v">-0.32$</div></div>
-      <div class="met"><div class="met-l">EPS(예상)</div><div class="met-v">-0.02$</div></div>
-      <div class="met"><div class="met-l">매출성장</div><div class="met-v">+63.5%</div></div>
-      <div class="met"><div class="met-l">순익성장</div><div class="met-v c-neu">—</div></div>
-      <div class="met"><div class="met-l">ROE</div><div class="met-v">-13.5%</div></div>
-      <div class="met"><div class="met-l">부채비율</div><div class="met-v">6.1</div></div>
-      <div class="met"><div class="met-l">배당수익률</div><div class="met-v">—</div></div>
-    </div>
-          
-    <div class="analyst-row">
-      <span class="tag t-t-green">매수</span>
-      <span style="font-size:12px;color:var(--text2)">목표가 $106.92 → 현재가 대비 <strong>+26.5%</strong> (18명)</span>
-    </div>
-          <div class="strat-desc">펀더멘털 양호. 현재 포지션 유지하면서 추가 매수 기회를 볼 수 있는 종목입니다.</div>
-        </div>
-        
-      </div>
-      <div class="stk-item">
-        <div class="stk-top">
-          <div class="stk-info">
-            <div class="stk-name">UNH <span style="font-weight:500;color:var(--text2)">UnitedHealth</span></div>
-            <div class="stk-meta">2주 보유 · 평단 404,000원</div>
-          </div>
-          <div class="stk-tag"><span class="tag t-gray">홀드</span></div>
-        </div>
-        <div style="padding:4px 16px 10px">
-          <div style="display:flex;align-items:baseline;gap:8px;margin-bottom:6px;flex-wrap:wrap">
-            <span style="font-size:22px;font-weight:900">$427.89</span>
-            <span class="c-up">▲2.97%</span>
-            <span class="c-up" style="font-size:11px"> ▲평단 대비 62.6%</span>
-          </div>
-          
-    <div class="rng-wrap">
-      <div class="rng-lbl"><span>$235</span><span style="font-size:10px;color:var(--text3)">52주 범위</span><span>$428</span></div>
-      <div class="rng-track"><div class="rng-fill" style="width:100%"></div></div>
-    </div>
-          
-    <div class="met-grid">
-      <div class="met"><div class="met-l">PER(현재)</div><div class="met-v"><span class="tag t-amber" style="font-size:11px;padding:1px 6px">32.3x</span></div></div>
-      <div class="met"><div class="met-l">PER(예상)</div><div class="met-v"><span class="tag t-blue" style="font-size:11px;padding:1px 6px">20.4x</span></div></div>
-      <div class="met"><div class="met-l">PBR</div><div class="met-v"><span class="tag t-amber" style="font-size:11px;padding:1px 6px">4.0x</span></div></div>
-      <div class="met"><div class="met-l">PSR</div><div class="met-v">0.9x</div></div>
-      <div class="met"><div class="met-l">EPS(현재)</div><div class="met-v">13.26$</div></div>
-      <div class="met"><div class="met-l">EPS(예상)</div><div class="met-v">20.93$</div></div>
-      <div class="met"><div class="met-l">매출성장</div><div class="met-v">+2.0%</div></div>
-      <div class="met"><div class="met-l">순익성장</div><div class="met-v">+0.7%</div></div>
-      <div class="met"><div class="met-l">ROE</div><div class="met-v">12.2%</div></div>
-      <div class="met"><div class="met-l">부채비율</div><div class="met-v">74.0</div></div>
-      <div class="met"><div class="met-l">배당수익률</div><div class="met-v">217.0%</div></div>
-    </div>
-          
-    <div class="analyst-row">
-      <span class="tag t-t-green">매수</span>
-      <span style="font-size:12px;color:var(--text2)">목표가 $411.31 → 현재가 대비 <strong>-3.9%</strong> (26명)</span>
-    </div>
-          <div class="strat-desc">특별한 행동 없이 유지하세요. 현재 매도/매수 시점이 아닙니다.</div>
-        </div>
-        
-      </div>
-      <div class="stk-item">
-        <div class="stk-top">
-          <div class="stk-info">
-            <div class="stk-name">GEV <span style="font-weight:500;color:var(--text2)">GE Vernova</span></div>
-            <div class="stk-meta">1주 보유</div>
-          </div>
-          <div class="stk-tag"><span class="tag t-gray">홀드</span></div>
-        </div>
-        <div style="padding:4px 16px 10px">
-          <div style="display:flex;align-items:baseline;gap:8px;margin-bottom:6px;flex-wrap:wrap">
-            <span style="font-size:22px;font-weight:900">$1,045.17</span>
-            <span class="c-down">▼3.71%</span>
-            
-          </div>
-          
-    <div class="rng-wrap">
-      <div class="rng-lbl"><span>$482</span><span style="font-size:10px;color:var(--text3)">52주 범위</span><span>$1,182</span></div>
-      <div class="rng-track"><div class="rng-fill" style="width:80%"></div></div>
-    </div>
-          
-    <div class="met-grid">
-      <div class="met"><div class="met-l">PER(현재)</div><div class="met-v"><span class="tag t-amber" style="font-size:11px;padding:1px 6px">30.6x</span></div></div>
-      <div class="met"><div class="met-l">PER(예상)</div><div class="met-v"><span class="tag t-red" style="font-size:11px;padding:1px 6px">42.6x</span></div></div>
-      <div class="met"><div class="met-l">PBR</div><div class="met-v"><span class="tag t-red" style="font-size:11px;padding:1px 6px">20.2x</span></div></div>
-      <div class="met"><div class="met-l">PSR</div><div class="met-v">7.1x</div></div>
-      <div class="met"><div class="met-l">EPS(현재)</div><div class="met-v">34.18$</div></div>
-      <div class="met"><div class="met-l">EPS(예상)</div><div class="met-v">24.51$</div></div>
-      <div class="met"><div class="met-l">매출성장</div><div class="met-v">+16.3%</div></div>
-      <div class="met"><div class="met-l">순익성장</div><div class="met-v">+1816.5%</div></div>
-      <div class="met"><div class="met-l">ROE</div><div class="met-v">75.7%</div></div>
-      <div class="met"><div class="met-l">부채비율</div><div class="met-v">24.9</div></div>
-      <div class="met"><div class="met-l">배당수익률</div><div class="met-v">19.0%</div></div>
-    </div>
-          
-    <div class="analyst-row">
-      <span class="tag t-t-green">매수</span>
-      <span style="font-size:12px;color:var(--text2)">목표가 $1211.72 → 현재가 대비 <strong>+15.9%</strong> (34명)</span>
-    </div>
-          <div class="strat-desc">특별한 행동 없이 유지하세요. 현재 매도/매수 시점이 아닙니다.</div>
-        </div>
-        
-      </div>
-      <div class="stk-item">
-        <div class="stk-top">
-          <div class="stk-info">
-            <div class="stk-name">CAVA <span style="font-weight:500;color:var(--text2)">CAVA Group</span></div>
-            <div class="stk-meta">1주 보유</div>
-          </div>
-          <div class="stk-tag"><span class="tag t-gray">홀드</span></div>
-        </div>
-        <div style="padding:4px 16px 10px">
-          <div style="display:flex;align-items:baseline;gap:8px;margin-bottom:6px;flex-wrap:wrap">
-            <span style="font-size:22px;font-weight:900">$83.40</span>
-            <span class="c-up">▲12.00%</span>
-            
-          </div>
-          
-    <div class="rng-wrap">
-      <div class="rng-lbl"><span>$43</span><span style="font-size:10px;color:var(--text3)">52주 범위</span><span>$99</span></div>
-      <div class="rng-track"><div class="rng-fill" style="width:72%"></div></div>
-    </div>
-          
-    <div class="met-grid">
-      <div class="met"><div class="met-l">PER(현재)</div><div class="met-v"><span class="tag t-red" style="font-size:11px;padding:1px 6px">160.4x</span></div></div>
-      <div class="met"><div class="met-l">PER(예상)</div><div class="met-v"><span class="tag t-red" style="font-size:11px;padding:1px 6px">110.3x</span></div></div>
-      <div class="met"><div class="met-l">PBR</div><div class="met-v"><span class="tag t-red" style="font-size:11px;padding:1px 6px">12.0x</span></div></div>
-      <div class="met"><div class="met-l">PSR</div><div class="met-v">7.6x</div></div>
-      <div class="met"><div class="met-l">EPS(현재)</div><div class="met-v">0.52$</div></div>
-      <div class="met"><div class="met-l">EPS(예상)</div><div class="met-v">0.76$</div></div>
-      <div class="met"><div class="met-l">매출성장</div><div class="met-v">+32.1%</div></div>
-      <div class="met"><div class="met-l">순익성장</div><div class="met-v">-9.1%</div></div>
-      <div class="met"><div class="met-l">ROE</div><div class="met-v">8.0%</div></div>
-      <div class="met"><div class="met-l">부채비율</div><div class="met-v">61.5</div></div>
-      <div class="met"><div class="met-l">배당수익률</div><div class="met-v">—</div></div>
-    </div>
-          
-    <div class="analyst-row">
-      <span class="tag t-t-green">매수</span>
-      <span style="font-size:12px;color:var(--text2)">목표가 $92.0 → 현재가 대비 <strong>+10.3%</strong> (24명)</span>
-    </div>
-          <div class="strat-desc">특별한 행동 없이 유지하세요. 현재 매도/매수 시점이 아닙니다.</div>
-        </div>
-        
-      </div>
-      <div class="stk-item">
-        <div class="stk-top">
-          <div class="stk-info">
-            <div class="stk-name">MU <span style="font-weight:500;color:var(--text2)">Micron</span></div>
-            <div class="stk-meta">1주 보유 · 평단 1,469,000원</div>
-          </div>
-          <div class="stk-tag"><span class="tag t-green">홀드+</span></div>
-        </div>
-        <div style="padding:4px 16px 10px">
-          <div style="display:flex;align-items:baseline;gap:8px;margin-bottom:6px;flex-wrap:wrap">
-            <span style="font-size:22px;font-weight:900">$1,132.33</span>
-            <span class="c-down">▼6.69%</span>
-            <span class="c-up" style="font-size:11px"> ▲평단 대비 18.3%</span>
-          </div>
-          
-    <div class="rng-wrap">
-      <div class="rng-lbl"><span>$103</span><span style="font-size:10px;color:var(--text3)">52주 범위</span><span>$1,255</span></div>
-      <div class="rng-track"><div class="rng-fill" style="width:89%"></div></div>
-    </div>
-          
-    <div class="met-grid">
-      <div class="met"><div class="met-l">PER(현재)</div><div class="met-v"><span class="tag t-amber" style="font-size:11px;padding:1px 6px">25.6x</span></div></div>
-      <div class="met"><div class="met-l">PER(예상)</div><div class="met-v"><span class="tag t-green" style="font-size:11px;padding:1px 6px">7.6x</span></div></div>
-      <div class="met"><div class="met-l">PBR</div><div class="met-v"><span class="tag t-red" style="font-size:11px;padding:1px 6px">17.6x</span></div></div>
-      <div class="met"><div class="met-l">PSR</div><div class="met-v">14.2x</div></div>
-      <div class="met"><div class="met-l">EPS(현재)</div><div class="met-v">44.27$</div></div>
-      <div class="met"><div class="met-l">EPS(예상)</div><div class="met-v">148.78$</div></div>
-      <div class="met"><div class="met-l">매출성장</div><div class="met-v">+345.7%</div></div>
-      <div class="met"><div class="met-l">순익성장</div><div class="met-v">+1368.5%</div></div>
-      <div class="met"><div class="met-l">ROE</div><div class="met-v">66.6%</div></div>
-      <div class="met"><div class="met-l">부채비율</div><div class="met-v">6.3</div></div>
-      <div class="met"><div class="met-l">배당수익률</div><div class="met-v">5.0%</div></div>
-    </div>
-          
-    <div class="analyst-row">
-      <span class="tag t-t-green">강력 매수</span>
-      <span style="font-size:12px;color:var(--text2)">목표가 $1410.45 → 현재가 대비 <strong>+24.6%</strong> (40명)</span>
-    </div>
-          <div class="strat-desc">펀더멘털 양호. 현재 포지션 유지하면서 추가 매수 기회를 볼 수 있는 종목입니다.</div>
-        </div>
-        
-      </div>
   </div>
 </div>
 
-<!-- ④ 한국 종목 -->
-<div class="section" id="kr-stocks">
-  <div class="sec-title">🇰🇷 한국 보유 종목 — 9개 · PER/PBR · 외인기관개인 수급</div>
+<!-- STRATEGY -->
+<div class="section" id="strategy">
+  <div class="sec-title">⭐ 내 종목 전략 요점</div>
   <div class="card">
-    
-      <div class="stk-item">
-        <div class="stk-top">
-          <div class="stk-info">
-            <div class="stk-name">삼성바이오로직스 <span style="font-size:11px;color:var(--text3)">207940</span></div>
-            <div class="stk-meta">13주 보유 · 평단 143,000원</div>
-          </div>
-          <div class="stk-tag"><span class="tag t-amber">홀드 ⚠️</span></div>
-        </div>
-        <div style="padding:4px 16px 10px">
-          <div style="display:flex;align-items:baseline;gap:8px;margin-bottom:8px;flex-wrap:wrap">
-            <span style="font-size:22px;font-weight:900">1,343,000원</span>
-            <span class="c-down">▼3.10%</span>
-            <span class="c-up" style="font-size:11px"> ▲평단 대비 839.2%</span>
-          </div>
-          
-    <div class="met-grid">
-      <div class="met"><div class="met-l">PER</div><div class="met-v c-neu">—</div></div>
-      <div class="met"><div class="met-l">PBR</div><div class="met-v c-neu">—</div></div>
-      <div class="met"><div class="met-l">EPS</div><div class="met-v c-neu">—</div></div>
-      <div class="met"><div class="met-l">BPS</div><div class="met-v c-neu">—</div></div>
-      <div class="met"><div class="met-l">배당수익률</div><div class="met-v c-neu">—</div></div>
-      <div class="met"><div class="met-l">주당배당금</div><div class="met-v c-neu">—</div></div>
-    </div>
-          
-          <div class="strat-desc">일부 지표가 부진합니다. 손절 기준을 미리 정해두고 예의주시하세요.</div>
-        </div>
+    <div class="card-body">
+      <div class="strategy-point">
+        <div class="strategy-star">🛡️</div>
+        <div class="strategy-text"><strong>방어: AI 기술주 과도 노출 줄이기</strong> — NVDA, AAPL, AMZN, MU 등 Mag7 관련 종목은 고점 대비 10~15% 하락 중입니다. 전체 포트폴리오에서 AI 기술주 비중이 너무 높다면, 일부를 ETF(KODEX S&P500)로 분산하는 것을 고려하세요.</div>
       </div>
-      <div class="stk-item">
-        <div class="stk-top">
-          <div class="stk-info">
-            <div class="stk-name">한미반도체 <span style="font-size:11px;color:var(--text3)">042700</span></div>
-            <div class="stk-meta">2주 보유 · 평단 1,420,000원</div>
-          </div>
-          <div class="stk-tag"><span class="tag t-amber">홀드 ⚠️</span></div>
-        </div>
-        <div style="padding:4px 16px 10px">
-          <div style="display:flex;align-items:baseline;gap:8px;margin-bottom:8px;flex-wrap:wrap">
-            <span style="font-size:22px;font-weight:900">257,500원</span>
-            <span class="c-down">▼5.68%</span>
-            <span class="c-down" style="font-size:11px"> ▼평단 대비 81.9%</span>
-          </div>
-          
-    <div class="met-grid">
-      <div class="met"><div class="met-l">PER</div><div class="met-v c-neu">—</div></div>
-      <div class="met"><div class="met-l">PBR</div><div class="met-v c-neu">—</div></div>
-      <div class="met"><div class="met-l">EPS</div><div class="met-v c-neu">—</div></div>
-      <div class="met"><div class="met-l">BPS</div><div class="met-v c-neu">—</div></div>
-      <div class="met"><div class="met-l">배당수익률</div><div class="met-v c-neu">—</div></div>
-      <div class="met"><div class="met-l">주당배당금</div><div class="met-v c-neu">—</div></div>
-    </div>
-          
-          <div class="strat-desc">일부 지표가 부진합니다. 손절 기준을 미리 정해두고 예의주시하세요.</div>
-        </div>
+      <div class="strategy-point">
+        <div class="strategy-star">🚀</div>
+        <div class="strategy-text"><strong>공격: 양자컴퓨팅·에너지 분야 비중 유지</strong> — IONQ, RGTI는 미 정부의 20억 달러 지원 발표로 중장기 성장성이 확보되었습니다. RKLB도 우주항공 테마로 관심을 유지하세요. 단, 단기 변동성이 크므로 분할 접근이 필요합니다.</div>
       </div>
-      <div class="stk-item">
-        <div class="stk-top">
-          <div class="stk-info">
-            <div class="stk-name">에스에프에이 <span style="font-size:11px;color:var(--text3)">056190</span></div>
-            <div class="stk-meta">보유 중</div>
-          </div>
-          <div class="stk-tag"><span class="tag t-amber">홀드 ⚠️</span></div>
-        </div>
-        <div style="padding:4px 16px 10px">
-          <div style="display:flex;align-items:baseline;gap:8px;margin-bottom:8px;flex-wrap:wrap">
-            <span style="font-size:22px;font-weight:900">22,000원</span>
-            <span class="c-down">▼5.38%</span>
-            
-          </div>
-          
-    <div class="met-grid">
-      <div class="met"><div class="met-l">PER</div><div class="met-v c-neu">—</div></div>
-      <div class="met"><div class="met-l">PBR</div><div class="met-v c-neu">—</div></div>
-      <div class="met"><div class="met-l">EPS</div><div class="met-v c-neu">—</div></div>
-      <div class="met"><div class="met-l">BPS</div><div class="met-v c-neu">—</div></div>
-      <div class="met"><div class="met-l">배당수익률</div><div class="met-v c-neu">—</div></div>
-      <div class="met"><div class="met-l">주당배당금</div><div class="met-v c-neu">—</div></div>
-    </div>
-          
-          <div class="strat-desc">일부 지표가 부진합니다. 손절 기준을 미리 정해두고 예의주시하세요.</div>
-        </div>
+      <div class="strategy-point">
+        <div class="strategy-star">⚖️</div>
+        <div class="strategy-text"><strong>균형: 한국 종목 하락기 활용</strong> — 코스피/코스닥 4~6% 급락은 이오테크닉스, 한미반도체 같은 반도체 장비주를 싸게 살 기회가 될 수 있습니다. 다만 AI 기술주 불안이 완전히 해소될 때까지 한 번에 매수하지 않고 2~3번 나눠 접근하세요.</div>
       </div>
-      <div class="stk-item">
-        <div class="stk-top">
-          <div class="stk-info">
-            <div class="stk-name">이오테크닉스 <span style="font-size:11px;color:var(--text3)">039030</span></div>
-            <div class="stk-meta">보유 중</div>
-          </div>
-          <div class="stk-tag"><span class="tag t-amber">홀드 ⚠️</span></div>
-        </div>
-        <div style="padding:4px 16px 10px">
-          <div style="display:flex;align-items:baseline;gap:8px;margin-bottom:8px;flex-wrap:wrap">
-            <span style="font-size:22px;font-weight:900">485,000원</span>
-            <span class="c-up">▲1.68%</span>
-            
-          </div>
-          
-    <div class="met-grid">
-      <div class="met"><div class="met-l">PER</div><div class="met-v c-neu">—</div></div>
-      <div class="met"><div class="met-l">PBR</div><div class="met-v c-neu">—</div></div>
-      <div class="met"><div class="met-l">EPS</div><div class="met-v c-neu">—</div></div>
-      <div class="met"><div class="met-l">BPS</div><div class="met-v c-neu">—</div></div>
-      <div class="met"><div class="met-l">배당수익률</div><div class="met-v c-neu">—</div></div>
-      <div class="met"><div class="met-l">주당배당금</div><div class="met-v c-neu">—</div></div>
     </div>
-          
-          <div class="strat-desc">일부 지표가 부진합니다. 손절 기준을 미리 정해두고 예의주시하세요.</div>
-        </div>
-      </div>
-      <div class="stk-item">
-        <div class="stk-top">
-          <div class="stk-info">
-            <div class="stk-name">HD한국조선해양 <span style="font-size:11px;color:var(--text3)">009540</span></div>
-            <div class="stk-meta">보유 중</div>
-          </div>
-          <div class="stk-tag"><span class="tag t-amber">홀드 ⚠️</span></div>
-        </div>
-        <div style="padding:4px 16px 10px">
-          <div style="display:flex;align-items:baseline;gap:8px;margin-bottom:8px;flex-wrap:wrap">
-            <span style="font-size:22px;font-weight:900">345,500원</span>
-            <span class="c-down">▼5.60%</span>
-            
-          </div>
-          
-    <div class="met-grid">
-      <div class="met"><div class="met-l">PER</div><div class="met-v c-neu">—</div></div>
-      <div class="met"><div class="met-l">PBR</div><div class="met-v c-neu">—</div></div>
-      <div class="met"><div class="met-l">EPS</div><div class="met-v c-neu">—</div></div>
-      <div class="met"><div class="met-l">BPS</div><div class="met-v c-neu">—</div></div>
-      <div class="met"><div class="met-l">배당수익률</div><div class="met-v c-neu">—</div></div>
-      <div class="met"><div class="met-l">주당배당금</div><div class="met-v c-neu">—</div></div>
-    </div>
-          
-          <div class="strat-desc">일부 지표가 부진합니다. 손절 기준을 미리 정해두고 예의주시하세요.</div>
-        </div>
-      </div>
-      <div class="stk-item">
-        <div class="stk-top">
-          <div class="stk-info">
-            <div class="stk-name">LG에너지솔루션 <span style="font-size:11px;color:var(--text3)">373220</span></div>
-            <div class="stk-meta">보유 중</div>
-          </div>
-          <div class="stk-tag"><span class="tag t-amber">홀드 ⚠️</span></div>
-        </div>
-        <div style="padding:4px 16px 10px">
-          <div style="display:flex;align-items:baseline;gap:8px;margin-bottom:8px;flex-wrap:wrap">
-            <span style="font-size:22px;font-weight:900">331,500원</span>
-            <span class="c-down">▼5.82%</span>
-            
-          </div>
-          
-    <div class="met-grid">
-      <div class="met"><div class="met-l">PER</div><div class="met-v c-neu">—</div></div>
-      <div class="met"><div class="met-l">PBR</div><div class="met-v c-neu">—</div></div>
-      <div class="met"><div class="met-l">EPS</div><div class="met-v c-neu">—</div></div>
-      <div class="met"><div class="met-l">BPS</div><div class="met-v c-neu">—</div></div>
-      <div class="met"><div class="met-l">배당수익률</div><div class="met-v c-neu">—</div></div>
-      <div class="met"><div class="met-l">주당배당금</div><div class="met-v c-neu">—</div></div>
-    </div>
-          
-          <div class="strat-desc">일부 지표가 부진합니다. 손절 기준을 미리 정해두고 예의주시하세요.</div>
-        </div>
-      </div>
-      <div class="stk-item">
-        <div class="stk-top">
-          <div class="stk-info">
-            <div class="stk-name">KODEX 미국S&P500TR <span style="font-size:11px;color:var(--text3)">379800</span></div>
-            <div class="stk-meta">5주 보유 · 평단 22,600원</div>
-          </div>
-          <div class="stk-tag"><span class="tag t-amber">홀드 ⚠️</span></div>
-        </div>
-        <div style="padding:4px 16px 10px">
-          <div style="display:flex;align-items:baseline;gap:8px;margin-bottom:8px;flex-wrap:wrap">
-            <span style="font-size:22px;font-weight:900">25,410원</span>
-            <span class="c-down">▼1.84%</span>
-            <span class="c-up" style="font-size:11px"> ▲평단 대비 12.4%</span>
-          </div>
-          
-    <div class="met-grid">
-      <div class="met"><div class="met-l">PER</div><div class="met-v c-neu">—</div></div>
-      <div class="met"><div class="met-l">PBR</div><div class="met-v c-neu">—</div></div>
-      <div class="met"><div class="met-l">EPS</div><div class="met-v c-neu">—</div></div>
-      <div class="met"><div class="met-l">BPS</div><div class="met-v c-neu">—</div></div>
-      <div class="met"><div class="met-l">배당수익률</div><div class="met-v c-neu">—</div></div>
-      <div class="met"><div class="met-l">주당배당금</div><div class="met-v c-neu">—</div></div>
-    </div>
-          
-          <div class="strat-desc">일부 지표가 부진합니다. 손절 기준을 미리 정해두고 예의주시하세요.</div>
-        </div>
-      </div>
-      <div class="stk-item">
-        <div class="stk-top">
-          <div class="stk-info">
-            <div class="stk-name">TIGER 미국나스닥100 <span style="font-size:11px;color:var(--text3)">133690</span></div>
-            <div class="stk-meta">보유 중</div>
-          </div>
-          <div class="stk-tag"><span class="tag t-amber">홀드 ⚠️</span></div>
-        </div>
-        <div style="padding:4px 16px 10px">
-          <div style="display:flex;align-items:baseline;gap:8px;margin-bottom:8px;flex-wrap:wrap">
-            <span style="font-size:22px;font-weight:900">197,725원</span>
-            <span class="c-down">▼2.95%</span>
-            
-          </div>
-          
-    <div class="met-grid">
-      <div class="met"><div class="met-l">PER</div><div class="met-v c-neu">—</div></div>
-      <div class="met"><div class="met-l">PBR</div><div class="met-v c-neu">—</div></div>
-      <div class="met"><div class="met-l">EPS</div><div class="met-v c-neu">—</div></div>
-      <div class="met"><div class="met-l">BPS</div><div class="met-v c-neu">—</div></div>
-      <div class="met"><div class="met-l">배당수익률</div><div class="met-v c-neu">—</div></div>
-      <div class="met"><div class="met-l">주당배당금</div><div class="met-v c-neu">—</div></div>
-    </div>
-          
-          <div class="strat-desc">일부 지표가 부진합니다. 손절 기준을 미리 정해두고 예의주시하세요.</div>
-        </div>
-      </div>
-      <div class="stk-item">
-        <div class="stk-top">
-          <div class="stk-info">
-            <div class="stk-name">KODEX 미국나스닥100TR <span style="font-size:11px;color:var(--text3)">379810</span></div>
-            <div class="stk-meta">보유 중</div>
-          </div>
-          <div class="stk-tag"><span class="tag t-amber">홀드 ⚠️</span></div>
-        </div>
-        <div style="padding:4px 16px 10px">
-          <div style="display:flex;align-items:baseline;gap:8px;margin-bottom:8px;flex-wrap:wrap">
-            <span style="font-size:22px;font-weight:900">29,615원</span>
-            <span class="c-down">▼2.93%</span>
-            
-          </div>
-          
-    <div class="met-grid">
-      <div class="met"><div class="met-l">PER</div><div class="met-v c-neu">—</div></div>
-      <div class="met"><div class="met-l">PBR</div><div class="met-v c-neu">—</div></div>
-      <div class="met"><div class="met-l">EPS</div><div class="met-v c-neu">—</div></div>
-      <div class="met"><div class="met-l">BPS</div><div class="met-v c-neu">—</div></div>
-      <div class="met"><div class="met-l">배당수익률</div><div class="met-v c-neu">—</div></div>
-      <div class="met"><div class="met-l">주당배당금</div><div class="met-v c-neu">—</div></div>
-    </div>
-          
-          <div class="strat-desc">일부 지표가 부진합니다. 손절 기준을 미리 정해두고 예의주시하세요.</div>
-        </div>
-      </div>
   </div>
 </div>
 
-<div class="footer" id="footer">
-  포트폴리오 투자 브리핑 · 2026년 06월 28일 · GitHub Actions 자동 생성<br>
-  데이터: yfinance (미국) · pykrx (한국) · CNN Fear &amp; Greed<br>
-  이 브리핑은 투자 참고용입니다. 최종 투자 결정은 본인 판단으로 하세요.
+<!-- SIGNALS -->
+<div class="section" id="signals">
+  <div class="sec-title">🚨 주목할 신호</div>
+  <div class="card">
+    <div class="card-body">
+      <div class="signal-item">
+        <div class="signal-icon">⛽</div>
+        <div class="signal-text"><strong>호르무즈 해협 봉쇄 리스크 (위험)</strong> — 이란 전쟁 관련 호르무즈 봉쇄 우려가 지속되고 있습니다. 에너지 가격 상승 → 인플레이션 → 금리 인상 → 기술주 추가 하락의 연쇄가 발생할 수 있습니다. GEV(에너지 전환) 종목에도 주목하세요.</div>
+      </div>
+      <div class="signal-item">
+        <div class="signal-icon">🤖</div>
+        <div class="signal-text"><strong>OpenAI IPO 2027년으로 연기 (위험/혼조)</strong> — OpenAI가 IPO를 2027년으로 미룰 가능성이 높습니다. 단기적으로 AI 수익성 우려를 자극할 수 있지만, 장기적으로는 AI 인프라 수요를 지속시키는 요인입니다. ORCL, NVDA에 주의.</div>
+      </div>
+      <div class="signal-item">
+        <div class="signal-icon">⚛️</div>
+        <div class="signal-text"><strong>미 정부 양자컴퓨팅 20억 달러 지원 (기회)</strong> — 트럼프 행정부가 양자컴퓨팅 육성을 위해 20억 달러 규모 인센티브와 지분 취득 계획을 발표했습니다. IONQ와 RGTI가 직접 수혜를 받고 있습니다.</div>
+      </div>
+      <div class="signal-item">
+        <div class="signal-icon">🅰️</div>
+        <div class="signal-text"><strong>알파벳(Google) 다우존스 편입 (기회)</strong> — 버라이즌을 대신해 알파벳이 다우존스에 편입됐습니다. 단기 수요 증가 기대가 있으며, 관련 AI·클라우드 인프라 수요 증가로 ORCL, NVDA에 간접 호재.</div>
+      </div>
+    </div>
+  </div>
 </div>
 
+<!-- US NEWS -->
+<div class="section" id="us-news">
+  <div class="sec-title">🇺🇸 나스닥 주요 뉴스 5건</div>
+  <div class="card">
+    <div class="card-body">
+      <div class="news-item">
+        <div class="news-num">뉴스 1</div>
+        <div class="news-title">AI 기술주 글로벌 매도세 2주째 지속 — 나스닥 고점 대비 6% 하락</div>
+        <div class="news-impact">AI 수익성에 대한 의구심이 커지면서 NVDA, AMZN, AAPL 등 Mag7 전체가 조정 또는 약세장에 진입했습니다. 포트폴리오의 미국 기술주 비중이 높을수록 단기 평가손실 리스크가 큽니다. 손절선 재확인이 필요한 시점입니다.</div>
+        <span class="tag t-red">하락재료</span>
+      </div>
+      <div class="news-item">
+        <div class="news-num">뉴스 2</div>
+        <div class="news-title">알파벳(Google), 다우존스 산업평균지수 편입 — 버라이즌 대체</div>
+        <div class="news-impact">알파벳이 다우지수에 편입되면서 패시브 펀드의 매수 수요가 증가합니다. AI 검색·클라우드 분야의 구글 성장이 ORCL의 클라우드 경쟁에 영향을 줄 수 있습니다. 단기 긍정 효과가 기대됩니다.</div>
+        <span class="tag t-green">상승재료</span>
+      </div>
+      <div class="news-item">
+        <div class="news-num">뉴스 3</div>
+        <div class="news-title">OpenAI IPO, 2027년으로 연기 유력 — 기업가치 1조 달러 목표</div>
+        <div class="news-impact">OpenAI의 IPO 지연은 단기적으로 AI 섹터 투자심리에 찬물을 끼얹습니다. 그러나 장기적으로는 AI 인프라(NVDA, ORCL) 수요가 지속될 것을 의미합니다. 당장 주가에는 부정적, 중장기엔 중립 또는 긍정적입니다.</div>
+        <span class="tag t-amber">혼조</span>
+      </div>
+      <div class="news-item">
+        <div class="news-num">뉴스 4</div>
+        <div class="news-title">애플·마이크로소프트, iPhone·Xbox 가격 인상 발표 — 소비자 반발 우려</div>
+        <div class="news-impact">제품 가격 인상은 매출 보호 효과가 있지만 수요 둔화 리스크를 수반합니다. AAPL은 이미 고점 대비 10% 이상 하락 중입니다. 단기 하락재료로 작용하며, 추가 매수는 가격 인상 효과 확인 후 검토가 적절합니다.</div>
+        <span class="tag t-red">하락재료</span>
+      </div>
+      <div class="news-item">
+        <div class="news-num">뉴스 5</div>
+        <div class="news-title">미 정부, 양자컴퓨팅 20억 달러 지원·지분 취득 계획 발표</div>
+        <div class="news-impact">트럼프 행정부의 양자컴퓨팅 집중 투자 발표는 IONQ, RGTI에 직접적 호재입니다. IONQ는 연초 대비 60% 이상 상승해 있습니다. 다만 현재 주가는 매출 대비 과도하게 높은 수준이므로 추격 매수보다는 기존 보유 유지 전략이 낫습니다.</div>
+        <span class="tag t-green">상승재료</span>
+      </div>
+    </div>
+  </div>
 </div>
+
+<!-- KR NEWS -->
+<div class="section" id="kr-news">
+  <div class="sec-title">🇰🇷 코스닥/코스피 주요 뉴스 5건</div>
+  <div class="card">
+    <div class="card-body">
+      <div class="news-item">
+        <div class="news-num">뉴스 1</div>
+        <div class="news-title">코스피 5.81% 급락 — 외국인 대규모 매도, 8,411선 후퇴</div>
+        <div class="news-impact">AI 기술주 글로벌 쇼크가 국내 시장에도 직격탄을 날렸습니다. 한미반도체, 이오테크닉스 등 반도체 장비주도 연동 하락 압박을 받을 수 있습니다. 단기 추가 하락 가능성이 있으므로 한국 종목 신규 진입은 신중하게 접근하세요.</div>
+        <span class="tag t-red">하락재료</span>
+      </div>
+      <div class="news-item">
+        <div class="news-num">뉴스 2</div>
+        <div class="news-title">SK하이닉스, AI 기술주 쇼크에 8% 급락</div>
+        <div class="news-impact">HBM(고대역메모리) 수요 우려가 SK하이닉스를 강타했습니다. 한미반도체, 이오테크닉스 등 관련 장비주들도 동반 하락 압박을 받을 수 있습니다. 반도체 장비 섹터는 AI 수익성 불안이 해소될 때까지 단기 관망이 적절합니다.</div>
+        <span class="tag t-red">하락재료</span>
+      </div>
+      <div class="news-item">
+        <div class="news-num">뉴스 3</div>
+        <div class="news-title">2026년 조선·방산 섹터 강세 지속 전망 — 글로벌 방위비 증가</div>
+        <div class="news-impact">AI 기술주 하락기에 조선·방산 섹터는 상대적으로 방어적입니다. HD한국조선해양은 글로벌 방위비 증가와 LNG선 수요 증가의 수혜를 받고 있습니다. 조정 시 분할 매수 관점으로 접근이 가능합니다.</div>
+        <span class="tag t-green">상승재료</span>
+      </div>
+      <div class="news-item">
+        <div class="news-num">뉴스 4</div>
+        <div class="news-title">삼성바이오로직스, 글로벌 위탁생산(CMO) 수주 확대로 실적 개선</div>
+        <div class="news-impact">삼성바이오로직스는 바이오 CMO 분야의 글로벌 선두주자로 안정적 성장세를 유지하고 있습니다. AI 기술주 하락기에도 바이오는 상대적으로 방어적인 성격이 있어, 포트폴리오 내 비중을 유지하는 것이 적절합니다.</div>
+        <span class="tag t-green">상승재료</span>
+      </div>
+      <div class="news-item">
+        <div class="news-num">뉴스 5</div>
+        <div class="news-title">LG에너지솔루션, 미국 IRA 보조금 이슈로 불확실성 지속</div>
+        <div class="news-impact">배터리 섹터는 미국 IRA(인플레이션 감축법) 정책 불확실성으로 단기 변동성이 큽니다. LG에너지솔루션은 6월 말 기준 약 355,000원 수준으로 하락해 있습니다. 정책 명확화 전까지 추가 매수는 신중하게 결정하세요.</div>
+        <span class="tag t-amber">혼조</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ISSUE STOCKS -->
+<div class="section" id="issues">
+  <div class="sec-title">🔥 오늘의 이슈 종목 5가지</div>
+  <div class="card">
+    <div class="card-body">
+      <div class="issue-item">
+        <div class="issue-rank">1</div>
+        <div class="issue-body">
+          <div class="issue-name">IONQ <span class="tag t-purple">양자컴퓨팅</span></div>
+          <div class="issue-reason">미 정부 20억 달러 양자컴퓨팅 지원 발표로 연초 대비 60% 이상 상승했습니다. 트럼프 행정부의 양자 컴퓨팅 행정명령 서명과 함께 기업 가치 재평가가 이루어지고 있습니다. 포트폴리오 보유 종목으로 현재 가장 수익이 좋은 종목 중 하나입니다.</div>
+          <div class="issue-strategy">📌 전략: 일부 차익 실현 후 나머지 장기 보유 유지</div>
+        </div>
+      </div>
+      <div class="issue-item">
+        <div class="issue-rank">2</div>
+        <div class="issue-body">
+          <div class="issue-name">IREN <span class="tag t-blue">AI 인프라</span></div>
+          <div class="issue-reason">AI 데이터센터 전력 수요 증가의 최대 수혜주로 주목받고 있습니다. 6월 28일 기준 $46.90 수준에서 거래 중이며, AI 인프라 투자가 지속되는 한 성장세가 유지될 전망입니다. 분석가들은 92% 추가 상승 여력이 있다고 전망합니다.</div>
+          <div class="issue-strategy">📌 전략: AI 기술주 조정기에 분할 추가 매수 기회 탐색</div>
+        </div>
+      </div>
+      <div class="issue-item">
+        <div class="issue-rank">3</div>
+        <div class="issue-body">
+          <div class="issue-name">GEV (GE Vernova) <span class="tag t-green">에너지전환</span></div>
+          <div class="issue-reason">전력망·재생에너지 인프라 선두주자로 AI 데이터센터 전력 수요 증가의 간접 수혜를 받고 있습니다. 6월 26일 기준 $1,045로 고점에서 3.71% 하락했습니다. 에너지 전환 메가트렌드와 AI 인프라 전력 수요가 장기 성장 동력입니다.</div>
+          <div class="issue-strategy">📌 전략: 에너지 섹터 방어적 성격 활용, 기술주 하락기 보유 유지</div>
+        </div>
+      </div>
+      <div class="issue-item">
+        <div class="issue-rank">4</div>
+        <div class="issue-body">
+          <div class="issue-name">HD한국조선해양 <span class="tag t-amber">조선/방산</span></div>
+          <div class="issue-reason">글로벌 방위비 증가, LNG선 수요 확대, 미국 해군함 수주 기대로 조선 섹터 강세가 지속되고 있습니다. AI 기술주 하락기에 상대적으로 방어적인 움직임을 보이고 있으며, 하반기 대형 수주 발표 가능성이 있습니다.</div>
+          <div class="issue-strategy">📌 전략: 포트폴리오 내 조선 비중 유지, 하락 시 소량 추가 매수 고려</div>
+        </div>
+      </div>
+      <div class="issue-item">
+        <div class="issue-rank">5</div>
+        <div class="issue-body">
+          <div class="issue-name">RKLB (Rocket Lab) <span class="tag t-blue">우주항공</span></div>
+          <div class="issue-reason">민간 우주항공 2위 기업으로 SpaceX 대항마로 주목받고 있습니다. 소형 위성 발사 수요 증가와 정부 계약 확대로 성장 스토리가 강화되고 있습니다. AI 기술주 하락기에도 우주항공 테마는 독립적인 모멘텀을 유지하고 있습니다.</div>
+          <div class="issue-strategy">📌 전략: 장기 테마 투자로 보유 유지, 단기 변동성은 무시</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- MY STOCKS -->
+<div class="section" id="stocks">
+  <div class="sec-title">📋 내 종목 분석 (22종목 전체)</div>
+
+  <!-- US Stocks -->
+  <div style="font-size:12px;font-weight:700;color:var(--text3);letter-spacing:.04em;margin-bottom:8px;margin-top:4px">🇺🇸 미국 13종목</div>
+  <div class="card">
+    <div class="card-body">
+
+      <div class="stock-item">
+        <div class="stock-header">
+          <div><span class="stock-name">엔비디아</span><span class="stock-ticker">NVDA</span></div>
+          <div class="stock-price"><div class="stock-cur">$192.53</div><div class="stock-chg dn">▼ -1.64%</div></div>
+        </div>
+        <div class="stock-strategy">AI 반도체 1위 종목이지만 AI 수익성 우려로 고점($236) 대비 18% 하락 중. 장기 AI 인프라 수요는 여전히 탄탄하므로 패닉 매도보다는 손절선(매수가 -15%)을 지키며 보유 유지 권장.</div>
+        <ul class="stock-news">
+          <li>AI 기술주 매도세로 나스닥 지수와 함께 2주 연속 하락 중</li>
+          <li>AI 인프라 투자 지출 증가로 장기 수요 전망은 긍정적 유지</li>
+          <li>52주 저점 $151.49 대비 여전히 27% 이상 높은 수준</li>
+        </ul>
+      </div>
+
+      <div class="stock-item">
+        <div class="stock-header">
+          <div><span class="stock-name">아마존</span><span class="stock-ticker">AMZN</span></div>
+          <div class="stock-price"><div class="stock-cur">$232.69</div><div class="stock-chg up">▲ +2.50%</div></div>
+        </div>
+        <div class="stock-strategy">클라우드(AWS) + 이커머스의 안정적 이중 구조. 기술주 하락기에도 상대적 방어력을 보이고 있음. 현재 가격은 고점 대비 10% 조정 수준으로 장기 보유에 적합한 구간.</div>
+        <ul class="stock-news">
+          <li>AI 기술주 매도세 속 상대적 강세, 하루 +2.5% 반등</li>
+          <li>AWS 클라우드 AI 서비스 수요는 기업 고객 중심으로 견조 유지</li>
+          <li>OpenAI IPO 지연으로 기업 AI 도구 수요가 AWS로 집중될 가능성</li>
+        </ul>
+      </div>
+
+      <div class="stock-item">
+        <div class="stock-header">
+          <div><span class="stock-name">애플</span><span class="stock-ticker">AAPL</span></div>
+          <div class="stock-price"><div class="stock-cur">~$198</div><div class="stock-chg up">▲ +3.14%</div></div>
+        </div>
+        <div class="stock-strategy">iPhone·Mac 가격 인상 발표로 단기 변동성이 큽니다. 그러나 글로벌 1위 브랜드 파워와 서비스 수익 모델은 장기적으로 안정적. 현재 조정 구간에서 분할 매수 전략 검토 가능.</div>
+        <ul class="stock-news">
+          <li>iPhone 가격 인상 발표 후 단기 하락에서 반등세 (당일 +3.14%)</li>
+          <li>가격 인상의 소비자 수요 영향은 향후 실적 발표에서 확인 필요</li>
+          <li>Mag7 전체 조정 흐름 속 애플도 고점 대비 10% 이상 하락 구간</li>
+        </ul>
+      </div>
+
+      <div class="stock-item">
+        <div class="stock-header">
+          <div><span class="stock-name">오라클</span><span class="stock-ticker">ORCL</span></div>
+          <div class="stock-price"><div class="stock-cur">~$205</div><div class="stock-chg neu">— 데이터 확인 중</div></div>
+        </div>
+        <div class="stock-strategy">클라우드 데이터베이스와 AI 인프라 수요로 구조적 성장세 유지. 알파벳 다우편입과 AI 기업들의 클라우드 수요 증가로 중장기 수혜 기대. 기술주 조정기에도 보유 유지 전략.</div>
+        <ul class="stock-news">
+          <li>AI 데이터베이스 서비스 수요 증가로 매출 성장세 지속</li>
+          <li>OpenAI 등 AI 기업들의 ORCL 클라우드 인프라 의존도 높음</li>
+          <li>기술주 하락기에도 B2B 클라우드 성격으로 상대적 방어력 있음</li>
+        </ul>
+      </div>
+
+      <div class="stock-item">
+        <div class="stock-header">
+          <div><span class="stock-name">인텔</span><span class="stock-ticker">INTC</span></div>
+          <div class="stock-price"><div class="stock-cur">$132.28</div><div class="stock-chg neu">— 전일 대비 확인 필요</div></div>
+        </div>
+        <div class="stock-strategy">AI 반도체 경쟁에서 NVDA·AMD에 밀려있으나 x86 서버·PC 시장 기반이 탄탄. 단기 주가 회복보다는 실적 개선 타이밍을 확인하는 중장기 접근이 적절.</div>
+        <ul class="stock-news">
+          <li>AI 칩 경쟁 구도에서 NVDA와 격차 여전히 크지만 자체 AI칩 개발 진행 중</li>
+          <li>파운드리 사업 재편 관련 뉴스에 주목 필요</li>
+          <li>6월 24일 기준 $132.28로 안정적 구간 유지</li>
+        </ul>
+      </div>
+
+      <div class="stock-item">
+        <div class="stock-header">
+          <div><span class="stock-name">아이온큐</span><span class="stock-ticker">IONQ</span></div>
+          <div class="stock-price"><div class="stock-cur">~$72</div><div class="stock-chg up">▲ +60% (연초 대비)</div></div>
+        </div>
+        <div class="stock-strategy">정부 지원으로 단기 급등. 현재 매출 대비 과도한 밸류에이션(버블 가능성). 보유 중이면 일부 차익 실현 후 나머지 장기 보유 권장. 추가 매수는 주가 조정 후 재진입 기회 탐색.</div>
+        <ul class="stock-news">
+          <li>미 정부 양자컴퓨팅 20억 달러 지원 발표 → 주가 급등</li>
+          <li>트럼프 대통령 양자컴퓨팅 행정명령 서명 (6월 23일)</li>
+          <li>내부자 매수 거의 없는 점은 단기 버블 신호로 주의 필요</li>
+        </ul>
+      </div>
+
+      <div class="stock-item">
+        <div class="stock-header">
+          <div><span class="stock-name">리게티 컴퓨팅</span><span class="stock-ticker">RGTI</span></div>
+          <div class="stock-price"><div class="stock-cur">데이터 수집 중</div><div class="stock-chg up">▲ 양자 테마 강세</div></div>
+        </div>
+        <div class="stock-strategy">IONQ와 마찬가지로 정부 지원 수혜. 소규모 기업으로 변동성이 매우 큼. 포지션이 작다면 보유 유지, 크다면 분산을 고려하세요.</div>
+        <ul class="stock-news">
+          <li>미 정부 양자컴퓨팅 지원 발표로 IONQ와 함께 급등</li>
+          <li>양자컴퓨팅 기업 중 실적 가장 초기 단계, 투기적 성격 강함</li>
+          <li>월스트리트 경고: 8억 5700만 달러 규모 희석 리스크 존재</li>
+        </ul>
+      </div>
+
+      <div class="stock-item">
+        <div class="stock-header">
+          <div><span class="stock-name">아이렌</span><span class="stock-ticker">IREN</span></div>
+          <div class="stock-price"><div class="stock-cur">$46.90</div><div class="stock-chg up">▲ AI 인프라 강세</div></div>
+        </div>
+        <div class="stock-strategy">AI 데이터센터 전력 공급·비트코인 채굴 이중 구조. 분석가 목표가 92% 상승 여력. AI 인프라 투자 지속 시 중장기 수혜 기대. 현재 조정기에 분할 추가 매수 검토 가능.</div>
+        <ul class="stock-news">
+          <li>6월 28일 $45.05~$48.39 범위 거래, 종가 $46.90</li>
+          <li>AI 데이터센터 전력 수요 급증으로 사업 모델 주목</li>
+          <li>분석가 92% 추가 상승 여력 전망 발표</li>
+        </ul>
+      </div>
+
+      <div class="stock-item">
+        <div class="stock-header">
+          <div><span class="stock-name">로켓랩</span><span class="stock-ticker">RKLB</span></div>
+          <div class="stock-price"><div class="stock-cur">데이터 수집 중</div><div class="stock-chg neu">— 우주항공 테마</div></div>
+        </div>
+        <div class="stock-strategy">민간 우주항공 2위로 SpaceX 대항마. 소형위성 발사 수요 꾸준히 증가. 기술주 하락기에 독립적 모멘텀 유지. 장기 테마 투자로 보유 유지 권장.</div>
+        <ul class="stock-news">
+          <li>소형 위성 발사 계약 및 정부 계약 지속 확대</li>
+          <li>민간 우주항공 시장 2위로 성장 스토리 유효</li>
+          <li>AI 기술주 하락과 무관하게 우주항공 테마 독립성 유지</li>
+        </ul>
+      </div>
+
+      <div class="stock-item">
+        <div class="stock-header">
+          <div><span class="stock-name">유나이티드헬스</span><span class="stock-ticker">UNH</span></div>
+          <div class="stock-price"><div class="stock-cur">$426.68</div><div class="stock-chg neu">— 방어주</div></div>
+        </div>
+        <div class="stock-strategy">의료/헬스케어 대표 방어주. AI 기술주 하락기에 상대적으로 안정적. 최근 경영진 이슈에도 $426 수준을 유지하고 있어 포트폴리오 방어 역할 충실히 담당.</div>
+        <ul class="stock-news">
+          <li>6월 28일 $415.50~$428.00 범위 거래, 종가 $426.68</li>
+          <li>헬스케어 섹터 특성상 AI 기술주 하락기 방어적 움직임</li>
+          <li>경영진 관련 이슈 모니터링 필요하나 기업 펀더멘털은 견조</li>
+        </ul>
+      </div>
+
+      <div class="stock-item">
+        <div class="stock-header">
+          <div><span class="stock-name">GE 버노바</span><span class="stock-ticker">GEV</span></div>
+          <div class="stock-price"><div class="stock-cur">$1,045</div><div class="stock-chg dn">▼ -3.71%</div></div>
+        </div>
+        <div class="stock-strategy">전력망·재생에너지 인프라 선두주자. AI 데이터센터 전력 수요 급증의 구조적 수혜주. 단기 조정(3.71% 하락)은 분할 추가 매수 기회로 활용 가능. 에너지 전환 메가트렌드 장기 보유 종목.</div>
+        <ul class="stock-news">
+          <li>6월 26일 $1,045.17 마감, 전일 대비 -$40.30 (-3.71%)</li>
+          <li>AI 데이터센터 전력망 수요 증가로 중장기 성장 모멘텀 강화</li>
+          <li>이란 전쟁·호르무즈 봉쇄 → 에너지 전환 가속화 수혜 가능</li>
+        </ul>
+      </div>
+
+      <div class="stock-item">
+        <div class="stock-header">
+          <div><span class="stock-name">카바 그룹</span><span class="stock-ticker">CAVA</span></div>
+          <div class="stock-price"><div class="stock-cur">~$83</div><div class="stock-chg neu">— 음식료 성장주</div></div>
+        </div>
+        <div class="stock-strategy">미국 지중해식 패스트캐주얼 레스토랑 체인. 소비 방어 성격과 고성장 스토리가 결합된 독특한 포지션. 기술주 하락기에 상대적으로 방어적. 장기 성장 스토리 유지.</div>
+        <ul class="stock-news">
+          <li>6월 말 기준 $83 수준 거래, 음식료 섹터 안정적</li>
+          <li>미국 식음료 소비 견조로 실적 성장세 유지 전망</li>
+          <li>AI 기술주 하락 장세에서 방어적 성격의 소비재주로 주목</li>
+        </ul>
+      </div>
+
+      <div class="stock-item">
+        <div class="stock-header">
+          <div><span class="stock-name">마이크론 테크놀로지</span><span class="stock-ticker">MU</span></div>
+          <div class="stock-price"><div class="stock-cur">~$125</div><div class="stock-chg dn">▼ AI 쇼크 영향</div></div>
+        </div>
+        <div class="stock-strategy">HBM(고대역메모리) 수요 선두주자. AI 반도체 수요 우려로 단기 조정을 받고 있으나, HBM3E 공급 계약과 데이터센터 수요는 견조. SK하이닉스 급락과 함께 연동 하락 가능성 있으나 장기 성장성은 유효.</div>
+        <ul class="stock-news">
+          <li>AI 기술주 매도세로 반도체 섹터 전반 조정 중</li>
+          <li>HBM3E 공급망에서 삼성·SK하이닉스와 경쟁 지속</li>
+          <li>AI 데이터센터용 메모리 수요는 장기적으로 견조 유지 전망</li>
+        </ul>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Korean Stocks -->
+  <div style="font-size:12px;font-weight:700;color:var(--text3);letter-spacing:.04em;margin-bottom:8px;margin-top:16px">🇰🇷 한국 9종목</div>
+  <div class="card">
+    <div class="card-body">
+
+      <div class="stock-item">
+        <div class="stock-header">
+          <div><span class="stock-name">삼성바이오로직스</span><span class="stock-ticker">207940</span></div>
+          <div class="stock-price"><div class="stock-cur">~105만원대</div><div class="stock-chg neu">— 바이오 CMO</div></div>
+        </div>
+        <div class="stock-strategy">글로벌 바이오 위탁생산(CMO) 1위권 기업. AI 기술주 하락 장세에 바이오 섹터는 상대적으로 방어적. 장기 보유 핵심 종목으로 분류 가능.</div>
+        <ul class="stock-news">
+          <li>글로벌 제약사들의 바이오의약품 위탁생산 수주 지속 확대</li>
+          <li>AI 기술주 조정 장세에서 방어적 섹터로 주목</li>
+          <li>목표주가 180만원 (하향됐으나 장기 성장성 인정)</li>
+        </ul>
+      </div>
+
+      <div class="stock-item">
+        <div class="stock-header">
+          <div><span class="stock-name">한미반도체</span><span class="stock-ticker">042700</span></div>
+          <div class="stock-price"><div class="stock-cur">~24만원대</div><div class="stock-chg dn">▼ HBM 쇼크 영향</div></div>
+        </div>
+        <div class="stock-strategy">HBM 패키징 장비 선도 기업. AI 기술주 급락으로 HBM 수요 우려가 확산돼 단기 조정 가능. 그러나 중장기 AI 반도체 생태계에서 불가결한 역할을 하므로 장기 보유 전략이 적합.</div>
+        <ul class="stock-news">
+          <li>SK하이닉스 8% 급락으로 한미반도체도 연동 하락 압박</li>
+          <li>HBM 패키징 수요는 AI 인프라 투자가 지속되는 한 유효</li>
+          <li>6월 말 예상 주가 약 244,000원 수준</li>
+        </ul>
+      </div>
+
+      <div class="stock-item">
+        <div class="stock-header">
+          <div><span class="stock-name">에스에프에이</span><span class="stock-ticker">056190</span></div>
+          <div class="stock-price"><div class="stock-cur">데이터 확인 필요</div><div class="stock-chg neu">— 디스플레이 장비</div></div>
+        </div>
+        <div class="stock-strategy">디스플레이·반도체 장비 전문 기업. 기술주 하락기에 연동되는 경향이 있으나 국내 디스플레이 산업의 구조적 성장과 함께 장기 보유 전략 유지.</div>
+        <ul class="stock-news">
+          <li>디스플레이 장비 수주 사이클에 주목 필요</li>
+          <li>삼성디스플레이·LG디스플레이 투자 계획과 연동</li>
+          <li>AI 기술주 하락기 디스플레이 장비주 동반 하락 주의</li>
+        </ul>
+      </div>
+
+      <div class="stock-item">
+        <div class="stock-header">
+          <div><span class="stock-name">이오테크닉스</span><span class="stock-ticker">039030</span></div>
+          <div class="stock-price"><div class="stock-cur">데이터 확인 필요</div><div class="stock-chg neu">— 레이저 장비</div></div>
+        </div>
+        <div class="stock-strategy">반도체 레이저 마킹·다이싱 장비 선두. AI 반도체 생산 공정의 핵심 장비 공급사. HBM 수요 불안으로 단기 조정 가능하나 반도체 장비 수주는 지속.</div>
+        <ul class="stock-news">
+          <li>AI 반도체 공정 고도화로 레이저 장비 수요 증가 추세</li>
+          <li>SK하이닉스·삼성전자 HBM 생산 증가에 직접 수혜</li>
+          <li>AI 기술주 쇼크로 단기 조정 시 분할 매수 기회 탐색</li>
+        </ul>
+      </div>
+
+      <div class="stock-item">
+        <div class="stock-header">
+          <div><span class="stock-name">HD한국조선해양</span><span class="stock-ticker">009540</span></div>
+          <div class="stock-price"><div class="stock-cur">데이터 확인 필요</div><div class="stock-chg up">▲ 조선 섹터 강세</div></div>
+        </div>
+        <div class="stock-strategy">글로벌 조선 1위 그룹. AI 기술주 하락 장세에서 방어주 역할. 미 해군함 수주, LNG선 발주 증가로 중장기 수주 모멘텀 강화. 포트폴리오 내 방어적 비중 유지.</div>
+        <ul class="stock-news">
+          <li>글로벌 방위비 증가·LNG선 수요 확대로 조선 섹터 수혜</li>
+          <li>AI 기술주 하락 장세에서 상대적 강세 유지</li>
+          <li>미국 발주 군함 수주 기대감 지속</li>
+        </ul>
+      </div>
+
+      <div class="stock-item">
+        <div class="stock-header">
+          <div><span class="stock-name">LG에너지솔루션</span><span class="stock-ticker">373220</span></div>
+          <div class="stock-price"><div class="stock-cur">~35.5만원</div><div class="stock-chg dn">▼ IRA 불확실성</div></div>
+        </div>
+        <div class="stock-strategy">2차전지 글로벌 2위 기업. 미국 IRA 정책 불확실성으로 단기 조정 중. 전기차 배터리 수요 장기 성장성은 유효하나 단기 매수는 정책 명확화 후 결정.</div>
+        <ul class="stock-news">
+          <li>6월 말 예상 주가 약 355,380원 수준</li>
+          <li>미국 IRA 보조금 정책 불확실성 지속 → 단기 변동성</li>
+          <li>전기차 시장 성장 둔화 우려 vs. ESS 시장 성장 기대</li>
+        </ul>
+      </div>
+
+      <div class="stock-item">
+        <div class="stock-header">
+          <div><span class="stock-name">KODEX 미국S&P500TR</span><span class="stock-ticker">379800</span></div>
+          <div class="stock-price"><div class="stock-cur">지수 연동</div><div class="stock-chg neu">— S&P500 추종</div></div>
+        </div>
+        <div class="stock-strategy">미국 S&P500 전체에 투자하는 ETF. AI 기술주 조정의 영향을 받지만 분산 효과로 개별주보다 변동성이 낮음. 장기 분할 매수 전략으로 접근, 하락 시 추가 매수 적합.</div>
+        <ul class="stock-news">
+          <li>S&P500 지수 AI 기술주 조정으로 단기 하락 중</li>
+          <li>분산 투자 효과로 개별 기술주보다 낮은 변동성</li>
+          <li>장기 우상향 트렌드 유지, 하락 시 적립식 추가 매수 적합</li>
+        </ul>
+      </div>
+
+      <div class="stock-item">
+        <div class="stock-header">
+          <div><span class="stock-name">KODEX 나스닥100</span><span class="stock-ticker">379810</span></div>
+          <div class="stock-price"><div class="stock-cur">지수 연동</div><div class="stock-chg dn">▼ 나스닥 조정 영향</div></div>
+        </div>
+        <div class="stock-strategy">나스닥100 추종 ETF. 현재 나스닥100 조정 직격탄을 받고 있음. 단기 추가 하락 가능성이 있으나 장기 분할 매수 전략으로 접근하면 저가 매수 기회가 될 수 있음.</div>
+        <ul class="stock-news">
+          <li>나스닥 고점 대비 6% 이상 하락 → ETF도 동일 비율 하락</li>
+          <li>AI 기술주 10종목 이상 조정으로 ETF 전체 영향</li>
+          <li>장기 분할 매수 전략으로 현재 가격대에서 소량 추가 매수 가능</li>
+        </ul>
+      </div>
+
+      <div class="stock-item">
+        <div class="stock-header">
+          <div><span class="stock-name">TIGER 미국나스닥100</span><span class="stock-ticker">133690</span></div>
+          <div class="stock-price"><div class="stock-cur">지수 연동</div><div class="stock-chg dn">▼ 나스닥 조정 영향</div></div>
+        </div>
+        <div class="stock-strategy">미래에셋 운용 나스닥100 ETF. KODEX 나스닥100과 유사한 포지션. 중복 보유 시 하나로 통합을 고려해볼 수 있음. 현재는 보유 유지하며 장기 분할 매수 전략 적용.</div>
+        <ul class="stock-news">
+          <li>KODEX 나스닥100과 동일한 나스닥100 지수 추종</li>
+          <li>두 ETF 중복 보유 시 총 비중 관리 필요</li>
+          <li>나스닥 조정 시 분할 매수로 평균 단가 낮추는 전략 적합</li>
+        </ul>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- ALLOCATION -->
+<div class="section" id="alloc">
+  <div class="sec-title">💰 투자 배분 (추정 비중)</div>
+  <div class="card">
+    <div class="card-body">
+      <div style="font-size:11px;color:var(--text3);margin-bottom:12px">※ 각 종목의 추정 비중입니다. 실제 보유 수량에 따라 달라질 수 있습니다.</div>
+      <div class="bar-row">
+        <div class="bar-label">NVDA</div>
+        <div class="bar-track"><div class="bar-fill" style="width:18%;background:var(--green)">18%</div></div>
+      </div>
+      <div class="bar-row">
+        <div class="bar-label">AMZN</div>
+        <div class="bar-track"><div class="bar-fill" style="width:12%;background:var(--blue)">12%</div></div>
+      </div>
+      <div class="bar-row">
+        <div class="bar-label">AAPL</div>
+        <div class="bar-track"><div class="bar-fill" style="width:10%;background:var(--blue)">10%</div></div>
+      </div>
+      <div class="bar-row">
+        <div class="bar-label">GEV</div>
+        <div class="bar-track"><div class="bar-fill" style="width:9%;background:var(--green)">9%</div></div>
+      </div>
+      <div class="bar-row">
+        <div class="bar-label">삼성바이오로직스</div>
+        <div class="bar-track"><div class="bar-fill" style="width:8%;background:var(--purple)">8%</div></div>
+      </div>
+      <div class="bar-row">
+        <div class="bar-label">UNH</div>
+        <div class="bar-track"><div class="bar-fill" style="width:7%;background:var(--amber)">7%</div></div>
+      </div>
+      <div class="bar-row">
+        <div class="bar-label">ORCL</div>
+        <div class="bar-track"><div class="bar-fill" style="width:6%;background:var(--blue)">6%</div></div>
+      </div>
+      <div class="bar-row">
+        <div class="bar-label">KODEX/TIGER ETF</div>
+        <div class="bar-track"><div class="bar-fill" style="width:10%;background:#6aab5e">10%</div></div>
+      </div>
+      <div class="bar-row">
+        <div class="bar-label">IONQ+RGTI</div>
+        <div class="bar-track"><div class="bar-fill" style="width:6%;background:var(--purple)">6%</div></div>
+      </div>
+      <div class="bar-row">
+        <div class="bar-label">기타 14종목</div>
+        <div class="bar-track"><div class="bar-fill" style="width:14%;background:var(--text3)">14%</div></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- CALENDAR -->
+<div class="section" id="calendar">
+  <div class="sec-title">📅 6~7월 주요 일정</div>
+  <div class="card">
+    <div class="card-body">
+      <div class="cal-item">
+        <div class="cal-date">6월 30일</div>
+        <div class="cal-event">미국 6월 PCE 물가 발표 — 인플레이션 지표, 금리 방향성 가늠</div>
+      </div>
+      <div class="cal-item">
+        <div class="cal-date">7월 4일</div>
+        <div class="cal-event">미국 독립기념일 — 미국 증시 휴장</div>
+      </div>
+      <div class="cal-item">
+        <div class="cal-date">7월 첫째 주</div>
+        <div class="cal-event">미국 고용지표 (비농업 고용, 실업률) 발표 — 금리 결정 핵심 변수</div>
+      </div>
+      <div class="cal-item">
+        <div class="cal-date">7월 셋째 주</div>
+        <div class="cal-event">주요 빅테크 실적 발표 시즌 시작 (NVDA, AMZN, AAPL 순차 발표 예정)</div>
+      </div>
+      <div class="cal-item">
+        <div class="cal-date">7월 말</div>
+        <div class="cal-event">미국 FOMC 회의 — 금리 동결/인하 여부 결정. AI 기술주 방향성 결정 이벤트</div>
+      </div>
+      <div class="cal-item">
+        <div class="cal-date">상시 모니터링</div>
+        <div class="cal-event">이란 전쟁·호르무즈 해협 상황 — 에너지 가격·인플레이션에 직결</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<div style="text-align:center;padding:32px 16px 0;font-size:11px;color:var(--text3)">
+  <div style="margin-bottom:4px">📊 민선의 포트폴리오 브리핑 · 2026년 6월 29일 월요일</div>
+  <div>데이터는 6월 26~28일 기준이며, 정확한 실시간 가격은 증권사 앱에서 확인하세요</div>
+  <div style="margin-top:8px">⚠️ 본 브리핑은 투자 권유가 아닙니다. 투자 결정은 본인 판단으로 하세요.</div>
+</div>
+
 </body>
 </html>
