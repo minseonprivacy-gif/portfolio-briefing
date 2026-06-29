@@ -2,8 +2,8 @@
 <html lang="ko">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
-<title>📊 포트폴리오 브리핑 — 2026.06.29</title>
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>포트폴리오 브리핑 — 2026.06.29</title>
 <style>
 :root {
   --bg:#f4f4f2; --surface:#ffffff; --surface2:#f0efeb;
@@ -18,805 +18,599 @@
   --shadow:0 1px 3px rgba(0,0,0,0.07),0 1px 2px rgba(0,0,0,0.05);
 }
 *{box-sizing:border-box;margin:0;padding:0}
-body{background:var(--bg);color:var(--text);font-family:-apple-system,BlinkMacSystemFont,'Segoe UI','Noto Sans KR',sans-serif;font-size:14px;line-height:1.6;padding-bottom:60px}
-.wrap{max-width:900px;margin:0 auto;padding:0 16px}
-
-/* HEADER */
-.header{background:var(--text);color:#fff;padding:22px 20px 18px;border-radius:0 0 18px 18px;margin-bottom:16px}
-.header-top{display:flex;justify-content:space-between;align-items:flex-start;gap:10px;flex-wrap:wrap}
-.header-date{font-size:11px;color:rgba(255,255,255,0.55);letter-spacing:.06em;margin-bottom:4px}
-.header-title{font-size:22px;font-weight:900;line-height:1.2}
-.header-badge{background:var(--red-bg);color:var(--red);border:1px solid var(--red-bd);border-radius:20px;font-size:11px;font-weight:700;padding:4px 10px;white-space:nowrap;align-self:flex-start}
-.header-sub{font-size:12px;color:rgba(255,255,255,0.6);margin-top:8px}
-
-/* TOC */
-.toc{background:var(--surface);border-radius:var(--r);padding:10px 14px;margin-bottom:16px;box-shadow:var(--shadow);overflow-x:auto;white-space:nowrap}
-.toc a{display:inline-block;font-size:12px;color:var(--text2);text-decoration:none;padding:4px 8px;border-radius:6px;margin-right:2px}
-.toc a:hover{background:var(--surface2)}
-
-/* SECTIONS */
-.section{margin-bottom:16px}
-.sec-title{font-size:13px;font-weight:800;color:var(--text3);letter-spacing:.05em;text-transform:uppercase;margin-bottom:8px;padding-left:2px}
-.card{background:var(--surface);border-radius:var(--r);box-shadow:var(--shadow);overflow:hidden}
-.card+.card{margin-top:8px}
-
-/* MARKET CARDS */
-.mkt-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-bottom:10px}
-@media(max-width:600px){.mkt-grid{grid-template-columns:1fr 1fr}}
-.mkt-card{background:var(--surface);border-radius:var(--r);padding:14px;box-shadow:var(--shadow);text-align:center}
-.mkt-label{font-size:10px;font-weight:700;color:var(--text3);letter-spacing:.04em;margin-bottom:4px}
-.mkt-value{font-size:20px;font-weight:900;line-height:1}
-.mkt-change{font-size:12px;font-weight:700;margin-top:4px}
-.up{color:var(--green)} .down{color:var(--red)} .neutral{color:var(--text3)}
-
-/* TAGS */
-.tag{display:inline-block;font-size:11px;font-weight:700;padding:2px 8px;border-radius:20px;margin:2px}
-.t-red{background:var(--red-bg);color:var(--red);border:1px solid var(--red-bd)}
-.t-green{background:var(--green-bg);color:var(--green);border:1px solid var(--green-bd)}
-.t-amber{background:var(--amber-bg);color:var(--amber);border:1px solid var(--amber-bd)}
-.t-blue{background:var(--blue-bg);color:var(--blue);border:1px solid var(--blue-bd)}
-.t-purple{background:var(--purple-bg);color:var(--purple);border:1px solid var(--purple-bd)}
-.t-gray{background:var(--surface2);color:var(--text2);border:1px solid var(--border2)}
-
-/* SCENARIO BOX */
-.scenario-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:10px}
-@media(max-width:480px){.scenario-grid{grid-template-columns:1fr}}
-.scenario-box{border-radius:var(--r-sm);padding:12px 14px;font-size:12px;line-height:1.65}
-.scenario-box .sc-title{font-weight:800;margin-bottom:4px;font-size:13px}
-
-/* TODO */
-.todo-list{list-style:none;padding:14px 16px}
-.todo-list li{display:flex;gap:10px;padding:8px 0;border-bottom:1px solid var(--border);font-size:13px;align-items:flex-start}
-.todo-list li:last-child{border-bottom:none}
-.todo-num{background:var(--text);color:#fff;border-radius:50%;width:20px;height:20px;display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:800;flex-shrink:0;margin-top:1px}
-
-/* STRATEGY */
-.strat-list{padding:14px 16px}
-.strat-item{padding:8px 0;border-bottom:1px solid var(--border);font-size:13px;display:flex;gap:8px;align-items:flex-start}
-.strat-item:last-child{border-bottom:none}
-.strat-dot{width:8px;height:8px;border-radius:50%;background:var(--text);flex-shrink:0;margin-top:5px}
-
-/* SIGNAL */
-.signal-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
-@media(max-width:480px){.signal-grid{grid-template-columns:1fr}}
-.signal-card{border-radius:var(--r-sm);padding:12px 14px;font-size:12px;line-height:1.6}
-.signal-card .sig-title{font-weight:800;font-size:13px;margin-bottom:4px}
-
-/* NEWS */
-.news-item{padding:14px 16px;border-bottom:1px solid var(--border)}
-.news-item:last-child{border-bottom:none}
-.news-num{font-size:10px;font-weight:800;color:var(--text3);margin-bottom:2px}
-.news-title{font-size:13px;font-weight:800;margin-bottom:4px;line-height:1.4}
-.news-body{font-size:12px;color:var(--text2);line-height:1.65;margin-bottom:6px}
-
-/* ISSUE STOCKS */
-.issue-item{padding:14px 16px;border-bottom:1px solid var(--border);display:flex;gap:12px}
-.issue-item:last-child{border-bottom:none}
-.issue-rank{font-size:18px;font-weight:900;color:var(--text3);flex-shrink:0;min-width:24px;line-height:1.4}
-.issue-body .issue-name{font-size:13px;font-weight:800;margin-bottom:3px}
-.issue-body .issue-desc{font-size:12px;color:var(--text2);line-height:1.6;margin-bottom:4px}
-.issue-body .issue-strategy{font-size:12px;color:var(--text);font-weight:600}
-
-/* STOCK TABLE */
-.stock-section-title{font-size:11px;font-weight:800;color:var(--text3);letter-spacing:.05em;padding:10px 16px 6px;border-bottom:1px solid var(--border);background:var(--surface2)}
-.stock-item{padding:12px 16px;border-bottom:1px solid var(--border);display:grid;grid-template-columns:1fr auto;gap:10px;align-items:start}
-.stock-item:last-child{border-bottom:none}
-.stock-name{font-size:13px;font-weight:800;margin-bottom:2px}
-.stock-ticker{font-size:10px;color:var(--text3);letter-spacing:.04em;margin-bottom:4px}
-.stock-strategy{font-size:12px;color:var(--text2);line-height:1.6;margin-bottom:4px}
-.stock-news{font-size:11px;color:var(--text3);line-height:1.6}
-.stock-price-block{text-align:right;flex-shrink:0}
-.stock-price{font-size:15px;font-weight:900;line-height:1.2}
-.stock-change{font-size:12px;font-weight:700;margin-top:2px}
-
-/* BAR CHART */
-.bar-list{padding:14px 16px}
-.bar-item{margin-bottom:12px}
-.bar-label{display:flex;justify-content:space-between;font-size:12px;margin-bottom:3px;font-weight:600}
-.bar-track{background:var(--surface2);border-radius:3px;height:8px;overflow:hidden}
-.bar-fill{height:100%;border-radius:3px;background:var(--text)}
-
-/* CALENDAR */
-.cal-list{padding:14px 16px}
-.cal-item{display:flex;gap:12px;padding:7px 0;border-bottom:1px solid var(--border);font-size:12px;align-items:flex-start}
-.cal-item:last-child{border-bottom:none}
-.cal-date{font-weight:800;color:var(--text2);flex-shrink:0;min-width:60px}
-.cal-desc{color:var(--text2);line-height:1.5}
-
-/* SUMMARY BOX */
-.summary-box{padding:14px 16px;font-size:13px;line-height:1.7;color:var(--text2)}
-.summary-box strong{color:var(--text)}
+body{background:var(--bg);color:var(--text);font-family:-apple-system,BlinkMacSystemFont,'Segoe UI','Apple SD Gothic Neo',sans-serif;font-size:14px;line-height:1.6}
+.wrap{max-width:900px;margin:0 auto;padding:16px 12px 48px}
+.header{background:var(--surface);border-radius:var(--r);padding:20px 20px 16px;margin-bottom:14px;box-shadow:var(--shadow)}
+.header-top{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin-bottom:6px}
+.date-chip{font-size:11px;font-weight:700;color:var(--text3);letter-spacing:.04em}
+.badge{display:inline-block;font-size:11px;font-weight:700;padding:3px 9px;border-radius:20px;letter-spacing:.02em}
+.header h1{font-size:22px;font-weight:900;letter-spacing:-.02em}
+.header p{font-size:13px;color:var(--text2);margin-top:4px}
+.toc{background:var(--surface);border-radius:var(--r);padding:12px 16px;margin-bottom:14px;display:flex;flex-wrap:wrap;gap:6px;box-shadow:var(--shadow)}
+.toc a{font-size:12px;color:var(--blue);text-decoration:none;padding:4px 10px;border-radius:20px;background:var(--blue-bg);font-weight:600;white-space:nowrap}
+.section{margin-bottom:18px}
+.sec-title{font-size:15px;font-weight:800;color:var(--text);margin-bottom:10px}
+.card{background:var(--surface);border-radius:var(--r);box-shadow:var(--shadow)}
+.market-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:10px;margin-bottom:12px}
+.mcard{background:var(--surface);border-radius:var(--r);padding:14px 16px;box-shadow:var(--shadow)}
+.mcard-label{font-size:11px;font-weight:700;color:var(--text3);letter-spacing:.04em;margin-bottom:4px}
+.mcard-val{font-size:20px;font-weight:900;letter-spacing:-.02em}
+.mcard-chg{font-size:12px;font-weight:700;margin-top:2px}
+.up{color:#1f6636} .dn{color:#b83229} .neu{color:var(--text3)}
+.summary-box{background:var(--surface);border-radius:var(--r);padding:16px;box-shadow:var(--shadow);margin-bottom:12px}
+.summary-box p{font-size:13px;color:var(--text2);line-height:1.7}
+.scenario-row{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:10px}
+.scenario{border-radius:var(--r-sm);padding:12px 14px;font-size:12px;line-height:1.6}
+.scenario.bull{background:#edf7f1;border:1px solid #aedbbf;color:#1f6636}
+.scenario.bear{background:#fdf0ef;border:1px solid #f5c4c0;color:#b83229}
+.scenario strong{font-size:13px;display:block;margin-bottom:4px}
+.tag{display:inline-block;font-size:11px;font-weight:700;padding:2px 8px;border-radius:12px;letter-spacing:.02em}
+.t-red{background:#fdf0ef;color:#b83229;border:1px solid #f5c4c0}
+.t-green{background:#edf7f1;color:#1f6636;border:1px solid #aedbbf}
+.t-amber{background:#fdf5e6;color:#7a4a08;border:1px solid #f4d595}
+.t-blue{background:#edf4fd;color:#154c8c;border:1px solid #aed0f5}
+.t-gray{background:#f0efeb;color:#5c5c58;border:1px solid rgba(0,0,0,0.12)}
+.list-box{background:var(--surface);border-radius:var(--r);padding:0 16px;box-shadow:var(--shadow)}
+.list-item{padding:12px 0;border-bottom:1px solid var(--border)}
+.list-item:last-child{border-bottom:none}
+.news-num{font-size:11px;font-weight:800;color:var(--text3);margin-bottom:4px}
+.news-title{font-size:13px;font-weight:700;color:var(--text);margin-bottom:6px;line-height:1.4}
+.news-body{font-size:12px;color:var(--text2);line-height:1.65;margin-bottom:8px}
+.stocks-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:10px}
+.sc{background:var(--surface);border-radius:var(--r);padding:14px 16px;box-shadow:var(--shadow)}
+.sc-head{display:flex;align-items:flex-start;justify-content:space-between;margin-bottom:10px}
+.sc-name{font-size:13px;font-weight:800}
+.sc-ticker{font-size:11px;color:var(--text3);font-weight:600;margin-top:1px}
+.sc-pr{font-size:16px;font-weight:900;text-align:right}
+.sc-chg{font-size:11px;font-weight:700;text-align:right;margin-top:1px}
+.pl{display:inline-block;font-size:11px;font-weight:800;padding:3px 9px;border-radius:20px;margin-bottom:8px}
+.pl-p{background:#edf7f1;color:#1f6636;border:1px solid #aedbbf}
+.pl-n{background:#fdf0ef;color:#b83229;border:1px solid #f5c4c0}
+.sc-strat{font-size:12px;color:var(--text2);line-height:1.6;margin-bottom:8px;padding:8px 10px;background:var(--surface2);border-radius:var(--r-sm)}
+.sc-news{border-top:1px solid var(--border);padding-top:8px}
+.sn{font-size:11px;color:var(--text2);padding:3px 0;line-height:1.5;border-bottom:1px solid var(--border)}
+.sn:last-child{border-bottom:none}
+.alloc-bar-wrap{background:var(--surface);border-radius:var(--r);padding:16px;box-shadow:var(--shadow)}
+.ar{display:flex;align-items:center;gap:10px;margin-bottom:8px}
+.al{font-size:12px;font-weight:700;width:120px;flex-shrink:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.ab{flex:1;height:16px;background:var(--surface2);border-radius:8px;overflow:hidden}
+.af{height:100%;border-radius:8px}
+.av{font-size:11px;color:var(--text2);font-weight:700;width:60px;text-align:right;flex-shrink:0}
+.cal-box{background:var(--surface);border-radius:var(--r);padding:0 16px;box-shadow:var(--shadow)}
+.ci{display:flex;gap:12px;align-items:flex-start;padding:10px 0;border-bottom:1px solid var(--border)}
+.ci:last-child{border-bottom:none}
+.cd{font-size:11px;font-weight:800;color:#154c8c;width:48px;flex-shrink:0;padding-top:2px}
+.ct{font-size:13px;color:var(--text2)}
+.data-note{font-size:11px;color:var(--text3);margin-top:8px;text-align:right}
+@media(max-width:600px){.market-grid{grid-template-columns:1fr 1fr}.stocks-grid{grid-template-columns:1fr}.scenario-row{grid-template-columns:1fr}}
 </style>
 </head>
 <body>
+<div class="wrap">
 
-<!-- HEADER -->
 <div class="header">
-  <div class="wrap">
-    <div class="header-top">
-      <div>
-        <div class="header-date">2026년 6월 29일 월요일</div>
-        <div class="header-title">📊 민선의 포트폴리오 브리핑</div>
-      </div>
-      <div class="header-badge">😨 공포 구간 (F&amp;G 25)</div>
-    </div>
-    <div class="header-sub">6월 23일 AI 매도 쇼크 이후 시장 안정화 중 · 오늘 시장 재개방 첫 번째 월요일</div>
+  <div class="header-top">
+    <span class="date-chip">2026.06.29 (월)</span>
+    <span class="badge" style="background:#fdf0ef;color:#b83229;border:1px solid #f5c4c0">😰 공포장 · F&amp;G 25</span>
+    <span class="badge" style="background:#fdf5e6;color:#7a4a08;border:1px solid #f4d595">💱 ₩1,544</span>
   </div>
+  <h1>📊 민선의 포트폴리오 브리핑</h1>
+  <p>Yahoo Finance 실시간 기준 · 미국주가 6/27(금) 종가 · 한국주가 6/29(월) 장중</p>
 </div>
 
-<!-- TOC -->
-<div class="wrap">
-<div class="toc">
+<nav class="toc">
   <a href="#market">📊 시장요약</a>
-  <a href="#fng">😨 공포탐욕지수</a>
+  <a href="#fng">😨 공포탐욕</a>
   <a href="#todo">✅ 오늘할일</a>
-  <a href="#strategy">⭐ 내종목전략</a>
-  <a href="#signal">🚨 주목신호</a>
+  <a href="#strategy">⭐ 종목전략</a>
+  <a href="#signals">🚨 주목신호</a>
   <a href="#us-news">🇺🇸 나스닥뉴스</a>
   <a href="#kr-news">🇰🇷 코스닥뉴스</a>
-  <a href="#hot">🔥 이슈종목</a>
+  <a href="#issue">🔥 이슈종목</a>
   <a href="#stocks">📋 내종목</a>
   <a href="#alloc">💰 투자배분</a>
   <a href="#cal">📅 일정</a>
-</div>
+</nav>
 
-<!-- SECTION: 시장 요약 -->
 <div class="section" id="market">
   <div class="sec-title">📊 시장 요약</div>
-  <div class="mkt-grid">
-    <div class="mkt-card">
-      <div class="mkt-label">🇺🇸 나스닥</div>
-      <div class="mkt-value neutral">25,297</div>
-      <div class="mkt-change down">▼ 주간 -4.8%</div>
-    </div>
-    <div class="mkt-card">
-      <div class="mkt-label">🇰🇷 코스닥</div>
-      <div class="mkt-value neutral">911</div>
-      <div class="mkt-change neutral">전주 -3.1%</div>
-    </div>
-    <div class="mkt-card">
-      <div class="mkt-label">💱 달러/원</div>
-      <div class="mkt-value neutral">1,534</div>
-      <div class="mkt-change down">▼ 달러 약세</div>
-    </div>
+  <div class="market-grid">
+    <div class="mcard"><div class="mcard-label">🇺🇸 NASDAQ</div><div class="mcard-val">25,297</div><div class="mcard-chg dn">▼ -0.24% 금요일 종가</div></div>
+    <div class="mcard"><div class="mcard-label">🇰🇷 KOSDAQ</div><div class="mcard-val">908.10</div><div class="mcard-chg up">▲ +6.66% 장중</div></div>
+    <div class="mcard"><div class="mcard-label">🇰🇷 KOSPI</div><div class="mcard-val">8,233</div><div class="mcard-chg dn">▼ -2.11% 장중</div></div>
+    <div class="mcard"><div class="mcard-label">💱 USD/KRW</div><div class="mcard-val">1,544</div><div class="mcard-chg dn">▲ +0.59% 달러강세</div></div>
   </div>
-  <div class="card">
-    <div class="summary-box">
-      <strong>지난 주 핵심 요약:</strong> 6월 23일(화) AI 거품 우려와 MSCI 한국 선진국 편입 제외 결정이 맞물리며 KOSPI가 장중 서킷브레이커 발동 후 <strong>-10% 폭락</strong>했습니다. 그러나 마이크론의 역대급 실적 발표와 SK하이닉스 나스닥 ADR 계획이 호재로 작용해 KOSPI는 6월 25~26일 빠르게 반등 (+5.42%)했습니다. 나스닥은 5거래일 연속 하락 후 오늘 월요일 재개방 첫날입니다. OpenAI IPO 2027년 연기 가능성이 AI 관련주 전반에 부담을 주고 있습니다.
-    </div>
-    <div class="scenario-grid" style="padding:0 14px 14px">
-      <div class="scenario-box" style="background:var(--green-bg);border:1px solid var(--green-bd)">
-        <div class="sc-title" style="color:var(--green)">🐂 낙관 시나리오</div>
-        반도체 수요는 구조적으로 유효. 마이크론 호실적이 증명한 AI 메모리 수요 지속. KOSPI 추가 반등 가능. NVDA Rubin 플랫폼 양산 본격화.
-      </div>
-      <div class="scenario-box" style="background:var(--red-bg);border:1px solid var(--red-bd)">
-        <div class="sc-title" style="color:var(--red)">🐻 비관 시나리오</div>
-        OpenAI IPO 연기로 AI 수익화 의구심 확산. 레버리지 ETF 변동성 지속. 미 연준 매파 기조 속 기술주 밸류 부담. KOSPI 고점 대비 조정 지속 위험.
-      </div>
+  <div class="summary-box">
+    <p>미국 시장은 금요일 5거래일 연속 하락을 마무리하며 나스닥이 25,297로 소폭 하락했습니다. AI 주식 전반이 OpenAI IPO 연기 가능성과 반도체 섹터 약세로 부진했고, 마이크론(MU)은 사상 최대 실적에도 CEO 인사이더 매도 $36M이 겹쳐 6.7% 급락했습니다. 한편 국내 시장은 KOSDAQ +6.66% 급등 vs KOSPI -2.11% 하락의 이례적인 괴리를 보이고 있습니다. LG에너지솔루션(+15.21%)이 캐나다 법인 100% 자회사 전환 공시로 급등하고, 삼성전자(-5.49%)는 메모리 공급 우려로 급락했습니다.</p>
+    <div class="scenario-row">
+      <div class="scenario bull"><strong>🟢 낙관 시나리오</strong>미-이란 긴장 완화 + 유가 하락 → 인플레 완화 → 연준 금리 인하 기대 회복. KOSDAQ 급등은 성장주 반등 신호. LG엔솔 급등은 배터리 섹터 재평가 가능성 시사.</div>
+      <div class="scenario bear"><strong>🔴 비관 시나리오</strong>AI 투자 거품 우려 지속 → NVDA, IONQ, RGTI 추가 하락 가능. MU 인사이더 대규모 매도는 반도체 고점 시그널. F&amp;G 25는 불안한 시장심리 지속.</div>
     </div>
   </div>
 </div>
 
-<!-- SECTION: 공포탐욕지수 -->
 <div class="section" id="fng">
-  <div class="sec-title">공포탐욕지수 — CNN Fear &amp; Greed Index</div>
+  <div class="sec-title">😨 공포탐욕지수 — CNN Fear &amp; Greed Index</div>
   <div class="card">
     <div style="padding:16px">
       <div style="display:flex;align-items:flex-start;justify-content:space-between;margin-bottom:14px;gap:10px">
         <div style="flex:1">
           <div style="font-size:11px;font-weight:700;color:var(--text3);letter-spacing:.04em;margin-bottom:6px">현재 시장의 심리 상태</div>
           <div style="display:flex;align-items:baseline;gap:10px;flex-wrap:wrap">
-            <span id="fng-score" style="font-size:42px;font-weight:900;line-height:1;color:#c0663a">25</span>
+            <span style="font-size:42px;font-weight:900;line-height:1;color:#c0663a">25</span>
             <div>
-              <div id="fng-rating" style="font-size:15px;font-weight:800;color:#c0663a">공포</div>
-              <div id="fng-eng" style="font-size:11px;color:var(--text3);margin-top:2px">Fear</div>
+              <div style="font-size:15px;font-weight:800;color:#c0663a">공포</div>
+              <div style="font-size:11px;color:var(--text3);margin-top:2px">Fear</div>
             </div>
           </div>
         </div>
-        <div id="fng-emoji" style="font-size:48px;line-height:1;flex-shrink:0">😰</div>
+        <div style="font-size:48px;line-height:1;flex-shrink:0">😰</div>
       </div>
       <div style="margin-bottom:4px">
         <div style="position:relative;height:12px;border-radius:6px;background:linear-gradient(to right,#b83229 0%,#d4652b 20%,#c8a000 35%,#e8c200 50%,#6aab5e 65%,#1f6636 100%);overflow:visible">
-          <div id="fng-needle" style="position:absolute;top:-5px;width:6px;height:22px;background:var(--text);border-radius:3px;transform:translateX(-50%);left:25%;box-shadow:0 1px 4px rgba(0,0,0,.35)"></div>
+          <div style="position:absolute;top:-5px;width:6px;height:22px;background:var(--text);border-radius:3px;transform:translateX(-50%);left:25%;box-shadow:0 1px 4px rgba(0,0,0,.35)"></div>
         </div>
       </div>
       <div style="display:flex;justify-content:space-between;font-size:10px;color:var(--text3);margin-bottom:14px;padding:0 2px">
         <span>😱 극도공포</span><span>😰 공포</span><span>😐 중립</span><span>😏 탐욕</span><span>🤑 극도탐욕</span>
       </div>
-      <div style="font-size:11px;font-weight:700;color:var(--text3);letter-spacing:.04em;margin-bottom:8px">과거 대비 변화</div>
-      <div id="fng-history" style="display:flex;gap:6px;flex-wrap:wrap;margin-bottom:14px">
-        <span class="tag t-red">1주 전: 28 (극도공포 · 6/23 폭락)</span>
-        <span class="tag t-gray">1달 전: ~50 (중립)</span>
+      <div style="display:flex;gap:6px;flex-wrap:wrap;margin-bottom:14px">
+        <span class="tag t-gray">1주 전: 33 (공포)</span>
+        <span class="tag t-gray">1달 전: 42 (공포)</span>
       </div>
-      <div id="fng-interp" style="background:var(--surface2);border-radius:8px;padding:11px 14px;font-size:12px;color:var(--text2);line-height:1.65">
-        <strong>공포 구간 해석:</strong> 지수 25는 시장이 두려움에 지배되고 있음을 나타냅니다. 역사적으로 이 구간은 <strong>관망 유지</strong>가 유리한 시점이며, 기술주 중심의 추가 변동성에 유의해야 합니다. 단, 지나치게 공포 구간에 오래 머물면 반등 기회를 놓칠 수 있으므로 핵심 우량주는 분할 매수 기회를 탐색하는 것이 좋습니다.
+      <div style="background:var(--surface2);border-radius:8px;padding:11px 14px;font-size:12px;color:var(--text2);line-height:1.65">
+        <strong>공포 구간(25)</strong>: 시장 심리가 위축된 상태입니다. 역사적으로 공포 구간은 단기 반등 기회가 될 수 있지만, 추가 하락 여지도 있습니다. 현재는 공격적 매수보다 <strong>기존 포지션 유지 + 분할 매수 대기</strong> 전략이 적합합니다.
       </div>
     </div>
   </div>
 </div>
 
-<!-- SECTION: 오늘 할 일 -->
 <div class="section" id="todo">
   <div class="sec-title">✅ 오늘 할 일</div>
-  <div class="card">
-    <ul class="todo-list">
-      <li>
-        <div class="todo-num">1</div>
-        <div><strong>ORCL 비중 재검토:</strong> OpenAI IPO 연기로 오라클 클라우드 수혜 기대가 약화됐습니다. 현재 $149 수준에서 손절 기준선($140)과 비중을 재점검하세요.</div>
-      </li>
-      <li>
-        <div class="todo-num">2</div>
-        <div><strong>NVDA 추가 매수 여부 판단:</strong> Rubin 플랫폼 양산 소식은 긍정적이지만 주간 -8% 조정 중. $185~190 구간에서 분할 매수 기회 탐색.</div>
-      </li>
-      <li>
-        <div class="todo-num">3</div>
-        <div><strong>한미반도체·이오테크닉스 점검:</strong> KOSPI 반등 속에서도 코스닥은 상대적 약세. 한국 반도체 장비주 뉴스와 수주 현황 확인.</div>
-      </li>
-      <li>
-        <div class="todo-num">4</div>
-        <div><strong>UNH 수익 실현 검토:</strong> 연초 대비 +28% 상승, 52주 고가 근방. 7월 16일 실적 발표 전 일부 차익 실현 여부 판단.</div>
-      </li>
-      <li>
-        <div class="todo-num">5</div>
-        <div><strong>Alphabet(GOOG) 다우 편입 주목:</strong> 오늘부터 다우지수에 Alphabet 편입. 패시브 자금 유입 기대로 단기 모멘텀 있을 수 있음.</div>
-      </li>
-    </ul>
+  <div class="list-box" style="padding:0 16px">
+    <div class="list-item" style="display:flex;gap:10px;align-items:flex-start"><div style="width:22px;height:22px;border-radius:50%;background:#edf4fd;color:#154c8c;font-size:11px;font-weight:800;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:1px">1</div><p style="font-size:13px;color:var(--text2)">삼성전자(-5.49%) 급락 원인 모니터링 — HBM4 수율, MU 여파 체크 후 추가 매수/보유 결정</p></div>
+    <div class="list-item" style="display:flex;gap:10px;align-items:flex-start"><div style="width:22px;height:22px;border-radius:50%;background:#edf4fd;color:#154c8c;font-size:11px;font-weight:800;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:1px">2</div><p style="font-size:13px;color:var(--text2)">LG에너지솔루션(+15.21%) 오늘 차익실현 매물 소화 여부 확인 — 지속 상승 시 손실 만회 기회</p></div>
+    <div class="list-item" style="display:flex;gap:10px;align-items:flex-start"><div style="width:22px;height:22px;border-radius:50%;background:#edf4fd;color:#154c8c;font-size:11px;font-weight:800;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:1px">3</div><p style="font-size:13px;color:var(--text2)">MU 급락(-6.69%) — CEO 인사이더 매도 규모 확인, INTC·NVDA 반도체 섹터 영향 점검</p></div>
+    <div class="list-item" style="display:flex;gap:10px;align-items:flex-start"><div style="width:22px;height:22px;border-radius:50%;background:#edf4fd;color:#154c8c;font-size:11px;font-weight:800;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:1px">4</div><p style="font-size:13px;color:var(--text2)">RGTI, 자이언트스텝, 디앤씨미디어 대손실 종목 — 오늘 반등을 손실 회수 기회로 활용 또는 손절 결단</p></div>
+    <div class="list-item" style="display:flex;gap:10px;align-items:flex-start"><div style="width:22px;height:22px;border-radius:50%;background:#edf4fd;color:#154c8c;font-size:11px;font-weight:800;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:1px">5</div><p style="font-size:13px;color:var(--text2)">내일(6/30) 소비자신뢰지수, JOLTS, Nike 실적 발표 — 시장 방향성 결정 지표이므로 장 전 확인</p></div>
   </div>
 </div>
 
-<!-- SECTION: 내 종목 전략 -->
 <div class="section" id="strategy">
-  <div class="sec-title">⭐ 내 종목 전략 — 핵심 3가지</div>
-  <div class="card">
-    <div class="strat-list">
-      <div class="strat-item">
-        <div class="strat-dot" style="background:var(--red)"></div>
-        <div><strong>AI 매도 후 선별적 재진입 시점 탐색:</strong> 공포 25 구간에서 묻지마 매도보다 핵심 AI 인프라(NVDA, IREN, IONQ)의 장기 테마는 유효. 반등 초기 신호(VIX 하락, 나스닥 200일선 회복)를 기다린 후 비중 조절.</div>
-      </div>
-      <div class="strat-item">
-        <div class="strat-dot" style="background:var(--amber)"></div>
-        <div><strong>수익 중인 방어주 유지:</strong> AAPL(+3.14%), AMZN(+2.50%), UNH은 시장 혼조 속에서도 상승. 이들은 현 포지션 유지하되 AAPL iPhone 가격 인상 이후 소비자 반응 모니터링.</div>
-      </div>
-      <div class="strat-item">
-        <div class="strat-dot" style="background:var(--green)"></div>
-        <div><strong>한국 ETF 분할 매수 지속:</strong> KODEX/TIGER 나스닥100은 원·달러 환율(1,534원) 및 나스닥 조정을 함께 받음. 공포 구간이 오히려 장기 매수 기회. 월 정액 적립식으로 유지.</div>
-      </div>
-    </div>
+  <div class="sec-title">⭐ 내 종목 전략 요점</div>
+  <div class="list-box" style="padding:0 16px">
+    <div class="list-item" style="padding:12px 0;font-size:13px;color:var(--text2)"><strong style="color:var(--text)">🟢 수익 중 — 보유 유지:</strong> AAPL(+210%), 삼성전자(+124%), 현대로템(+729%), TSLA(+88%), UNH(+64%) 등 대폭 수익 종목은 추세 확인하며 분할 차익실현 고려. 현대로템은 일부(50%) 차익실현 적극 권고.</div>
+    <div class="list-item" style="padding:12px 0;font-size:13px;color:var(--text2)"><strong style="color:var(--text)">🔴 대손실 — 손절 검토:</strong> RGTI(-57%), 자이언트스텝(-97%), 디앤씨미디어(-85%) 오늘 반등 시 손절 또는 비중 축소. 이 세 종목이 포트폴리오 전체 손실 대부분을 차지.</div>
+    <div class="list-item" style="padding:12px 0;font-size:13px;color:var(--text2)"><strong style="color:var(--text)">🟡 소손실 — 분할매수 검토:</strong> PLTR(-26%), AMZN(-12%), 현대차(-32%), NAVER(-33%) 등 좋은 기업이지만 하락 중인 종목은 F&amp;G 25 공포 구간에서 분할 매수 기회 탐색.</div>
   </div>
 </div>
 
-<!-- SECTION: 주목신호 -->
-<div class="section" id="signal">
+<div class="section" id="signals">
   <div class="sec-title">🚨 주목할 신호</div>
-  <div class="signal-grid">
-    <div class="signal-card" style="background:var(--red-bg);border:1px solid var(--red-bd)">
-      <div class="sig-title" style="color:var(--red)">⚠️ 위험 — OpenAI IPO 연기</div>
-      OpenAI가 IPO를 2027년으로 미룰 가능성. AI 수익화 타임라인 불확실성이 커져 ORCL, NVDA 등 AI 수혜주에 단기 부담.
-    </div>
-    <div class="signal-card" style="background:var(--red-bg);border:1px solid var(--red-bd)">
-      <div class="sig-title" style="color:var(--red)">⚠️ 위험 — 레버리지 ETF 변동성</div>
-      한국 단일종목 2X 레버리지 ETF 출시 이후 시장 변동성 급증. 추가 규제 가능성과 투자자 강제 청산 리스크 주의.
-    </div>
-    <div class="signal-card" style="background:var(--green-bg);border:1px solid var(--green-bd)">
-      <div class="sig-title" style="color:var(--green)">✅ 기회 — NVDA Rubin 플랫폼 양산</div>
-      NVIDIA Vera Rubin 플랫폼 6개 신제품 동시 양산 개시. AWS, Google Cloud 등 주요 클라우드 사 배포 예정. 장기 NVDA 보유자에게 긍정적.
-    </div>
-    <div class="signal-card" style="background:var(--amber-bg);border:1px solid var(--amber-bd)">
-      <div class="sig-title" style="color:var(--amber)">👀 주목 — SK하이닉스 나스닥 ADR</div>
-      SK하이닉스가 45.5조원 규모 나스닥 ADR 추진. 성사 시 포트폴리오 내 한국 반도체 비중 재평가 필요. 한미반도체 수혜 가능성도 점검.
-    </div>
+  <div class="list-box" style="padding:0 16px">
+    <div class="list-item" style="display:flex;gap:10px;font-size:13px;color:var(--text2)"><span style="font-size:16px;flex-shrink:0;margin-top:2px">🔴</span><p><strong>MU CEO 인사이더 매도 $36M</strong> — 최근 3개월 총 $92.5M 임원 매도. 반도체 업황 고점 가능성. NVDA, INTC 추가 하락 리스크 주의.</p></div>
+    <div class="list-item" style="display:flex;gap:10px;font-size:13px;color:var(--text2)"><span style="font-size:16px;flex-shrink:0;margin-top:2px">🟡</span><p><strong>KOSDAQ vs KOSPI 괴리 +8.77%p</strong> — 코스닥 +6.66% vs 코스피 -2.11% 극단적 괴리. 중소형 성장주 테마 순환매 신호. 자이언트스텝, 디앤씨미디어 단기 반등 가능.</p></div>
+    <div class="list-item" style="display:flex;gap:10px;font-size:13px;color:var(--text2)"><span style="font-size:16px;flex-shrink:0;margin-top:2px">🔴</span><p><strong>OpenAI IPO 연기 가능성</strong> — AI 과열 우려 확산으로 IONQ, RGTI, ARKK 등 AI·양자컴퓨팅 테마주에 추가 약세 압력.</p></div>
+    <div class="list-item" style="display:flex;gap:10px;font-size:13px;color:var(--text2)"><span style="font-size:16px;flex-shrink:0;margin-top:2px">🟢</span><p><strong>미-이란 긴장 완화 + 유가 하락</strong> — 지정학 리스크 완화로 에너지 비용 감소. 경기방어주(UNH) 강세 지속 기대.</p></div>
   </div>
 </div>
 
-<!-- SECTION: 나스닥 뉴스 -->
 <div class="section" id="us-news">
-  <div class="sec-title">🇺🇸 나스닥 주요 뉴스 5건</div>
-  <div class="card">
-    <div class="news-item">
-      <div class="news-num">NEWS 01</div>
-      <div class="news-title">AI 비용 우려로 글로벌 기술주 대매도 — 나스닥 5거래일 연속 하락</div>
-      <div class="news-body">하이퍼스케일러(AWS, Google, MS)들의 AI 데이터센터 투자 비용이 과도하다는 우려가 확산되며 나스닥이 5거래일 연속 하락했습니다. 특히 NVDA(-8% 주간), ORCL(-5%), 브로드컴(-3.7%) 등 AI 수혜주가 집중 타격을 받았습니다. 포트폴리오 내 AI 비중이 높은 상황에서 단기 손실 구간 진입 가능성에 유의하세요.</div>
-      <div><span class="tag t-red">🔴 하락재료</span></div>
+  <div class="sec-title">🇺🇸 나스닥 주요 뉴스</div>
+  <div class="list-box">
+    <div class="list-item">
+      <div class="news-num">📰 뉴스 1</div>
+      <div class="news-title">마이크론(MU) 사상 최대 실적에도 6.7% 급락 — CEO 인사이더 매도 $36M 충격</div>
+      <div class="news-body">FY26 Q3 사상 최대 매출·이익 발표에도 CEO Mehrotra의 $36M 주식 매도와 임원 총 $92.5M 인사이더 청산이 악재. AI 메모리 수요 견조하지만 '완벽하게 반영된 주가'에 기관 차익실현 집중. 포트폴리오 MU 보유자는 인사이더 매도 흐름 추적 필요.</div>
+      <div><span class="tag t-red">하락재료</span> <span class="tag t-gray">반도체·MU</span></div>
     </div>
-    <div class="news-item">
-      <div class="news-num">NEWS 02</div>
-      <div class="news-title">NVIDIA Vera Rubin 플랫폼 발표 — 6개 신규 칩 동시 양산</div>
-      <div class="news-body">NVIDIA가 차세대 AI 플랫폼 'Vera Rubin'을 공개하며 6개 신규 칩의 동시 양산을 발표했습니다. AWS, Google Cloud, Microsoft Azure, OCI 등이 2026년 내 배포 예정입니다. NVDA 주가는 단기 조정 중이지만, 이 뉴스는 장기적으로 NVDA 보유자에게 매우 긍정적인 카탈리스트입니다.</div>
-      <div><span class="tag t-green">🟢 상승재료</span></div>
+    <div class="list-item">
+      <div class="news-num">📰 뉴스 2</div>
+      <div class="news-title">OpenAI IPO 연기 가능성 보도 — AI 관련주 전반 매도세 촉발</div>
+      <div class="news-body">NYT에 따르면 OpenAI가 SpaceX 상장 실망감을 이유로 IPO를 내년으로 미룰 수 있다는 보도. AI 투자 거품 우려 재점화로 IONQ(-2.47%), NVDA(-1.64%), ARKK 등 포트폴리오 내 AI 테마 종목 전반 약세. 단기 AI 테마 변동성 확대 예상.</div>
+      <div><span class="tag t-red">하락재료</span> <span class="tag t-gray">AI테마</span></div>
     </div>
-    <div class="news-item">
-      <div class="news-num">NEWS 03</div>
-      <div class="news-title">마이크론 역대급 실적 — AI 메모리 수요 확인</div>
-      <div class="news-body">마이크론(MU)이 AI 메모리 수요를 기반으로 분기 역대 최대 실적을 기록했습니다. 실적 발표 직후 MU가 급등하고 SK하이닉스를 포함한 메모리 관련주 전반이 반등했습니다. 포트폴리오 내 MU 보유자에게 긍정적이며, 한국 반도체 장비주(한미반도체, 이오테크닉스)에도 간접 호재입니다.</div>
-      <div><span class="tag t-green">🟢 상승재료</span></div>
+    <div class="list-item">
+      <div class="news-num">📰 뉴스 3</div>
+      <div class="news-title">미국-이란 '추가 확전 중단' 합의 — 유가 1% 하락, 시장 일부 안도</div>
+      <div class="news-body">미국과 이란이 호르무즈 해협 관련 추가 군사 행동을 중단하는 비공식 합의에 달했다는 보도. WTI 유가 1% 이상 하락으로 인플레 압력 완화 기대. UNH(+2.97%), AAPL(+3.14%) 등 방어주·빅테크 일부 강세 연결.</div>
+      <div><span class="tag t-green">상승재료</span> <span class="tag t-gray">지정학</span></div>
     </div>
-    <div class="news-item">
-      <div class="news-num">NEWS 04</div>
-      <div class="news-title">OpenAI IPO 2027년으로 연기 가능성 — AI 수익화 타임라인 불확실</div>
-      <div class="news-body">뉴욕타임스 보도에 따르면 OpenAI가 글로벌 시장 변동성을 이유로 IPO를 2027년으로 미루는 방향을 검토 중입니다. 이 소식에 오라클(ORCL)이 추가 하락했고 AI 인프라 수혜주 전반에 부담이 됐습니다. 포트폴리오 내 ORCL 비중을 재점검할 필요가 있습니다.</div>
-      <div><span class="tag t-red">🔴 하락재료</span></div>
+    <div class="list-item">
+      <div class="news-num">📰 뉴스 4</div>
+      <div class="news-title">트럼프 vs 연준의장 Warsh 금리 갈등 격화 — 연준 독립성 우려</div>
+      <div class="news-body">트럼프 대통령이 자신이 임명한 Kevin Warsh 연준의장에게 공개적으로 금리 인하를 요구. Warsh는 인플레 잡기 전 인하 불가 입장 고수. 연준 독립성 훼손 우려로 채권시장 불안, 기술주 고밸류 종목 중기 리스크 확대.</div>
+      <div><span class="tag t-amber">혼조</span> <span class="tag t-gray">연준·금리</span></div>
     </div>
-    <div class="news-item">
-      <div class="news-num">NEWS 05</div>
-      <div class="news-title">Alphabet, 오늘 다우존스 산업지수 편입 — Verizon 교체</div>
-      <div class="news-body">6월 29일(오늘)부터 Verizon이 다우지수에서 제외되고 Alphabet(GOOG)이 편입됩니다. 다우 편입 시 패시브 ETF 자금의 자동 매수가 발생해 단기 수급에 긍정적입니다. 직접 보유하지는 않지만 KODEX/TIGER 나스닥100 ETF를 통해 간접 수혜 가능.</div>
-      <div><span class="tag t-blue">🔵 중립 / 기회</span></div>
+    <div class="list-item">
+      <div class="news-num">📰 뉴스 5</div>
+      <div class="news-title">애플 +3.14%, 아마존 +2.50% 강세 — 빅테크 이분화 뚜렷</div>
+      <div class="news-body">AI 섹터 약세 속에서도 AAPL과 AMZN이 강한 반등. 애플은 AI 아이폰 하드웨어 차별화, 아마존은 AWS 클라우드 수익성 재평가로 기관 매수 집중. 포트폴리오 이 두 종목 합산 평가익이 오늘 크게 개선됨.</div>
+      <div><span class="tag t-green">상승재료</span> <span class="tag t-gray">빅테크</span></div>
     </div>
   </div>
 </div>
 
-<!-- SECTION: 코스닥 뉴스 -->
 <div class="section" id="kr-news">
-  <div class="sec-title">🇰🇷 코스닥/코스피 주요 뉴스 5건</div>
-  <div class="card">
-    <div class="news-item">
-      <div class="news-num">NEWS 01</div>
-      <div class="news-title">6월 23일 '검은 화요일' — KOSPI 서킷브레이커 발동, -10% 폭락</div>
-      <div class="news-body">MSCI 한국 선진국 제외 결정 + AI 거품 우려 + 레버리지 ETF 강제 청산이 동시에 터지며 KOSPI가 장중 서킷브레이커를 발동했습니다. 삼성전자·SK하이닉스가 -12% 이상 급락했습니다. 포트폴리오 내 한국 반도체 ETF와 한미반도체가 단기 큰 충격을 받았습니다.</div>
-      <div><span class="tag t-red">🔴 하락재료</span></div>
+  <div class="sec-title">🇰🇷 코스닥/코스피 주요 뉴스</div>
+  <div class="list-box">
+    <div class="list-item">
+      <div class="news-num">📰 뉴스 1</div>
+      <div class="news-title">LG에너지솔루션 +15.21% 급등 — 캐나다 합작법인 100% 자회사 전환</div>
+      <div class="news-body">스텔란티스와 설립한 캐나다 넥스트스타 에너지를 LG엔솔 100% 자회사로 전환 공시. ESS(에너지저장장치) 출하량이 2026년 EV를 추월하는 구조 전환 가속화. 포트폴리오 1주 보유 중 -16.7% 손실 → 오늘 반등으로 대폭 개선.</div>
+      <div><span class="tag t-green">상승재료</span> <span class="tag t-gray">배터리·ESS</span></div>
     </div>
-    <div class="news-item">
-      <div class="news-num">NEWS 02</div>
-      <div class="news-title">KOSPI 5.42% 반등 — 마이크론 실적 + SK하이닉스 ADR 호재</div>
-      <div class="news-body">6월 25~26일 마이크론 호실적과 SK하이닉스의 45.5조원 나스닥 ADR 계획 발표가 맞물려 KOSPI가 빠르게 반등했습니다. 장중 9,000선을 재탈환하기도 했습니다. 포트폴리오 내 HD한국조선해양, 삼성바이오로직스 등 대형주도 함께 반등했습니다.</div>
-      <div><span class="tag t-green">🟢 상승재료</span></div>
+    <div class="list-item">
+      <div class="news-num">📰 뉴스 2</div>
+      <div class="news-title">삼성전자 -5.49% 급락 — MU 급락 여파 + HBM4 수율 우려</div>
+      <div class="news-body">미국 마이크론 급락에 따른 글로벌 반도체 투자심리 악화와 HBM4 8단 수율 이슈 우려 복합 작용. 13주 보유 중으로 +124% 수익이지만 오늘 대폭 하락. 32만원대 지지 여부가 단기 핵심 포인트.</div>
+      <div><span class="tag t-red">하락재료</span> <span class="tag t-gray">반도체</span></div>
     </div>
-    <div class="news-item">
-      <div class="news-num">NEWS 03</div>
-      <div class="news-title">삼성바이오로직스 대규모 신규 수주 — 목표주가 하향에도 매수 유지</div>
-      <div class="news-body">삼성바이오로직스가 대규모 신규 CMO 수주 소식을 전했습니다. 한국투자증권은 목표주가를 223만→195만원으로 낮추면서도 매수 의견을 유지했습니다. 오늘 주가는 +5% 상승 중입니다. 포트폴리오에 편입 중이라면 긍정적 모멘텀으로 해석할 수 있습니다.</div>
-      <div><span class="tag t-green">🟢 상승재료</span></div>
+    <div class="list-item">
+      <div class="news-num">📰 뉴스 3</div>
+      <div class="news-title">KOSDAQ +6.66% 급등 vs KOSPI -2.11% 하락 — 이례적 괴리</div>
+      <div class="news-body">코스닥이 장중 6.66% 급등하며 코스피와 이례적 괴리를 보이고 있습니다. AI·방산·콘텐츠 중소형 성장주에 순환매 집중. 자이언트스텝(+12.59%), 디앤씨미디어(+6.10%), 현대로템(+5.01%) 등 보유 종목 동반 수혜.</div>
+      <div><span class="tag t-green">상승재료</span> <span class="tag t-gray">코스닥</span></div>
     </div>
-    <div class="news-item">
-      <div class="news-num">NEWS 04</div>
-      <div class="news-title">MSCI 한국 선진국 편입 또 불발 — 외국인 패시브 자금 유출 우려</div>
-      <div class="news-body">MSCI가 올해도 한국을 선진국 지수에 편입하지 않기로 결정했습니다. 외국인 투자자들이 편입을 기대하고 사전 매수한 포지션을 청산하며 낙폭이 커졌습니다. 코스닥보다 코스피 대형주에 더 직접적인 영향이 있으며, HD한국조선해양 등 지수 내 비중이 높은 종목이 충격을 받았습니다.</div>
-      <div><span class="tag t-red">🔴 하락재료</span></div>
+    <div class="list-item">
+      <div class="news-num">📰 뉴스 4</div>
+      <div class="news-title">현대로템 +5.01% — K2 전차 폴란드 2차 양산 협상 임박</div>
+      <div class="news-body">폴란드와의 K2 전차 2차 양산 1,000대 계약 최종 협상 단계 진입 소식으로 5% 상승. 방산 수출 호황 지속. 포트폴리오 내 매입가(21,500원) 대비 +729% 수익 중이며 오늘도 추가 상승. 일부 차익실현 적극 고려.</div>
+      <div><span class="tag t-green">상승재료</span> <span class="tag t-gray">방산</span></div>
     </div>
-    <div class="news-item">
-      <div class="news-num">NEWS 05</div>
-      <div class="news-title">코스닥, 코스피 대비 상대적 약세 — 변동성 장기화 우려</div>
-      <div class="news-body">코스피가 반등하는 동안 코스닥은 상대적으로 저조했습니다. 단일종목 2배 레버리지 ETF 등장 이후 변동성 지수가 이례적으로 높은 수준을 유지하고 있습니다. 포트폴리오 내 에스에프에이, 이오테크닉스 등 코스닥 중소형주는 변동성 관리에 주의가 필요합니다.</div>
-      <div><span class="tag t-amber">🟡 혼조</span></div>
-    </div>
-  </div>
-</div>
-
-<!-- SECTION: 이슈 종목 -->
-<div class="section" id="hot">
-  <div class="sec-title">🔥 오늘의 이슈 종목 5가지</div>
-  <div class="card">
-    <div class="issue-item">
-      <div class="issue-rank">1</div>
-      <div class="issue-body">
-        <div class="issue-name">SK하이닉스 <span style="font-weight:400;color:var(--text3);font-size:12px">000660 · KSE</span></div>
-        <div class="issue-desc">나스닥 ADR 상장을 통한 45.5조원 대규모 자금 조달 계획을 발표했습니다. AI 고대역폭메모리(HBM) 생산 설비 확장이 목적이며, SK하이닉스는 마이크론 호실적 발표 이후 가장 직접적인 수혜주로 부상하고 있습니다. KOSPI 반등을 이끈 주인공이었습니다.</div>
-        <div class="issue-strategy">→ 단기: 반등 추세 유효. 직접 편입 검토 또는 한미반도체 간접 수혜 주목.</div>
-      </div>
-    </div>
-    <div class="issue-item">
-      <div class="issue-rank">2</div>
-      <div class="issue-body">
-        <div class="issue-name">Alphabet (GOOG) <span style="font-weight:400;color:var(--text3);font-size:12px">NASDAQ</span></div>
-        <div class="issue-desc">오늘(6월 29일)부터 다우존스 산업지수에 편입됩니다. 지수 편입 이벤트 특성상 패시브 ETF들이 의무적으로 GOOG를 매수하게 됩니다. AI 검색·클라우드 경쟁력과 함께 지수 편입 모멘텀까지 더해진 상황입니다.</div>
-        <div class="issue-strategy">→ 단기: 지수 편입 수급 효과로 단기 강세 가능. KODEX/TIGER 나스닥100 ETF 통해 간접 수혜.</div>
-      </div>
-    </div>
-    <div class="issue-item">
-      <div class="issue-rank">3</div>
-      <div class="issue-body">
-        <div class="issue-name">삼성바이오로직스 <span style="font-weight:400;color:var(--text3);font-size:12px">207940 · KOSPI</span></div>
-        <div class="issue-desc">대규모 신규 CMO(위탁생산) 수주 발표로 오늘 +5% 상승 중입니다. 시장 전반의 변동성 속에서도 바이오 섹터가 방어적인 모습을 보이고 있으며, 한국투자증권의 매수 의견 유지가 투자 심리를 지지했습니다.</div>
-        <div class="issue-strategy">→ 단기: 수주 모멘텀 유효. 목표주가 195만원까지 여유 있음. 보유 유지.</div>
-      </div>
-    </div>
-    <div class="issue-item">
-      <div class="issue-rank">4</div>
-      <div class="issue-body">
-        <div class="issue-name">Apple (AAPL) <span style="font-weight:400;color:var(--text3);font-size:12px">NASDAQ</span></div>
-        <div class="issue-desc">iPhone 가격 인상 발표 후 시장의 우려와 달리 주가가 오늘 +3.14% 상승하며 견조한 흐름을 이어가고 있습니다. 고가 소비자 브랜드 파워와 서비스 매출 성장에 대한 신뢰가 여전히 유효합니다. AI 기능 탑재 신형 iPhone 출시 기대도 긍정적입니다.</div>
-        <div class="issue-strategy">→ 단기: 상승 모멘텀 유지. 가격 인상 이후 소비자 반응 모니터링 지속.</div>
-      </div>
-    </div>
-    <div class="issue-item">
-      <div class="issue-rank">5</div>
-      <div class="issue-body">
-        <div class="issue-name">Micron Technology (MU) <span style="font-weight:400;color:var(--text3);font-size:12px">NASDAQ</span></div>
-        <div class="issue-desc">분기 역대 최대 실적을 기록하며 AI 메모리 수요가 실제로 폭발적임을 확인시켰습니다. 실적 발표 당일 주가가 급등했고, 이후 차익 실현에 다소 조정을 받았지만 전반적인 상승 추세는 유효합니다. 반도체 사이클 고점 논란에도 불구하고 HBM 수요는 구조적 성장 중입니다.</div>
-        <div class="issue-strategy">→ 단기: 조정 후 재진입 고려. 한미반도체·이오테크닉스 수혜 간접 확인.</div>
-      </div>
+    <div class="list-item">
+      <div class="news-num">📰 뉴스 5</div>
+      <div class="news-title">자이언트스텝 +12.59% 급등 — AI 콘텐츠 테마, 코스닥 중소형주 강세</div>
+      <div class="news-body">AI 콘텐츠 제작 수주 기대감 + 코스닥 전반 급등에 동반 상승. 매입가(41,400원) 대비 현재(1,288원)로 -96.9%의 심각한 손실 상태이지만 오늘 급등은 손실 일부 회수 기회. 급등 지속성 여부 추가 확인 필요.</div>
+      <div><span class="tag t-amber">혼조</span> <span class="tag t-gray">AI콘텐츠</span></div>
     </div>
   </div>
 </div>
 
-<!-- SECTION: 내 종목 분석 -->
+<div class="section" id="issue">
+  <div class="sec-title">🔥 오늘의 이슈 종목 TOP 5</div>
+  <div class="list-box" style="padding:0 16px">
+    <div class="list-item">
+      <div style="display:flex;gap:12px;align-items:flex-start">
+        <div style="font-size:22px;font-weight:900;color:var(--text3);line-height:1;flex-shrink:0">1</div>
+        <div>
+          <div style="font-size:14px;font-weight:800">LG에너지솔루션 <span style="font-size:11px;color:var(--text3);font-weight:600">373220</span> <span class="tag t-green" style="margin-left:4px">+15.21%</span></div>
+          <div style="font-size:12px;color:var(--text2);margin:6px 0;line-height:1.65">캐나다 넥스트스타 에너지 100% 자회사 전환. ESS 출하량 EV 추월 전망. 오늘 장중 최대 이슈주.</div>
+          <div style="font-size:12px;font-weight:700;color:#154c8c">📌 전략: 오늘 차익실현 매물 소화 확인 후 추가 상승 시 손실 만회 기회. 지속 상승이면 보유 유지.</div>
+        </div>
+      </div>
+    </div>
+    <div class="list-item">
+      <div style="display:flex;gap:12px;align-items:flex-start">
+        <div style="font-size:22px;font-weight:900;color:var(--text3);line-height:1;flex-shrink:0">2</div>
+        <div>
+          <div style="font-size:14px;font-weight:800">자이언트스텝 <span style="font-size:11px;color:var(--text3);font-weight:600">289220</span> <span class="tag t-green" style="margin-left:4px">+12.59%</span></div>
+          <div style="font-size:12px;color:var(--text2);margin:6px 0;line-height:1.65">AI 콘텐츠 테마 + 코스닥 급등 동반 수혜. 심각한 손실(-97%) 포지션에서 오늘 급등 기회.</div>
+          <div style="font-size:12px;font-weight:700;color:#154c8c">📌 전략: 반등 지속성 미지수이므로 일부 손실 회수 후 정리 고려. 장기 보유는 리스크 큼.</div>
+        </div>
+      </div>
+    </div>
+    <div class="list-item">
+      <div style="display:flex;gap:12px;align-items:flex-start">
+        <div style="font-size:22px;font-weight:900;color:var(--text3);line-height:1;flex-shrink:0">3</div>
+        <div>
+          <div style="font-size:14px;font-weight:800">팔란티어 <span style="font-size:11px;color:var(--text3);font-weight:600">PLTR</span> <span class="tag t-green" style="margin-left:4px">+5.28%</span></div>
+          <div style="font-size:12px;color:var(--text2);margin:6px 0;line-height:1.65">정부 AI 데이터 분석 계약 확대 소식. 방산+AI 결합 차별화로 AI 약세장 속 강세.</div>
+          <div style="font-size:12px;font-weight:700;color:#154c8c">📌 전략: -26% 손실 중. 정부 계약 모멘텀 지속되면 보유 유지. 손절가를 상향 조정.</div>
+        </div>
+      </div>
+    </div>
+    <div class="list-item">
+      <div style="display:flex;gap:12px;align-items:flex-start">
+        <div style="font-size:22px;font-weight:900;color:var(--text3);line-height:1;flex-shrink:0">4</div>
+        <div>
+          <div style="font-size:14px;font-weight:800">현대로템 <span style="font-size:11px;color:var(--text3);font-weight:600">064350</span> <span class="tag t-green" style="margin-left:4px">+5.01%</span></div>
+          <div style="font-size:12px;color:var(--text2);margin:6px 0;line-height:1.65">K2 전차 폴란드 2차 양산 협상 임박. 방산 수출 모멘텀 지속. 매입가 대비 +729% 수익.</div>
+          <div style="font-size:12px;font-weight:700;color:#154c8c">📌 전략: 충분한 수익. 일부(50%) 차익실현 적극 권고. 나머지는 방산 테마 지속 시 보유.</div>
+        </div>
+      </div>
+    </div>
+    <div class="list-item">
+      <div style="display:flex;gap:12px;align-items:flex-start">
+        <div style="font-size:22px;font-weight:900;color:var(--text3);line-height:1;flex-shrink:0">5</div>
+        <div>
+          <div style="font-size:14px;font-weight:800">마이크론 <span style="font-size:11px;color:var(--text3);font-weight:600">MU</span> <span class="tag t-red" style="margin-left:4px">-6.69%</span></div>
+          <div style="font-size:12px;color:var(--text2);margin:6px 0;line-height:1.65">사상 최대 실적 후 CEO 인사이더 매도 $36M 공시로 급락. 반도체 섹터 전반 약세 촉발.</div>
+          <div style="font-size:12px;font-weight:700;color:#154c8c">📌 전략: +19% 수익 중. 인사이더 매도 지속 여부 확인 후 부분 차익실현 검토.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
 <div class="section" id="stocks">
   <div class="sec-title">📋 내 종목 전체 분석 (22종목)</div>
+  <div style="font-size:12px;color:var(--text3);margin-bottom:10px">💱 USD/KRW 1,544.08 · 미국주가 6/27(금) 종가 · 한국주가 6/29(월) 장중</div>
+  <div class="stocks-grid">
 
-  <!-- US STOCKS -->
-  <div class="card" style="margin-bottom:10px">
-    <div class="stock-section-title">🇺🇸 미국 주식 (13종목)</div>
-
-    <div class="stock-item">
-      <div>
-        <div class="stock-name">NVIDIA</div>
-        <div class="stock-ticker">NVDA · NASDAQ</div>
-        <div class="stock-strategy">주간 -8% 조정 중이나 Rubin 플랫폼 양산 발표는 장기 재료. $185~$190 분할 매수 구간 탐색. 보유 유지, 비중 확대는 반등 확인 후.</div>
-        <div class="stock-news">• NVIDIA Vera Rubin 플랫폼 6개 신칩 동시 양산 발표<br>• AI 비용 우려로 주간 -8%, 1년여 만에 최대 주간 하락<br>• AWS·GCP·Azure 2026년 내 Rubin 기반 인스턴스 배포 예정</div>
-      </div>
-      <div class="stock-price-block">
-        <div class="stock-price">$192.53</div>
-        <div class="stock-change down">▼ -1.64%</div>
+    <div class="sc">
+      <div class="sc-head"><div><div class="sc-name">테슬라</div><div class="sc-ticker">TSLA · NASDAQ</div></div><div><div class="sc-pr up">$379.71</div><div class="sc-chg up">▲ +1.22%</div></div></div>
+      <div><span class="pl pl-p">+88.4%</span> <span class="tag t-gray" style="font-size:10px">매입 ₩311,406 · 현재 ₩586,720 · 1주</span></div>
+      <div class="sc-strat">보유 유지. EV+자율주행 모멘텀 견조. 추가 상승 시 일부 차익실현 고려. 단기 변동성 있으나 장기 우상향 추세 유효.</div>
+      <div class="sc-news">
+        <div class="sn">📰 FSD 자율주행 캐나다·멕시코 신규 출시 — 해외 확장 본격화</div>
+        <div class="sn">📰 테슬라 에너지 기가팩 출하량 전년비 +200% — 에너지 사업 급성장</div>
+        <div class="sn">📰 전기차 세금 공제 재검토 이슈 — 보조금 리스크 단기 변동성 유발</div>
       </div>
     </div>
 
-    <div class="stock-item">
-      <div>
-        <div class="stock-name">Amazon</div>
-        <div class="stock-ticker">AMZN · NASDAQ</div>
-        <div class="stock-strategy">AI 서비스·클라우드(AWS) 수혜 속 상승 중. 시장 혼조에도 견조. 현 포지션 유지.</div>
-        <div class="stock-news">• AWS, NVIDIA Rubin 클라우드 초기 배포 파트너 선정<br>• AI 투자 대비 수익화 속도에서 경쟁사 대비 앞선 평가<br>• 기술주 하락장에서 상대적 방어력 확인</div>
-      </div>
-      <div class="stock-price-block">
-        <div class="stock-price">$232.69</div>
-        <div class="stock-change up">▲ +2.50%</div>
+    <div class="sc">
+      <div class="sc-head"><div><div class="sc-name">유나이티드헬스그룹</div><div class="sc-ticker">UNH · NYSE</div></div><div><div class="sc-pr up">$427.89</div><div class="sc-chg up">▲ +2.97%</div></div></div>
+      <div><span class="pl pl-p">+63.7%</span> <span class="tag t-gray" style="font-size:10px">매입 ₩403,771 · 현재 ₩661,021 · 2주</span></div>
+      <div class="sc-strat">경기방어주 특성으로 시장 하락 시 강세. 오늘 +2.97% 급등. 보유 유지 최적. 고령화 수혜 장기 보유주.</div>
+      <div class="sc-news">
+        <div class="sn">📰 Q2 메디케어 어드밴티지 가입자 수 예상 상회 — 견조한 수요</div>
+        <div class="sn">📰 미국 고령화 의료 지출 증가 추세 — UNH 장기 수혜 유지</div>
+        <div class="sn">📰 공매도 청산 움직임으로 단기 추가 상승 여지</div>
       </div>
     </div>
 
-    <div class="stock-item">
-      <div>
-        <div class="stock-name">Apple</div>
-        <div class="stock-ticker">AAPL · NASDAQ</div>
-        <div class="stock-strategy">iPhone 가격 인상에도 주가 +3.14% 상승. 소비자 브랜드 파워 재확인. 현 포지션 유지, 상승 시 일부 차익 실현 고려.</div>
-        <div class="stock-news">• iPhone 및 주요 제품 가격 인상 발표<br>• 가격 인상에도 시장 긍정 반응, 서비스 매출 성장 기대 지속<br>• AI 탑재 신형 iPhone 출시 기대감 유효</div>
-      </div>
-      <div class="stock-price-block">
-        <div class="stock-price">$283.78</div>
-        <div class="stock-change up">▲ +3.14%</div>
+    <div class="sc">
+      <div class="sc-head"><div><div class="sc-name">인텔</div><div class="sc-ticker">INTC · NASDAQ</div></div><div><div class="sc-pr dn">$128.32</div><div class="sc-chg dn">▼ -3.42%</div></div></div>
+      <div><span class="pl pl-p">+12.1%</span> <span class="tag t-gray" style="font-size:10px">매입 ₩176,716 · 현재 ₩198,134 · 5주</span></div>
+      <div class="sc-strat">MU 급락 여파로 -3.42% 하락. 12% 수익 중. 파운드리 경쟁력 회복 중이므로 보유 유지. 반도체 섹터 안정 시 반등 기대.</div>
+      <div class="sc-news">
+        <div class="sn">📰 인텔 18A 파운드리 공정 AWS 수주 확정 — 파운드리 경쟁력 회복</div>
+        <div class="sn">📰 MU 급락 여파로 동반 하락 — 반도체 섹터 약세</div>
+        <div class="sn">📰 AI PC Lunar Lake 출하 호조 — PC 수요 회복 수혜</div>
       </div>
     </div>
 
-    <div class="stock-item">
-      <div>
-        <div class="stock-name">Oracle</div>
-        <div class="stock-ticker">ORCL · NYSE</div>
-        <div class="stock-strategy">OpenAI IPO 연기로 클라우드 수혜 기대 약화. $140 지지선 주목. 손절 기준선 설정 후 비중 조절 검토.</div>
-        <div class="stock-news">• OpenAI IPO 2027년 연기 가능성 보도에 직격탄<br>• AI 클라우드 인프라 수혜 기대감 단기 약화<br>• 하락 속에도 장기 클라우드 계약 성장세는 유지</div>
-      </div>
-      <div class="stock-price-block">
-        <div class="stock-price">$149.00</div>
-        <div class="stock-change down">▼ 하락 중</div>
+    <div class="sc">
+      <div class="sc-head"><div><div class="sc-name">아이온큐</div><div class="sc-ticker">IONQ · NASDAQ</div></div><div><div class="sc-pr dn">$49.31</div><div class="sc-chg dn">▼ -2.47%</div></div></div>
+      <div><span class="pl pl-n">-10.4%</span> <span class="tag t-gray" style="font-size:10px">매입 ₩84,944 · 현재 ₩76,148 · 9주</span></div>
+      <div class="sc-strat">AI·양자컴 약세로 하락 중. 손절 고려하되 양자컴 장기 성장성 믿는다면 소량 보유. 추가 매수는 자제.</div>
+      <div class="sc-news">
+        <div class="sn">📰 미 국방부 양자 암호화 프로젝트 확대 계약 — 방산 AI 수혜</div>
+        <div class="sn">📰 OpenAI IPO 연기 가능성 → AI 테마주 전반 투자심리 위축</div>
+        <div class="sn">📰 52주 고가(84.64) 절반 수준 — 기술적 과매도 구간 접근</div>
       </div>
     </div>
 
-    <div class="stock-item">
-      <div>
-        <div class="stock-name">Intel</div>
-        <div class="stock-ticker">INTC · NASDAQ</div>
-        <div class="stock-strategy">Goldman Sachs 뉴트럴, 목표가 $150 설정. AI 서버 수요 반등 기대이나 AMD·NVDA 대비 상대적 약세. 소규모 비중 유지.</div>
-        <div class="stock-news">• Goldman Sachs, Neutral 개시 및 AI 서버 수요 기대 언급<br>• AI 서버 수요 회복 기대 속 반도체 주간 하락에 동반 조정<br>• Rubin 대비 경쟁력 우려 지속</div>
-      </div>
-      <div class="stock-price-block">
-        <div class="stock-price">$127.62</div>
-        <div class="stock-change down">▼ -3.42%</div>
+    <div class="sc">
+      <div class="sc-head"><div><div class="sc-name">마이크론</div><div class="sc-ticker">MU · NASDAQ</div></div><div><div class="sc-pr dn">$1,132.33</div><div class="sc-chg dn">▼ -6.69%</div></div></div>
+      <div><span class="pl pl-p">+19.0%</span> <span class="tag t-gray" style="font-size:10px">매입 ₩1,469,222 · 현재 ₩1,748,755 · 1주</span></div>
+      <div class="sc-strat">사상 최대 실적에도 CEO 인사이더 대규모 매도 악재. 19% 수익 중이므로 일부 차익실현 검토. AI 메모리 수요 지속 여부 확인 후 보유 결정.</div>
+      <div class="sc-news">
+        <div class="sn">📰 FY26 Q3 역대 최대 매출·이익 발표 — HBM3E 수요 폭증</div>
+        <div class="sn">📰 CEO Mehrotra 주식 $36M 매도 공시 — 인사이더 청산 신호</div>
+        <div class="sn">📰 한국 금감원 레버리지 반도체 ETF 경고 — 삼성·SK하이닉스 여파</div>
       </div>
     </div>
 
-    <div class="stock-item">
-      <div>
-        <div class="stock-name">IonQ</div>
-        <div class="stock-ticker">IONQ · NYSE</div>
-        <div class="stock-strategy">양자컴퓨팅 장기 테마주. 단기 변동성 크지만 연방 자금 지원 및 파트너십 확대 모멘텀 유효. 소규모 비중 유지.</div>
-        <div class="stock-news">• 연방 자금 지원 및 양자 파트너십 확대 소식으로 반등<br>• AI 매도 국면에서도 양자컴퓨팅 테마 독립적 흐름<br>• 단기 과매도 후 반등 시도 중</div>
-      </div>
-      <div class="stock-price-block">
-        <div class="stock-price">$49.31</div>
-        <div class="stock-change neutral">→ 보합</div>
+    <div class="sc">
+      <div class="sc-head"><div><div class="sc-name">엔비디아</div><div class="sc-ticker">NVDA · NASDAQ</div></div><div><div class="sc-pr dn">$192.53</div><div class="sc-chg dn">▼ -1.64%</div></div></div>
+      <div><span class="pl pl-p">+16.6%</span> <span class="tag t-gray" style="font-size:10px">매입 ₩255,023 · 현재 ₩297,334 · 3주</span></div>
+      <div class="sc-strat">AI 인프라 핵심주. 단기 조정에도 구조적 수요 견조. 보유 유지. $180 이하 하락 시 분할 추가 매수 고려.</div>
+      <div class="sc-news">
+        <div class="sn">📰 Blackwell GB200 서버 공급 부족 → 가격 프리미엄 유지 호재</div>
+        <div class="sn">📰 AI 비용 급증 우려로 기관 차익실현 → 단기 하락 압력</div>
+        <div class="sn">📰 중국 수출 제한 완화 협상 진행 중 — 실현 시 추가 상승 가능</div>
       </div>
     </div>
 
-    <div class="stock-item">
-      <div>
-        <div class="stock-name">Rigetti Computing</div>
-        <div class="stock-ticker">RGTI · NASDAQ</div>
-        <div class="stock-strategy">분석가 목표가 대비 26.5% 고평가 우려. $100M 자금 조달 완료로 유동성 확보. 소규모 투기적 포지션 유지.</div>
-        <div class="stock-news">• $100M 신규 자금 조달 딜 완료<br>• 연방 지원 및 양자 파트너십 재주목<br>• 한 달간 -20.7% 하락 후 반등 시도</div>
-      </div>
-      <div class="stock-price-block">
-        <div class="stock-price">$18.44</div>
-        <div class="stock-change down">▼ 조정 중</div>
+    <div class="sc">
+      <div class="sc-head"><div><div class="sc-name">오라클</div><div class="sc-ticker">ORCL · NYSE</div></div><div><div class="sc-pr dn">$148.53</div><div class="sc-chg dn">▼ -2.58%</div></div></div>
+      <div><span class="pl pl-p">+2.8%</span> <span class="tag t-gray" style="font-size:10px">매입 ₩223,255 · 현재 ₩229,406 · 3주</span></div>
+      <div class="sc-strat">AI 클라우드 비용 우려로 이번 주 최악의 주간 성과. 2.8% 수익으로 보유/손절 기로. 다음 분기 실적 개선 여부 확인 후 판단.</div>
+      <div class="sc-news">
+        <div class="sn">📰 FY26 연간 실적 AI 클라우드 최대 매출, 하지만 비용 폭증으로 이익률 압박</div>
+        <div class="sn">📰 래리 엘리슨 자산 $45B 감소 — 주가 하락 반영</div>
+        <div class="sn">📰 Jefferies 매수 등급 유지 — 장기 AI 클라우드 성장성 주목</div>
       </div>
     </div>
 
-    <div class="stock-item">
-      <div>
-        <div class="stock-name">IREN</div>
-        <div class="stock-ticker">IREN · NASDAQ</div>
-        <div class="stock-strategy">AI 데이터센터 전력·냉각 인프라 테마. AI 매도 국면에서 연동 하락하나 장기 데이터센터 수요 구조는 유효. 보유 유지.</div>
-        <div class="stock-news">• AI 데이터센터 전력 수요 구조적 성장 기대 지속<br>• AI 비용 우려 확산에 동반 조정<br>• 녹색 에너지 기반 AI 인프라 기업으로 장기 포지셔닝</div>
-      </div>
-      <div class="stock-price-block">
-        <div class="stock-price">$46.90</div>
-        <div class="stock-change down">▼ 조정</div>
+    <div class="sc">
+      <div class="sc-head"><div><div class="sc-name">팔란티어</div><div class="sc-ticker">PLTR · NASDAQ</div></div><div><div class="sc-pr up">$112.93</div><div class="sc-chg up">▲ +5.28%</div></div></div>
+      <div><span class="pl pl-n">-26.2%</span> <span class="tag t-gray" style="font-size:10px">매입 ₩236,267 · 현재 ₩174,374 · 1주</span></div>
+      <div class="sc-strat">오늘 +5.28% 반등. 방산+AI 차별화로 AI 약세장 속 강세. -26% 손실이지만 사업 모델 건재. 반등 추세 확인 후 보유 유지.</div>
+      <div class="sc-news">
+        <div class="sn">📰 미 국방부 AI 전투 플랫폼 수주 확대 — 정부 계약 매출 급증</div>
+        <div class="sn">📰 상업 부문 AI 고객 분기 100개 이상 순증 — 민간 시장 침투 가속</div>
+        <div class="sn">📰 AI 약세장 속 PLTR만 강세 — 방산 AI 차별화 매수 유입</div>
       </div>
     </div>
 
-    <div class="stock-item">
-      <div>
-        <div class="stock-name">Rocket Lab</div>
-        <div class="stock-ticker">RKLB · NASDAQ</div>
-        <div class="stock-strategy">우주 발사 상업화 선도 기업. Neutron 로켓 개발 진행 중. 우주 테마 장기 보유 전략 유지. 단기 변동성 주의.</div>
-        <div class="stock-news">• 상업 발사 성공 지속으로 수주 확대<br>• Neutron 대형 로켓 개발 일정 진행 중<br>• 우주 방위 계약 수주로 매출 성장 지속</div>
-      </div>
-      <div class="stock-price-block">
-        <div class="stock-price">$84.85</div>
-        <div class="stock-change neutral">→ 보합</div>
+    <div class="sc">
+      <div class="sc-head"><div><div class="sc-name">리게티컴퓨팅</div><div class="sc-ticker">RGTI · NASDAQ</div></div><div><div class="sc-pr dn">$18.36</div><div class="sc-chg dn">▼ -0.27%</div></div></div>
+      <div><span class="pl pl-n">-57.1%</span> <span class="tag t-gray" style="font-size:10px">매입 ₩66,010 · 현재 ₩28,349 · 2주</span></div>
+      <div class="sc-strat">-57% 대손실. 양자컴퓨팅 상용화까지 긴 시간 필요. 추가 하락 시 손절 결단 고려. 원금 회복 기간 매우 길 수 있음.</div>
+      <div class="sc-news">
+        <div class="sn">📰 Ankaa-3 84큐비트 양자 프로세서 성능 발표 — 기술 발전 중이나 상용화 멀어</div>
+        <div class="sn">📰 AI 테마 위축으로 양자컴 관련주 전반 약세</div>
+        <div class="sn">📰 52주 최고가(58.15) 대비 68% 하락 — 기술적 과매도 구간</div>
       </div>
     </div>
 
-    <div class="stock-item">
-      <div>
-        <div class="stock-name">UnitedHealth Group</div>
-        <div class="stock-ticker">UNH · NYSE</div>
-        <div class="stock-strategy">연초 대비 +28%, 52주 고가 근방. 7월 16일 실적 발표 전 일부 차익 실현 고려. 방어주 역할 유효.</div>
-        <div class="stock-news">• 연초 대비 +28% 상승, 52주 신고가 $417.58 달성<br>• AI 비용 절감 이니셔티브 $15억 달러 추진 발표<br>• 버크셔 헤서웨이 등 대형 기관 일부 차익 실현 포착</div>
-      </div>
-      <div class="stock-price-block">
-        <div class="stock-price">$427.89</div>
-        <div class="stock-change up">▲ +28% YTD</div>
+    <div class="sc">
+      <div class="sc-head"><div><div class="sc-name">아이렌</div><div class="sc-ticker">IREN · NASDAQ</div></div><div><div class="sc-pr dn">$47.21</div><div class="sc-chg dn">▼ -1.11%</div></div></div>
+      <div><span class="pl pl-n">-12.5%</span> <span class="tag t-gray" style="font-size:10px">매입 ₩83,323 · 현재 ₩72,902 · 17주</span></div>
+      <div class="sc-strat">비트코인 마이닝+AI 데이터센터 이중 모델. BTC $60K 하회로 마이닝 수익성 하락. 17주 대규모 보유로 리스크 큼. 분할 손절 또는 비중 축소 검토.</div>
+      <div class="sc-news">
+        <div class="sn">📰 캐나다 AI 데이터센터 200MW 확대 계획 — 비트코인→AI 전환 가속</div>
+        <div class="sn">📰 BTC $60,000 하회 → 마이닝 수익성 하락, 주가 약세</div>
+        <div class="sn">📰 애널리스트 목표가 $77.75 — 현재 대비 64% 상승 여력 제시</div>
       </div>
     </div>
 
-    <div class="stock-item">
-      <div>
-        <div class="stock-name">GE Vernova</div>
-        <div class="stock-ticker">GEV · NYSE</div>
-        <div class="stock-strategy">AI 데이터센터 전력망 수요 수혜주. 단기 -3.71% 조정이나 장기 전력 인프라 테마는 강력. 보유 유지.</div>
-        <div class="stock-news">• AI 데이터센터 전력 수요 폭증에 따른 전력망 업그레이드 수혜<br>• 1분기 실적 호조, 전력 사업 수주 확대<br>• 단기 조정 속에도 애널리스트 목표가 상향 유지</div>
-      </div>
-      <div class="stock-price-block">
-        <div class="stock-price">$1,045</div>
-        <div class="stock-change down">▼ -3.71%</div>
+    <div class="sc">
+      <div class="sc-head"><div><div class="sc-name">아크혁신기업ETF</div><div class="sc-ticker">ARKK · NYSE</div></div><div><div class="sc-pr up">$78.13</div><div class="sc-chg up">▲ +2.08%</div></div></div>
+      <div><span class="pl pl-n">-1.8%</span> <span class="tag t-gray" style="font-size:10px">매입 ₩122,926 · 현재 ₩120,687 · 1주</span></div>
+      <div class="sc-strat">거의 손익 제로 수준. 오늘 반등으로 손익분기 회복 임박. 보유 유지 또는 성장주 개별 종목으로 교체 검토.</div>
+      <div class="sc-news">
+        <div class="sn">📰 TSLA·PLTR 강세로 오늘 ARKK +2.08% 반등 — 포트폴리오 회복</div>
+        <div class="sn">📰 Cathie Wood AI 혁신 장기 성장 전망 유지 — BTC $200K 전망 재강조</div>
+        <div class="sn">📰 52주 고가(92.65) 대비 15% 하락 — 기술주 약세 반영</div>
       </div>
     </div>
 
-    <div class="stock-item">
-      <div>
-        <div class="stock-name">CAVA Group</div>
-        <div class="stock-ticker">CAVA · NYSE</div>
-        <div class="stock-strategy">고성장 레스토랑 체인. 기술주 하락 속 소비재로 분산 효과. 연초 대비 +26% 상승. 현 포지션 유지.</div>
-        <div class="stock-news">• 매장 확장 및 동일점포 매출 성장 지속<br>• 기술주 약세 속 소비재 섹터 상대적 강세<br>• 기관 투자자 비중 꾸준히 증가</div>
-      </div>
-      <div class="stock-price-block">
-        <div class="stock-price">$83.82</div>
-        <div class="stock-change up">▲ +26% YTD</div>
+    <div class="sc">
+      <div class="sc-head"><div><div class="sc-name">아마존</div><div class="sc-ticker">AMZN · NASDAQ</div></div><div><div class="sc-pr up">$232.69</div><div class="sc-chg up">▲ +2.50%</div></div></div>
+      <div><span class="pl pl-n">-12.3%</span> <span class="tag t-gray" style="font-size:10px">매입 ₩409,686 · 현재 ₩359,388 · 1주</span></div>
+      <div class="sc-strat">오늘 +2.50% 강세. AWS 클라우드 수익성 견조. -12% 손실이지만 펀더멘털 건재. 반등 추세 유지 시 보유 유지 후 매입가 회복 기대.</div>
+      <div class="sc-news">
+        <div class="sn">📰 AWS AI 서비스 매출 전년비 +45% 성장 — 클라우드 AI 전환 선도</div>
+        <div class="sn">📰 광고 부문 $15B 분기 매출 돌파 — 수익원 다각화 성공</div>
+        <div class="sn">📰 드론 배송 신규 지역 5곳 추가 — 리테일 물류 혁신 지속</div>
       </div>
     </div>
 
-    <div class="stock-item">
-      <div>
-        <div class="stock-name">Micron Technology</div>
-        <div class="stock-ticker">MU · NASDAQ</div>
-        <div class="stock-strategy">역대급 실적으로 AI 메모리 수요 확인. 실적 후 차익 실현 조정은 매수 기회. 장기 HBM 수혜주로 핵심 보유.</div>
-        <div class="stock-news">• 분기 역대 최대 실적 발표, AI 메모리 수요 확인<br>• 강력한 가이던스에 SK하이닉스 등 동반 급등<br>• 실적 후 일부 차익 실현 조정은 정상 흐름</div>
-      </div>
-      <div class="stock-price-block">
-        <div class="stock-price">$1,134</div>
-        <div class="stock-change up">▲ 실적 후 강세</div>
+    <div class="sc">
+      <div class="sc-head"><div><div class="sc-name">애플</div><div class="sc-ticker">AAPL · NASDAQ</div></div><div><div class="sc-pr up">$283.78</div><div class="sc-chg up">▲ +3.14%</div></div></div>
+      <div><span class="pl pl-p">+209.9%</span> <span class="tag t-gray" style="font-size:10px">매입 ₩141,363 · 현재 ₩438,245 · 10주</span></div>
+      <div class="sc-strat">포트폴리오 최대 수익주. +210% 수익에 오늘도 +3.14% 추가 상승. 일부(2~3주) 차익실현 후 나머지 보유 유지 추천. AI 아이폰 모멘텀 강함.</div>
+      <div class="sc-news">
+        <div class="sn">📰 Apple Intelligence AI 기능 15개국 추가 출시 — iPhone 업그레이드 수요 촉진</div>
+        <div class="sn">📰 오늘 거래량 2.6억주 — 기관 대규모 매수 유입 확인</div>
+        <div class="sn">📰 Vision Pro 2 출시 루머 — AR/VR 신시장 기대감</div>
       </div>
     </div>
+
+    <div class="sc">
+      <div class="sc-head"><div><div class="sc-name">자이언트스텝</div><div class="sc-ticker">289220 · KOSDAQ</div></div><div><div class="sc-pr up">₩1,288</div><div class="sc-chg up">▲ +12.59%</div></div></div>
+      <div><span class="pl pl-n">-96.9%</span> <span class="tag t-gray" style="font-size:10px">매입 ₩41,400 · 현재 ₩1,288 · 4주</span></div>
+      <div class="sc-strat">심각한 손실(-97%). 오늘 급등을 손실 일부 회수 기회로 활용 또는 전량 손절 결단. 급등 후 재하락 가능성 높으므로 보유 연장은 위험.</div>
+      <div class="sc-news">
+        <div class="sn">📰 AI 생성형 콘텐츠 대형 엔터사 수주 협의 — 테마 부각</div>
+        <div class="sn">📰 코스닥 중소형 AI 테마 순환매 유입 — +12.59% 수급 개선</div>
+        <div class="sn">📰 52주 최고가(8,650원) 대비 85% 하락 — 반등 지속성 불확실</div>
+      </div>
+    </div>
+
+    <div class="sc">
+      <div class="sc-head"><div><div class="sc-name">LG에너지솔루션</div><div class="sc-ticker">373220 · KOSPI</div></div><div><div class="sc-pr up">₩382,000</div><div class="sc-chg up">▲ +15.21%</div></div></div>
+      <div><span class="pl pl-n">-16.7%</span> <span class="tag t-gray" style="font-size:10px">매입 ₩458,500 · 현재 ₩382,000 · 1주</span></div>
+      <div class="sc-strat">오늘 +15.21% 급등으로 손실 폭 대폭 축소. ESS 전략 강화 모멘텀 유효. 오늘 차익실현 매물 소화 확인 후 보유 유지로 매입가 회복 기대.</div>
+      <div class="sc-news">
+        <div class="sn">📰 캐나다 넥스트스타 에너지 100% 자회사 전환 — ESS 전략 가속화</div>
+        <div class="sn">📰 2026년 ESS 출하량 EV 추월 전망 — 배터리 사업 구조 전환</div>
+        <div class="sn">📰 46시리즈 원통형 배터리 BMW 납품 계약 확정 — 유럽 시장 확대</div>
+      </div>
+    </div>
+
+    <div class="sc">
+      <div class="sc-head"><div><div class="sc-name">KODEX 미국S&P500</div><div class="sc-ticker">379800 · KOSPI</div></div><div><div class="sc-pr up">₩25,795</div><div class="sc-chg up">▲ +1.52%</div></div></div>
+      <div><span class="pl pl-p">+14.1%</span> <span class="tag t-gray" style="font-size:10px">매입 ₩22,600 · 현재 ₩25,795 · 5주</span></div>
+      <div class="sc-strat">안정적 수익 중. S&P500 지수 추종으로 리스크 분산. 달러 강세(1,544원) 추가 환차익. 보유 유지 최적.</div>
+      <div class="sc-news">
+        <div class="sn">📰 S&P500 빅테크 혼조 속 상대적 안정 — 지수 ETF 방어적 수요 증가</div>
+        <div class="sn">📰 원달러 1,544원 상승 — 달러 자산 원화 환산 가치 상승</div>
+        <div class="sn">📰 7월 NFP·FOMC 결과가 S&P500 방향성 결정 — 주시 필요</div>
+      </div>
+    </div>
+
+    <div class="sc">
+      <div class="sc-head"><div><div class="sc-name">현대차</div><div class="sc-ticker">005380 · KOSPI</div></div><div><div class="sc-pr up">₩485,500</div><div class="sc-chg up">▲ +1.04%</div></div></div>
+      <div><span class="pl pl-n">-31.5%</span> <span class="tag t-gray" style="font-size:10px">매입 ₩709,000 · 현재 ₩485,500 · 1주</span></div>
+      <div class="sc-strat">-31.5% 손실 중. 트럼프 자동차 관세 25%와 EV 경쟁 심화가 중기 리스크. 현재 매입가 회복이 어려우면 손절 검토. 유가 하락은 간접 수혜.</div>
+      <div class="sc-news">
+        <div class="sn">📰 아이오닉9 미국 출시 임박 — 중대형 전기SUV 시장 공략 강화</div>
+        <div class="sn">📰 트럼프 자동차 관세 25% 유지 — 미국 수출 비용 부담 지속</div>
+        <div class="sn">📰 Q2 영업이익 예상치 소폭 하회 전망 — 관세·환율 영향</div>
+      </div>
+    </div>
+
+    <div class="sc">
+      <div class="sc-head"><div><div class="sc-name">삼성전자</div><div class="sc-ticker">005930 · KOSPI</div></div><div><div class="sc-pr dn">₩320,500</div><div class="sc-chg dn">▼ -5.49%</div></div></div>
+      <div><span class="pl pl-p">+124.1%</span> <span class="tag t-gray" style="font-size:10px">매입 ₩143,007 · 현재 ₩320,500 · 13주</span></div>
+      <div class="sc-strat">포트폴리오 핵심 보유. 오늘 -5.49% 급락했지만 +124% 수익 중. 32만원대 지지 확인 필요. 장기 보유 유지. HBM4 수율 개선 뉴스 추적.</div>
+      <div class="sc-news">
+        <div class="sn">📰 HBM4 8단 수율 개선 이슈 — 엔비디아 납품 일정 지연 우려</div>
+        <div class="sn">📰 마이크론 급락 여파로 동반 -5.49% 급락 — 반도체 섹터 약세</div>
+        <div class="sn">📰 파운드리 GAA 2nm 공정 하반기 양산 목표 — 중장기 경쟁력 유지</div>
+      </div>
+    </div>
+
+    <div class="sc">
+      <div class="sc-head"><div><div class="sc-name">한화에어로스페이스</div><div class="sc-ticker">012450 · KOSPI</div></div><div><div class="sc-pr dn">₩1,003,000</div><div class="sc-chg dn">▼ -0.79%</div></div></div>
+      <div><span class="pl pl-n">-29.4%</span> <span class="tag t-gray" style="font-size:10px">매입 ₩1,420,500 · 현재 ₩1,003,000 · 2주</span></div>
+      <div class="sc-strat">-29.4% 손실 중이지만 방산 섹터 장기 성장 테마 유효. 52주 최저가(760,000원) 대비 현재(1,003,000원)는 반등 구간. 방산 수출 계약 추적하면서 보유 유지.</div>
+      <div class="sc-news">
+        <div class="sn">📰 K9 자주포 루마니아 계약 체결 확정 — 유럽 방산 수출 연속</div>
+        <div class="sn">📰 미국 L3Harris 합작으로 미 육군 포병 계약 진입 시도</div>
+        <div class="sn">📰 방산 주 차익실현 매물로 소폭 약세 — KOSPI 하락 동반</div>
+      </div>
+    </div>
+
+    <div class="sc">
+      <div class="sc-head"><div><div class="sc-name">NAVER</div><div class="sc-ticker">035420 · KOSPI</div></div><div><div class="sc-pr up">₩201,500</div><div class="sc-chg up">▲ +2.60%</div></div></div>
+      <div><span class="pl pl-n">-33.3%</span> <span class="tag t-gray" style="font-size:10px">매입 ₩302,000 · 현재 ₩201,500 · 4주</span></div>
+      <div class="sc-strat">오늘 +2.60% 반등. AI 검색·클라우드 성장으로 장기 회복 기대. -33% 손실로 매입가 회복 멀지만 분할 평균단가 낮추는 전략 고려.</div>
+      <div class="sc-news">
+        <div class="sn">📰 하이퍼클로바X AI 서비스 기업 고객 500개사 돌파 — B2B AI 확대</div>
+        <div class="sn">📰 쇼핑 AI 추천 전환율 30% 개선 — 광고 매출 성장 기여</div>
+        <div class="sn">📰 라인야후 분리 후 일본 사업 수익성 개선 — 해외 모멘텀 재점화</div>
+      </div>
+    </div>
+
+    <div class="sc">
+      <div class="sc-head"><div><div class="sc-name">현대로템</div><div class="sc-ticker">064350 · KOSPI</div></div><div><div class="sc-pr up">₩178,300</div><div class="sc-chg up">▲ +5.01%</div></div></div>
+      <div><span class="pl pl-p">+729.3%</span> <span class="tag t-gray" style="font-size:10px">매입 ₩21,500 · 현재 ₩178,300 · 1주</span></div>
+      <div class="sc-strat">+729% 대박 종목. 오늘도 +5.01% 추가 상승. 방산 테마 최대 수혜주. 52주 최고가(282,000원) 대비 37% 하락 중이므로 일부(50%) 차익실현 적극 권고.</div>
+      <div class="sc-news">
+        <div class="sn">📰 K2 전차 폴란드 2차 양산 1,000대 최종 협상 단계 — 수주 임박</div>
+        <div class="sn">📰 수소 열차 첫 국내 도입 계약 — 친환경 교통 신시장 진출</div>
+        <div class="sn">📰 우크라이나 재건 수요 포함 추가 수주 기대 지속</div>
+      </div>
+    </div>
+
+    <div class="sc">
+      <div class="sc-head"><div><div class="sc-name">디앤씨미디어</div><div class="sc-ticker">263720 · KOSDAQ</div></div><div><div class="sc-pr up">₩7,130</div><div class="sc-chg up">▲ +6.10%</div></div></div>
+      <div><span class="pl pl-n">-84.8%</span> <span class="tag t-gray" style="font-size:10px">매입 ₩46,800 · 현재 ₩7,130 · 5주</span></div>
+      <div class="sc-strat">-84.8% 대손실. 오늘 코스닥 급등 동반 +6.10% 반등. 오늘 반등을 손실 일부 회수 기회로 활용하거나 전량 손절 결단 고려.</div>
+      <div class="sc-news">
+        <div class="sn">📰 웹툰 IP 드라마 넷플릭스 계약 협의 — 콘텐츠 IP 재평가 시도</div>
+        <div class="sn">📰 코스닥 전반 급등으로 중소형 콘텐츠주 동반 수혜</div>
+        <div class="sn">📰 52주 최고가(18,700원) 대비 62% 하락 — 구조적 하락 추세 전환 불확실</div>
+      </div>
+    </div>
+
   </div>
-
-  <!-- KOREAN STOCKS -->
-  <div class="card">
-    <div class="stock-section-title">🇰🇷 한국 주식 (9종목)</div>
-
-    <div class="stock-item">
-      <div>
-        <div class="stock-name">삼성바이오로직스</div>
-        <div class="stock-ticker">207940 · KOSPI</div>
-        <div class="stock-strategy">대규모 신규 CMO 수주 모멘텀 유효. 한국투자증권 목표가 195만원 매수 유지. 현 포지션 보유.</div>
-        <div class="stock-news">• 대규모 신규 CMO 수주 계약 발표<br>• 한국투자증권 목표주가 195만원 매수 유지<br>• AI 매도 쇼크 속에서도 바이오 섹터 방어력 발휘</div>
-      </div>
-      <div class="stock-price-block">
-        <div class="stock-price">141만원</div>
-        <div class="stock-change up">▲ +4.99%</div>
-      </div>
-    </div>
-
-    <div class="stock-item">
-      <div>
-        <div class="stock-name">한미반도체</div>
-        <div class="stock-ticker">042700 · KOSDAQ</div>
-        <div class="stock-strategy">SK하이닉스 HBM 설비 확장의 직접 수혜주. SK하이닉스 ADR 발표로 수주 확대 기대. 보유 유지.</div>
-        <div class="stock-news">• SK하이닉스 45.5조원 설비 투자 계획에 최대 수혜 예상<br>• HBM 패키징 장비 수주 확대 기대<br>• KOSPI 반등 시 코스닥 대비 상대적 강세</div>
-      </div>
-      <div class="stock-price-block">
-        <div class="stock-price">~24만원</div>
-        <div class="stock-change up">▲ 반등 중</div>
-      </div>
-    </div>
-
-    <div class="stock-item">
-      <div>
-        <div class="stock-name">에스에프에이</div>
-        <div class="stock-ticker">056190 · KOSDAQ</div>
-        <div class="stock-strategy">디스플레이·반도체 자동화 장비. 반도체 투자 확대 시 수혜. 코스닥 변동성 구간에서 소규모 비중 관리.</div>
-        <div class="stock-news">• 반도체 관련주 상승 시 동반 강세 (+7.07%)</div>
-      </div>
-      <div class="stock-price-block">
-        <div class="stock-price">코스닥</div>
-        <div class="stock-change up">▲ +7.07%</div>
-      </div>
-    </div>
-
-    <div class="stock-item">
-      <div>
-        <div class="stock-name">이오테크닉스</div>
-        <div class="stock-ticker">039030 · KOSDAQ</div>
-        <div class="stock-strategy">레이저 장비 전문. 반도체 레이저 공정 수요 성장. 보유 유지, 수주 뉴스 체크.</div>
-        <div class="stock-news">• 반도체 관련주 상승 동참 (+2.77%)<br>• 레이저 공정 수요 구조적 성장 중<br>• 실적 개선 기대</div>
-      </div>
-      <div class="stock-price-block">
-        <div class="stock-price">코스닥</div>
-        <div class="stock-change up">▲ +2.77%</div>
-      </div>
-    </div>
-
-    <div class="stock-item">
-      <div>
-        <div class="stock-name">HD한국조선해양</div>
-        <div class="stock-ticker">009540 · KOSPI</div>
-        <div class="stock-strategy">인도 조선 협력 MOU 체결 모멘텀 유효. 글로벌 LNG선 수요 지속. KOSPI 반등 시 수혜. 보유 유지.</div>
-        <div class="stock-news">• 인도 정부와 조선 협력 확대 MOU 체결<br>• LNG선 수주 잔고 견고<br>• MSCI 제외 충격에서 빠르게 회복 중 (+3.51%)</div>
-      </div>
-      <div class="stock-price-block">
-        <div class="stock-price">KOSPI</div>
-        <div class="stock-change up">▲ +3.51%</div>
-      </div>
-    </div>
-
-    <div class="stock-item">
-      <div>
-        <div class="stock-name">LG에너지솔루션</div>
-        <div class="stock-ticker">373220 · KOSPI</div>
-        <div class="stock-strategy">전기차 배터리 수요 장기 성장. 단기 변동성 있으나 글로벌 전동화 트렌드 핵심 수혜주. 보유 유지.</div>
-        <div class="stock-news">• 전기차 배터리 수요 회복 기대<br>• 북미 IRA 혜택 지속<br>• 글로벌 완성차와 신규 계약 지속</div>
-      </div>
-      <div class="stock-price-block">
-        <div class="stock-price">~36만원</div>
-        <div class="stock-change neutral">→ 보합</div>
-      </div>
-    </div>
-
-    <div class="stock-item">
-      <div>
-        <div class="stock-name">KODEX 미국S&amp;P500TR</div>
-        <div class="stock-ticker">379800 · KOSPI (ETF)</div>
-        <div class="stock-strategy">미국 S&P500 추종 ETF. 원화·환율 동시 수혜. 월 정액 적립식 유지. 장기 핵심 보유.</div>
-        <div class="stock-news">• S&P500 지수 AI 매도 영향으로 단기 조정<br>• 원/달러 1,534원 수준에서 환율 수혜 제한적<br>• 장기 적립식 최적 포지션</div>
-      </div>
-      <div class="stock-price-block">
-        <div class="stock-price">ETF</div>
-        <div class="stock-change neutral">적립식 유지</div>
-      </div>
-    </div>
-
-    <div class="stock-item">
-      <div>
-        <div class="stock-name">KODEX 나스닥100</div>
-        <div class="stock-ticker">379810 · KOSPI (ETF)</div>
-        <div class="stock-strategy">나스닥100 추종. 기술주 조정 구간에서 단기 하락하나 장기 매수 기회. 적립식 유지.</div>
-        <div class="stock-news">• 나스닥 주간 -4.8% 영향 동반<br>• 공포 구간 적립식 매수 효과적<br>• 장기 나스닥 성장성 신뢰 유지</div>
-      </div>
-      <div class="stock-price-block">
-        <div class="stock-price">ETF</div>
-        <div class="stock-change down">▼ 나스닥 연동</div>
-      </div>
-    </div>
-
-    <div class="stock-item">
-      <div>
-        <div class="stock-name">TIGER 미국나스닥100</div>
-        <div class="stock-ticker">133690 · KOSPI (ETF)</div>
-        <div class="stock-strategy">KODEX와 유사하게 나스닥100 추종. 운용보수 비교 후 유리한 쪽으로 집중. 현 전략 유지.</div>
-        <div class="stock-news">• 나스닥 하락 동반<br>• KODEX와 함께 공포 구간 분할 매수 유효<br>• 장기 적립식 핵심 자산</div>
-      </div>
-      <div class="stock-price-block">
-        <div class="stock-price">ETF</div>
-        <div class="stock-change down">▼ 나스닥 연동</div>
-      </div>
-    </div>
-  </div>
+  <div class="data-note">📡 데이터: Yahoo Finance 실시간 · USD/KRW 1,544.08</div>
 </div>
 
-<!-- SECTION: 투자 배분 -->
 <div class="section" id="alloc">
-  <div class="sec-title">💰 포트폴리오 투자 배분 (추정)</div>
-  <div class="card">
-    <div class="bar-list">
-      <div class="bar-item">
-        <div class="bar-label"><span>NVDA</span><span>15%</span></div>
-        <div class="bar-track"><div class="bar-fill" style="width:15%;background:#76b7b2"></div></div>
-      </div>
-      <div class="bar-item">
-        <div class="bar-label"><span>AAPL</span><span>10%</span></div>
-        <div class="bar-track"><div class="bar-fill" style="width:10%;background:#4e79a7"></div></div>
-      </div>
-      <div class="bar-item">
-        <div class="bar-label"><span>AMZN</span><span>10%</span></div>
-        <div class="bar-track"><div class="bar-fill" style="width:10%;background:#f28e2b"></div></div>
-      </div>
-      <div class="bar-item">
-        <div class="bar-label"><span>MU</span><span>8%</span></div>
-        <div class="bar-track"><div class="bar-fill" style="width:8%;background:#e15759"></div></div>
-      </div>
-      <div class="bar-item">
-        <div class="bar-label"><span>UNH</span><span>7%</span></div>
-        <div class="bar-track"><div class="bar-fill" style="width:7%;background:#59a14f"></div></div>
-      </div>
-      <div class="bar-item">
-        <div class="bar-label"><span>GEV</span><span>7%</span></div>
-        <div class="bar-track"><div class="bar-fill" style="width:7%;background:#edc948"></div></div>
-      </div>
-      <div class="bar-item">
-        <div class="bar-label"><span>삼성바이오로직스</span><span>6%</span></div>
-        <div class="bar-track"><div class="bar-fill" style="width:6%;background:#b07aa1"></div></div>
-      </div>
-      <div class="bar-item">
-        <div class="bar-label"><span>KODEX/TIGER 나스닥100 ETF</span><span>10%</span></div>
-        <div class="bar-track"><div class="bar-fill" style="width:10%;background:#ff9da7"></div></div>
-      </div>
-      <div class="bar-item">
-        <div class="bar-label"><span>RKLB</span><span>5%</span></div>
-        <div class="bar-track"><div class="bar-fill" style="width:5%;background:#9c755f"></div></div>
-      </div>
-      <div class="bar-item">
-        <div class="bar-label"><span>기타 (ORCL, INTC, IONQ, RGTI, IREN, CAVA, 한국주식)</span><span>22%</span></div>
-        <div class="bar-track"><div class="bar-fill" style="width:22%;background:var(--text3)"></div></div>
-      </div>
+  <div class="sec-title">💰 투자 배분 현황 (평가금액 기준)</div>
+  <div class="alloc-bar-wrap">
+    <div style="font-size:11px;color:var(--text3);margin-bottom:12px">현재가 기준 각 종목 평가금액 비중 (원화 환산)</div>
+    <div class="ar"><div class="al">AAPL 애플(10주)</div><div class="ab"><div class="af" style="width:20%;background:#154c8c"></div></div><div class="av">₩438만</div></div>
+    <div class="ar"><div class="al">삼성전자(13주)</div><div class="ab"><div class="af" style="width:18%;background:#154c8c"></div></div><div class="av">₩417만</div></div>
+    <div class="ar"><div class="al">한화에어로(2주)</div><div class="ab"><div class="af" style="width:10%;background:#7a4a08"></div></div><div class="av">₩201만</div></div>
+    <div class="ar"><div class="al">MU 마이크론(1주)</div><div class="ab"><div class="af" style="width:8%;background:#5b2d8e"></div></div><div class="av">₩175만</div></div>
+    <div class="ar"><div class="al">TSLA 테슬라(1주)</div><div class="ab"><div class="af" style="width:6%;background:#1f6636"></div></div><div class="av">₩59만</div></div>
+    <div class="ar"><div class="al">UNH 유나이티드(2주)</div><div class="ab"><div class="af" style="width:6%;background:#1f6636"></div></div><div class="av">₩132만</div></div>
+    <div class="ar"><div class="al">현대차(1주)</div><div class="ab"><div class="af" style="width:5%;background:#b83229"></div></div><div class="av">₩49만</div></div>
+    <div class="ar"><div class="al">NVDA 엔비디아(3주)</div><div class="ab"><div class="af" style="width:5%;background:#1f6636"></div></div><div class="av">₩89만</div></div>
+    <div class="ar"><div class="al">LG에너지솔루션(1주)</div><div class="ab"><div class="af" style="width:4%;background:#b83229"></div></div><div class="av">₩38만</div></div>
+    <div class="ar"><div class="al">NAVER(4주)</div><div class="ab"><div class="af" style="width:4%;background:#b83229"></div></div><div class="av">₩81만</div></div>
+    <div class="ar"><div class="al">기타 12종목</div><div class="ab"><div class="af" style="width:14%;background:#9a9a96"></div></div><div class="av">기타</div></div>
+    <div style="margin-top:14px;padding-top:12px;border-top:1px solid var(--border);display:flex;gap:16px;flex-wrap:wrap">
+      <div><span style="display:inline-block;width:10px;height:10px;background:#1f6636;border-radius:2px;margin-right:4px"></span><span style="font-size:11px;color:var(--text2)">수익 종목</span></div>
+      <div><span style="display:inline-block;width:10px;height:10px;background:#b83229;border-radius:2px;margin-right:4px"></span><span style="font-size:11px;color:var(--text2)">손실 종목</span></div>
+      <div><span style="display:inline-block;width:10px;height:10px;background:#7a4a08;border-radius:2px;margin-right:4px"></span><span style="font-size:11px;color:var(--text2)">소폭 손실</span></div>
+      <div><span style="display:inline-block;width:10px;height:10px;background:#5b2d8e;border-radius:2px;margin-right:4px"></span><span style="font-size:11px;color:var(--text2)">대형 보유</span></div>
     </div>
   </div>
 </div>
 
-<!-- SECTION: 일정 -->
 <div class="section" id="cal">
-  <div class="sec-title">📅 이번 달 / 다음 달 주요 일정</div>
-  <div class="card">
-    <div class="cal-list">
-      <div class="cal-item">
-        <div class="cal-date">6/29 (오늘)</div>
-        <div class="cal-desc">Alphabet(GOOG) 다우지수 편입 · 삼성바이오로직스 수주 뉴스 추적 · ORCL 비중 재검토</div>
-      </div>
-      <div class="cal-item">
-        <div class="cal-date">6/30 (화)</div>
-        <div class="cal-desc">6월 미국 소비자신뢰지수 발표 · 5월 JOLTS 구인건수 · Nike(NKE) 실적 발표</div>
-      </div>
-      <div class="cal-item">
-        <div class="cal-date">7/4 (금)</div>
-        <div class="cal-desc">미국 독립기념일 — 미국 시장 휴장 (포트폴리오 조정 불가)</div>
-      </div>
-      <div class="cal-item">
-        <div class="cal-date">7/7~11</div>
-        <div class="cal-desc">6월 CPI 발표 · FOMC 의사록 공개 · AI 기업 투자 계획 업데이트 주목</div>
-      </div>
-      <div class="cal-item">
-        <div class="cal-date">7/16 (목)</div>
-        <div class="cal-desc">UnitedHealth(UNH) Q2 실적 발표 — 차익 실현 여부 사전 결정 필요</div>
-      </div>
-      <div class="cal-item">
-        <div class="cal-date">7월 중</div>
-        <div class="cal-desc">NVDA 실적 발표 일정 확인 · SK하이닉스 ADR 추진 업데이트 · MSCI 결정 영향 지속 모니터링</div>
-      </div>
-    </div>
+  <div class="sec-title">📅 이번 주 주요 일정</div>
+  <div class="cal-box">
+    <div class="ci"><div class="cd">6/29 월</div><div class="ct">🇰🇷 한국 시장 개장 · KOSDAQ 중소형 테마주 변동성 주의</div></div>
+    <div class="ci"><div class="cd">6/30 화</div><div class="ct">🇺🇸 6월 소비자신뢰지수 · JOLTS 구인이직 보고서 · Nike(NKE) 실적 발표</div></div>
+    <div class="ci"><div class="cd">7/1 수</div><div class="ct">🇺🇸 ADP 민간고용 · ISM 제조업 지수 발표</div></div>
+    <div class="ci"><div class="cd">7/3 금</div><div class="ct">🇺🇸 6월 비농업 고용(NFP) 발표 — 연준 금리 인하 여부의 핵심 지표</div></div>
+    <div class="ci"><div class="cd">7월 중</div><div class="ct">🇰🇷 삼성전자 2Q26 잠정 실적 발표 예정 — HBM4 수율 이슈 확인</div></div>
+    <div class="ci"><div class="cd">7월 중</div><div class="ct">🇺🇸 FOMC 회의 — Kevin Warsh 금리 결정. 트럼프 압박 속 인하 여부 최대 이슈</div></div>
   </div>
+  <div class="data-note">생성: 2026.06.29 · 출처: Yahoo Finance (Chrome 직접 수집) · yfinance 동일 데이터소스</div>
 </div>
 
-<!-- FOOTER -->
-<div style="text-align:center;padding:20px;font-size:11px;color:var(--text3);margin-top:10px">
-  자동 생성 브리핑 · 2026년 6월 29일 · 민선의 포트폴리오<br>
-  투자 결정 전 반드시 개인 판단과 전문가 상담을 병행하세요 📊
 </div>
-</div><!-- /wrap -->
 </body>
 </html>
