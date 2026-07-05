@@ -56,35 +56,35 @@ DATE_DISPLAY = TODAY.strftime("%Y년 %m월 %d일") + " " + WEEKDAY_KO[TODAY.week
 print(f"[INFO] Generating briefing for {TODAY_STR} | last biz day: {LAST_BD_STR}")
 
 # ═══════════════════════════════════════════════════
-# PORTFOLIO (22 STOCKS — 정확한 목록)
+# PORTFOLIO (실제 보유 22종목 — 미국 13 + 한국 9)
 # ═══════════════════════════════════════════════════
 # fmt: (ticker, display_name, qty_or_None, avg_cost_krw_or_None)
 US_PORTFOLIO = [
-    ("NVDA",  "NVIDIA",            3,    251_000),
-    ("AMZN",  "Amazon",            1,    405_000),
-    ("AAPL",  "Apple",             10,   141_000),
-    ("ORCL",  "Oracle",            3,    223_000),
-    ("INTC",  "Intel",             5,    177_000),
-    ("IONQ",  "IonQ",              9,    85_000),
-    ("RGTI",  "Rigetti",           2,    66_000),
-    ("IREN",  "IREN Ltd",          17,   83_000),
-    ("RKLB",  "Rocket Lab",        1,    None),
-    ("UNH",   "UnitedHealth",      2,    404_000),
-    ("GEV",   "GE Vernova",        1,    None),
-    ("CAVA",  "CAVA Group",        1,    None),
-    ("MU",    "Micron",            1,    1_469_000),
+    ("NVDA",  "NVIDIA",              3,    255_023),
+    ("AMZN",  "Amazon",              1,    409_686),
+    ("AAPL",  "Apple",               10,   141_363),
+    ("TSLA",  "Tesla",               1,    311_406),
+    ("ORCL",  "Oracle",              3,    223_255),
+    ("INTC",  "Intel",               5,    176_716),
+    ("MU",    "Micron",              1,    1_469_222),
+    ("UNH",   "UnitedHealth",        2,    403_771),
+    ("PLTR",  "Palantir",            1,    236_267),
+    ("IONQ",  "IonQ",                9,    84_907),
+    ("RGTI",  "Rigetti",             2,    66_010),
+    ("IREN",  "IREN Ltd",            17,   83_323),
+    ("ARKK",  "ARK Innovation ETF",  1,    122_926),
 ]
 
 KR_PORTFOLIO = [
-    ("207940", "삼성바이오로직스",      13,   143_000),
-    ("042700", "한미반도체",            2,    1_420_000),
-    ("056190", "에스에프에이",          None, None),
-    ("039030", "이오테크닉스",          None, None),
-    ("009540", "HD한국조선해양",        None, None),
-    ("373220", "LG에너지솔루션",        None, None),
-    ("379800", "KODEX 미국S&P500TR",   5,    22_600),
-    ("133690", "TIGER 미국나스닥100",   None, None),
-    ("379810", "KODEX 미국나스닥100TR", None, None),
+    ("005930", "삼성전자",              13,   143_007),
+    ("005380", "현대차",                1,    709_000),
+    ("012450", "한화에어로스페이스",      2,    1_420_500),
+    ("035420", "NAVER",               4,    302_000),
+    ("064350", "현대로템",              1,    21_500),
+    ("263720", "디앤씨미디어",           5,    46_800),
+    ("289220", "자이언트스텝",           4,    41_400),
+    ("373220", "LG에너지솔루션",         1,    458_500),
+    ("379800", "KODEX 미국S&P500",     5,    22_600),
 ]
 
 # ═══════════════════════════════════════════════════
@@ -331,9 +331,10 @@ def fetch_kr_stock(ticker_code, name):
 
     # — Fundamentals: PER, PBR, EPS, BPS, DIV, DPS —
     try:
-        df_f = krx.get_market_fundamental(LAST_BD_STR, LAST_BD_STR, ticker_code)
+        df_f = krx.get_market_fundamental(BD5_STR, LAST_BD_STR, ticker_code)
+        df_f = df_f.dropna(how="all") if not df_f.empty else df_f
         if not df_f.empty and len(df_f) > 0:
-            row = df_f.iloc[0]
+            row = df_f.iloc[-1]
             s["per"] = safe(row.get("PER"), 1)
             s["pbr"] = safe(row.get("PBR"), 2)
             s["eps"] = safe(row.get("EPS"), 0)
