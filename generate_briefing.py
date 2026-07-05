@@ -840,45 +840,126 @@ def _is_buy(action):
 
 def trades_section_html(trades):
     title = '<div class="sec-title">📒 나의 매매 기록</div>'
-    if not trades:
-        body = ('<div style="padding:16px;color:var(--text3);font-size:13px;line-height:1.7">'
-                '아직 기록된 매매가 없습니다.<br>저장소의 <b>trades.csv</b>에 아래 형식으로 한 줄씩 추가하세요:<br>'
-                '<code style="font-size:12px">날짜,티커,종목명,시장,매수 또는 매도,수량,가격,메모</code><br>'
-                '예: <code style="font-size:12px">2026-07-05,TSLA,테슬라,US,매수,1,250,로보택시 기대</code></div>')
-        return f'<div class="section" id="trades">{title}<div class="card">{body}</div></div>'
 
-    ts = sorted(trades, key=lambda t: t.get("date", ""), reverse=True)
-    nbuy = sum(1 for t in ts if _is_buy(t["action"]))
-    nsell = len(ts) - nbuy
+    # server rows from trades.csv
+    if trades:
+        ts = sorted(trades, key=lambda t: t.get("date", ""), reverse=True)
+        nbuy = sum(1 for t in ts if _is_buy(t["action"]))
+        nsell = len(ts) - nbuy
+        srv = ""
+        cur = None
+        for t in ts:
+            if t["date"] != cur:
+                cur = t["date"]
+                srv += f'<div style="font-size:12px;font-weight:800;color:var(--text2);margin:14px 0 6px">{cur}</div>'
+            buy = _is_buy(t["action"])
+            bc = "t-red" if buy else "t-blue"
+            bt = "매수" if buy else "매도"
+            ps = f'@ {t["price"]}' if t["price"] else ""
+            ms = (f'<span style="color:var(--text3);font-size:11px;margin-left:6px">· {t["memo"]}</span>' if t["memo"] else "")
+            srv += ('<div style="display:flex;align-items:center;gap:8px;padding:9px 11px;border:1px solid var(--border);'
+                    'border-radius:var(--r-sm);margin-bottom:6px;background:var(--surface);flex-wrap:wrap">'
+                    f'<span class="tag {bc}">{bt}</span>'
+                    f'<span style="font-weight:700">{t["name"] or t["ticker"]}</span>'
+                    f'<span style="color:var(--text3);font-size:12px">{t["ticker"]}</span>'
+                    f'<span style="margin-left:auto;font-size:13px;font-weight:600">{t["qty"]}주 {ps}</span>'
+                    f'{ms}</div>')
+        srv_head = ('<div style="display:flex;gap:6px;padding:12px 0 2px;align-items:center">'
+                    f'<span class="tag t-red">매수 {nbuy}</span>'
+                    f'<span class="tag t-blue">매도 {nsell}</span>'
+                    f'<span style="margin-left:auto;font-size:11px;color:var(--text3)">저장소 기록 {len(ts)}건</span></div>')
+        server_block = srv_head + srv
+    else:
+        server_block = ('<div style="padding:10px 0;color:var(--text3);font-size:12px">저장소(trades.csv)에 저장된 기록이 아직 없습니다.</div>')
 
-    rows_html = ""
-    cur_date = None
-    for t in ts:
-        if t["date"] != cur_date:
-            cur_date = t["date"]
-            rows_html += f'<div style="font-size:12px;font-weight:800;color:var(--text2);margin:14px 0 6px">{cur_date}</div>'
-        buy = _is_buy(t["action"])
-        badge_cls = "t-red" if buy else "t-blue"
-        badge_txt = "매수" if buy else "매도"
-        price_str = f'@ {t["price"]}' if t["price"] else ""
-        memo_str = (f'<span style="color:var(--text3);font-size:11px;margin-left:6px">· {t["memo"]}</span>'
-                    if t["memo"] else "")
-        rows_html += (
-            '<div style="display:flex;align-items:center;gap:8px;padding:9px 11px;border:1px solid var(--border);'
-            'border-radius:var(--r-sm);margin-bottom:6px;background:var(--surface);flex-wrap:wrap">'
-            f'<span class="tag {badge_cls}">{badge_txt}</span>'
-            f'<span style="font-weight:700">{t["name"] or t["ticker"]}</span>'
-            f'<span style="color:var(--text3);font-size:12px">{t["ticker"]}</span>'
-            f'<span style="margin-left:auto;font-size:13px;font-weight:600">{t["qty"]}주 {price_str}</span>'
-            f'{memo_str}'
-            '</div>'
-        )
-    header = ('<div style="display:flex;gap:6px;padding:12px 14px 2px;align-items:center">'
-              f'<span class="tag t-red">매수 {nbuy}</span>'
-              f'<span class="tag t-blue">매도 {nsell}</span>'
-              f'<span style="margin-left:auto;font-size:11px;color:var(--text3)">총 {len(ts)}건</span></div>')
-    return (f'<div class="section" id="trades">{title}<div class="card">{header}'
-            f'<div style="padding:4px 14px 14px">{rows_html}</div></div></div>')
+    INPUT = "padding:7px 9px;border:1px solid var(--border);border-radius:8px;background:var(--surface);color:var(--text1);font-size:13px;min-width:0"
+
+    form = (
+        '<div style="display:flex;flex-wrap:wrap;gap:7px;padding:12px 14px 6px;align-items:center">'
+        f'<input id="tr-date" type="date" style="{INPUT}">'
+        f'<input id="tr-ticker" placeholder="티커 (TSLA)" style="{INPUT};width:96px">'
+        f'<input id="tr-name" placeholder="종목명" style="{INPUT};width:96px">'
+        f'<select id="tr-market" style="{INPUT}"><option>US</option><option>KR</option></select>'
+        f'<select id="tr-action" style="{INPUT}"><option>매수</option><option>매도</option></select>'
+        f'<input id="tr-qty" type="number" placeholder="수량" style="{INPUT};width:74px">'
+        f'<input id="tr-price" placeholder="가격" style="{INPUT};width:88px">'
+        f'<input id="tr-memo" placeholder="메모" style="{INPUT};flex:1;min-width:110px">'
+        '<button onclick="addTrade()" style="padding:8px 16px;border:none;border-radius:8px;background:var(--accent,#3b82f6);color:#fff;font-weight:700;font-size:13px;cursor:pointer">＋ 추가</button>'
+        '</div>'
+    )
+
+    js = JS_TRADES
+
+    return (f'<div class="section" id="trades">{title}<div class="card">'
+            f'{form}'
+            '<div id="tr-local" style="padding:0 14px"></div>'
+            f'<div style="padding:4px 14px 14px">{server_block}</div>'
+            f'</div>{js}</div>')
+
+
+JS_TRADES = """
+<script>
+var TR_KEY = "pb_local_trades_v1";
+var TR_EDIT = "https://github.com/minseonprivacy-gif/portfolio-briefing/edit/main/trades.csv";
+function trLoad(){ try{ return JSON.parse(localStorage.getItem(TR_KEY))||[]; }catch(e){ return []; } }
+function trSave(a){ localStorage.setItem(TR_KEY, JSON.stringify(a)); }
+function trEsc(s){ return (s||"").toString().replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;").replace(/"/g,"&quot;"); }
+function trIsBuy(a){ return ["buy","매수","b","bought"].indexOf((a||"").toLowerCase())>=0; }
+function addTrade(){
+  var g=function(id){return (document.getElementById(id).value||"").trim();};
+  var t={date:g("tr-date")||new Date().toISOString().slice(0,10),ticker:g("tr-ticker"),name:g("tr-name"),
+         market:document.getElementById("tr-market").value,action:document.getElementById("tr-action").value,
+         qty:g("tr-qty"),price:g("tr-price"),memo:g("tr-memo")};
+  if(!t.ticker && !t.name){ alert("티커 또는 종목명을 입력하세요."); return; }
+  var a=trLoad(); a.push(t); trSave(a); trRender();
+  ["tr-ticker","tr-name","tr-qty","tr-price","tr-memo"].forEach(function(id){document.getElementById(id).value="";});
+}
+function delTrade(i){ var a=trLoad(); a.splice(i,1); trSave(a); trRender(); }
+function trCsv(){
+  return trLoad().map(function(t){
+    return [t.date,t.ticker,t.name,t.market,t.action,t.qty,t.price,(t.memo||"").replace(/\n/g," ")].join(",");
+  }).join("\n");
+}
+function trSync(){
+  var csv=trCsv();
+  if(!csv){ alert("기기에 저장된 매매가 없습니다."); return; }
+  if(navigator.clipboard){ navigator.clipboard.writeText(csv); }
+  alert("아래 줄이 클립보드에 복사되었습니다.\n열리는 GitHub 편집창 맨 아래에 붙여넣고 'Commit changes'를 누르면 모든 기기에 반영됩니다.\n\n"+csv);
+  window.open(TR_EDIT,"_blank");
+}
+function trRow(t,i){
+  var buy=trIsBuy(t.action), cls=buy?"t-red":"t-blue", txt=buy?"매수":"매도";
+  var price=t.price?("@ "+trEsc(t.price)):"";
+  var memo=t.memo?('<span style="color:var(--text3);font-size:11px;margin-left:6px">· '+trEsc(t.memo)+'</span>'):"";
+  return '<div style="display:flex;align-items:center;gap:8px;padding:9px 11px;border:1px dashed var(--border);border-radius:var(--r-sm,10px);margin-bottom:6px;background:var(--surface);flex-wrap:wrap">'
+    +'<span class="tag '+cls+'">'+txt+'</span>'
+    +'<span style="font-weight:700">'+trEsc(t.name||t.ticker)+'</span>'
+    +'<span style="color:var(--text3);font-size:12px">'+trEsc(t.ticker)+'</span>'
+    +'<span style="font-size:11px;color:var(--text3)">'+trEsc(t.date)+'</span>'
+    +'<span style="margin-left:auto;font-size:13px;font-weight:600">'+trEsc(t.qty)+'주 '+price+'</span>'
+    +memo
+    +'<button onclick="delTrade('+i+')" title="삭제" style="border:none;background:none;cursor:pointer;color:var(--text3);font-size:14px">🗑</button>'
+    +'</div>';
+}
+function trRender(){
+  var box=document.getElementById("tr-local"); if(!box) return;
+  var a=trLoad();
+  if(!a.length){ box.innerHTML=""; return; }
+  a=a.map(function(t,i){return {t:t,i:i};}).sort(function(x,y){return (y.t.date||"").localeCompare(x.t.date||"");});
+  var rows=a.map(function(o){return trRow(o.t,o.i);}).join("");
+  var bar='<div style="display:flex;gap:8px;align-items:center;margin:10px 0 6px">'
+    +'<span class="tag t-blue" style="background:none;border:1px dashed var(--border);color:var(--text2)">내 기기 기록 '+a.length+'건</span>'
+    +'<button onclick="trSync()" style="margin-left:auto;padding:6px 12px;border:1px solid var(--border);border-radius:8px;background:var(--surface);color:var(--text1);font-size:12px;font-weight:700;cursor:pointer">☁ GitHub에 저장(모든 기기)</button>'
+    +'<button onclick="if(confirm(\'기기 기록을 모두 지울까요? (GitHub 저장분은 유지)\')){trSave([]);trRender();}" style="padding:6px 12px;border:1px solid var(--border);border-radius:8px;background:var(--surface);color:var(--text3);font-size:12px;cursor:pointer">비우기</button>'
+    +'</div>';
+  box.innerHTML=bar+rows;
+}
+(function(){
+  var d=document.getElementById("tr-date"); if(d && !d.value){ d.value=new Date().toISOString().slice(0,10); }
+  trRender();
+})();
+</script>
+"""
 
 
 def build_html(mkt, us_data_list, kr_data_list, trades=None):
