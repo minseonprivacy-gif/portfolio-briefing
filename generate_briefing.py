@@ -805,7 +805,83 @@ def kr_stock_card_html(s, portfolio_meta):
 # ═══════════════════════════════════════════════════
 # MAIN HTML BUILDER
 # ═══════════════════════════════════════════════════
-def build_html(mkt, us_data_list, kr_data_list):
+
+# ═══════════════════════════════════════════════════
+# 나의 매매 기록 (trades.csv)
+# ═══════════════════════════════════════════════════
+def load_trades(path="trades.csv"):
+    """Read trades.csv → list of dict. Tolerant of blanks/comments.
+    Columns: date,ticker,name,market,action,qty,price,memo (memo may contain commas)."""
+    rows = []
+    try:
+        lines = open(path, encoding="utf-8").read().splitlines()
+    except FileNotFoundError:
+        return rows
+    for ln in lines:
+        s = ln.strip()
+        if not s or s.startswith("#"):
+            continue
+        parts = [p.strip() for p in s.split(",", 7)]
+        if parts and parts[0].lower() == "date":
+            continue
+        while len(parts) < 8:
+            parts.append("")
+        rows.append({
+            "date": parts[0], "ticker": parts[1], "name": parts[2],
+            "market": parts[3], "action": parts[4].lower(),
+            "qty": parts[5], "price": parts[6], "memo": parts[7],
+        })
+    return rows
+
+
+def _is_buy(action):
+    return action in ("buy", "매수", "b", "bought")
+
+
+def trades_section_html(trades):
+    title = '<div class="sec-title">📒 나의 매매 기록</div>'
+    if not trades:
+        body = ('<div style="padding:16px;color:var(--text3);font-size:13px;line-height:1.7">'
+                '아직 기록된 매매가 없습니다.<br>저장소의 <b>trades.csv</b>에 아래 형식으로 한 줄씩 추가하세요:<br>'
+                '<code style="font-size:12px">날짜,티커,종목명,시장,매수 또는 매도,수량,가격,메모</code><br>'
+                '예: <code style="font-size:12px">2026-07-05,TSLA,테슬라,US,매수,1,250,로보택시 기대</code></div>')
+        return f'<div class="section" id="trades">{title}<div class="card">{body}</div></div>'
+
+    ts = sorted(trades, key=lambda t: t.get("date", ""), reverse=True)
+    nbuy = sum(1 for t in ts if _is_buy(t["action"]))
+    nsell = len(ts) - nbuy
+
+    rows_html = ""
+    cur_date = None
+    for t in ts:
+        if t["date"] != cur_date:
+            cur_date = t["date"]
+            rows_html += f'<div style="font-size:12px;font-weight:800;color:var(--text2);margin:14px 0 6px">{cur_date}</div>'
+        buy = _is_buy(t["action"])
+        badge_cls = "t-red" if buy else "t-blue"
+        badge_txt = "매수" if buy else "매도"
+        price_str = f'@ {t["price"]}' if t["price"] else ""
+        memo_str = (f'<span style="color:var(--text3);font-size:11px;margin-left:6px">· {t["memo"]}</span>'
+                    if t["memo"] else "")
+        rows_html += (
+            '<div style="display:flex;align-items:center;gap:8px;padding:9px 11px;border:1px solid var(--border);'
+            'border-radius:var(--r-sm);margin-bottom:6px;background:var(--surface);flex-wrap:wrap">'
+            f'<span class="tag {badge_cls}">{badge_txt}</span>'
+            f'<span style="font-weight:700">{t["name"] or t["ticker"]}</span>'
+            f'<span style="color:var(--text3);font-size:12px">{t["ticker"]}</span>'
+            f'<span style="margin-left:auto;font-size:13px;font-weight:600">{t["qty"]}주 {price_str}</span>'
+            f'{memo_str}'
+            '</div>'
+        )
+    header = ('<div style="display:flex;gap:6px;padding:12px 14px 2px;align-items:center">'
+              f'<span class="tag t-red">매수 {nbuy}</span>'
+              f'<span class="tag t-blue">매도 {nsell}</span>'
+              f'<span style="margin-left:auto;font-size:11px;color:var(--text3)">총 {len(ts)}건</span></div>')
+    return (f'<div class="section" id="trades">{title}<div class="card">{header}'
+            f'<div style="padding:4px 14px 14px">{rows_html}</div></div></div>')
+
+
+def build_html(mkt, us_data_list, kr_data_list, trades=None):
     usdkrw = mkt.get("usdkrw", 1400)
 
     # Market card helpers
@@ -999,6 +1075,7 @@ body{{font-family:-apple-system,'Apple SD Gothic Neo','Noto Sans KR',sans-serif;
   <div class="toc-inner">
     <a href="#market">📊 시장</a>
     <a href="#fng">😨 공포탐욕</a>
+    <a href="#trades">📒 매매기록</a>
     <a href="#us-stocks">🇺🇸 미국 종목</a>
     <a href="#kr-stocks">🇰🇷 한국 종목</a>
     <a href="#footer">📋 안내</a>
@@ -1019,6 +1096,9 @@ body{{font-family:-apple-system,'Apple SD Gothic Neo','Noto Sans KR',sans-serif;
 
 <!-- ② 공포탐욕지수 -->
 {fng_section_html(mkt)}
+
+<!-- ②-b 나의 매매 기록 -->
+{trades_section_html(trades)}
 
 <!-- ③ 미국 종목 -->
 <div class="section" id="us-stocks">
@@ -1076,7 +1156,9 @@ def main():
 
     # 4. Build HTML
     print("\n[STEP 4] Building HTML...")
-    html = build_html(mkt, us_data, kr_data)
+    trades = load_trades()
+    print(f"[STEP 4] Trades loaded: {len(trades)}")
+    html = build_html(mkt, us_data, kr_data, trades)
 
     # 5. Write output
     out_path = "index.html"
