@@ -103,6 +103,36 @@ def pct_chg(new, old):
     except:
         return None
 
+
+def yf_kr_fundamentals(code):
+    """Fallback via yfinance using .KS then .KQ suffix. Returns dict + suffix used."""
+    out = {}
+    for suf in (".KS", ".KQ"):
+        try:
+            info = yf.Ticker(code + suf).info
+            if not info:
+                continue
+            price = info.get("currentPrice") or info.get("regularMarketPrice")
+            if price is None and not info.get("trailingPE") and not info.get("priceToBook"):
+                continue
+            per = safe(info.get("trailingPE"), 1)
+            pbr = safe(info.get("priceToBook"), 2)
+            eps = safe(info.get("trailingEps"), 0)
+            bps = safe(info.get("bookValue"), 0)
+            dy  = info.get("dividendYield")
+            div = safe(dy * 100, 2) if dy and dy < 1 else safe(dy, 2)
+            dps = safe(info.get("dividendRate"), 0)
+            if any(x is not None for x in (per, pbr, eps)):
+                out = {"per": per, "pbr": pbr, "eps": eps, "bps": bps,
+                       "div": div, "dps": dps, "suffix": suf,
+                       "price": safe(price, 0),
+                       "prev_close": safe(info.get("regularMarketPreviousClose"), 0)}
+                print(f"  [yf-fallback] {code}{suf}: PER={per} PBR={pbr} EPS={eps}")
+                return out
+        except Exception as e:
+            print(f"  [yf-fallback WARN] {code}{suf}: {e}")
+    return out
+
 def fmt_krw(v, unit="억원"):
     """Format large KRW value to 억원"""
     if v is None:
@@ -201,7 +231,7 @@ def fetch_market():
     except Exception as e:
         print(f"[WARN] FX: {e}")
 
-    # — KOSPI (pykrx index code 1001) —
+    # — KOSPI (pykrx index code 1001, yfinance ^KS11 fallback) —
     try:
         df = krx.get_index_ohlcv_by_date(BD5_STR, LAST_BD_STR, "1001")
         if not df.empty:
@@ -209,9 +239,19 @@ def fetch_market():
             d["kospi_chg"]   = pct_chg(df["종가"].iloc[-1], df["종가"].iloc[-2])
             print(f"[OK] KOSPI {d['kospi_close']} ({d['kospi_chg']}%)")
     except Exception as e:
-        print(f"[WARN] KOSPI: {e}")
+        print(f"[WARN] KOSPI pykrx: {e}")
+    if not d.get("kospi_close"):
+        try:
+            h = yf.Ticker("^KS11").history(period="5d")
+            if not h.empty:
+                d["kospi_close"] = safe(h["Close"].iloc[-1])
+                if len(h) >= 2:
+                    d["kospi_chg"] = pct_chg(h["Close"].iloc[-1], h["Close"].iloc[-2])
+                print(f"[OK] KOSPI(yf) {d['kospi_close']} ({d.get('kospi_chg')}%)")
+        except Exception as e:
+            print(f"[WARN] KOSPI yf: {e}")
 
-    # — KOSDAQ (pykrx index code 2001) —
+    # — KOSDAQ (pykrx index code 2001, yfinance ^KQ11 fallback) —
     try:
         df = krx.get_index_ohlcv_by_date(BD5_STR, LAST_BD_STR, "2001")
         if not df.empty:
@@ -219,7 +259,17 @@ def fetch_market():
             d["kosdaq_chg"]   = pct_chg(df["종가"].iloc[-1], df["종가"].iloc[-2])
             print(f"[OK] KOSDAQ {d['kosdaq_close']} ({d['kosdaq_chg']}%)")
     except Exception as e:
-        print(f"[WARN] KOSDAQ: {e}")
+        print(f"[WARN] KOSDAQ pykrx: {e}")
+    if not d.get("kosdaq_close"):
+        try:
+            h = yf.Ticker("^KQ11").history(period="5d")
+            if not h.empty:
+                d["kosdaq_close"] = safe(h["Close"].iloc[-1])
+                if len(h) >= 2:
+                    d["kosdaq_chg"] = pct_chg(h["Close"].iloc[-1], h["Close"].iloc[-2])
+                print(f"[OK] KOSDAQ(yf) {d['kosdaq_close']} ({d.get('kosdaq_chg')}%)")
+        except Exception as e:
+            print(f"[WARN] KOSDAQ yf: {e}")
 
     # — CNN Fear & Greed Index (미국 주식시장 심리 지수) —
     try:
@@ -344,6 +394,21 @@ def fetch_kr_stock(ticker_code, name):
             print(f"  Fund: PER={s['per']} PBR={s['pbr']} EPS={s['eps']}")
     except Exception as e:
         print(f"[WARN] KR fund {ticker_code}: {e}")
+
+    # — Fallback: if pykrx fundamentals missing, use yfinance —
+    if not s.get("per") and not s.get("pbr") and not s.get("eps"):
+        fb = yf_kr_fundamentals(ticker_code)
+        if fb:
+            for k in ("per", "pbr", "eps", "bps", "div", "dps"):
+                if fb.get(k) is not None:
+                    s[k] = fb[k]
+            # also backfill price if pykrx price failed
+            if not s.get("ok") and fb.get("price"):
+                s["price"] = fb["price"]
+                s["prev_close"] = fb.get("prev_close")
+                if fb.get("price") and fb.get("prev_close"):
+                    s["chg_pct"] = pct_chg(fb["price"], fb["prev_close"])
+                s["ok"] = True
 
     # — Investor trading (외인/기관/개인) last 5 days net —
     try:
