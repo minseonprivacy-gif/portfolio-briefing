@@ -300,13 +300,21 @@ def fetch_us_stock(ticker):
 
         info = t.info
 
-        # Price
-        price = info.get("currentPrice") or info.get("regularMarketPrice")
-        s["price"]        = safe(price, 2)
-        s["prev_close"]   = safe(info.get("regularMarketPreviousClose"), 2)
-        raw_chg = info.get("regularMarketChangePercent", 0)
-        # yfinance sometimes returns fraction (0.03) or full (3.0)
-        s["chg_pct"]      = safe(raw_chg * 100 if abs(raw_chg or 0) < 1 else raw_chg, 2)
+        # Price — 일봉 히스토리 기준 (info 필드는 하루 늦은 캐시가 오거나
+        # regularMarketChangePercent 단위가 소수/퍼센트로 뒤섞여 신뢰 불가)
+        hist = t.history(period="7d")
+        closes = hist["Close"].dropna() if hist is not None and not hist.empty else None
+        if closes is not None and len(closes) >= 1:
+            s["price"] = safe(float(closes.iloc[-1]), 2)
+            if len(closes) >= 2:
+                s["prev_close"] = safe(float(closes.iloc[-2]), 2)
+                s["chg_pct"]    = pct_chg(closes.iloc[-1], closes.iloc[-2])
+        else:
+            price = info.get("currentPrice") or info.get("regularMarketPrice")
+            s["price"]      = safe(price, 2)
+            s["prev_close"] = safe(info.get("regularMarketPreviousClose"), 2)
+            if s.get("price") and s.get("prev_close"):
+                s["chg_pct"] = pct_chg(s["price"], s["prev_close"])
         s["high_52w"]     = safe(info.get("fiftyTwoWeekHigh"), 2)
         s["low_52w"]      = safe(info.get("fiftyTwoWeekLow"), 2)
 
