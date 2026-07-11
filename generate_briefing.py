@@ -130,9 +130,8 @@ def naver_kr_fundamentals(code):
         out["pbr"] = nz(infos.get("pbr"), 2)
         out["eps"] = nz(infos.get("eps"), 0)
         out["bps"] = nz(infos.get("bps"), 0)
-        for k in infos:
-            if "dividend" in k or "배당" in k:
-                out.setdefault("div", safe(infos[k], 2))
+        out["div"] = safe(infos.get("dividendyieldratio"), 2)  # 배당수익률 %
+        out["dps"] = safe(infos.get("dividend"), 0)            # 주당배당금 원
         if any(out.get(x) is not None for x in ("per", "pbr", "eps")):
             dlog(f"  [naver-fallback OK] {code}: PER={out.get('per')} PBR={out.get('pbr')} EPS={out.get('eps')}")
             return out
