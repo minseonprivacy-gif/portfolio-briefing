@@ -995,20 +995,23 @@ def trades_section_html(trades):
     else:
         server_block = ('<div style="padding:10px 0;color:var(--text3);font-size:12px">저장소(trades.csv)에 저장된 기록이 아직 없습니다.</div>')
 
-    INPUT = "padding:7px 9px;border:1px solid var(--border);border-radius:8px;background:var(--surface);color:var(--text1);font-size:13px;min-width:0"
+    INPUT = ("padding:8px 10px;border:1px solid var(--border);border-radius:8px;"
+             "background:var(--surface);color:var(--text);font-size:13px;min-width:0")
 
     form = (
         '<div style="display:flex;flex-wrap:wrap;gap:7px;padding:12px 14px 6px;align-items:center">'
         f'<input id="tr-date" type="date" style="{INPUT}">'
-        f'<input id="tr-ticker" placeholder="티커 (TSLA)" style="{INPUT};width:96px">'
-        f'<input id="tr-name" placeholder="종목명" style="{INPUT};width:96px">'
-        f'<select id="tr-market" style="{INPUT}"><option>US</option><option>KR</option></select>'
-        f'<select id="tr-action" style="{INPUT}"><option>매수</option><option>매도</option></select>'
+        f'<input id="tr-name" placeholder="종목 (티커/이름)" style="{INPUT};width:130px">'
+        f'<select id="tr-side" style="{INPUT}"><option>매수</option><option>매도</option></select>'
         f'<input id="tr-qty" type="number" placeholder="수량" style="{INPUT};width:74px">'
-        f'<input id="tr-price" placeholder="가격" style="{INPUT};width:88px">'
-        f'<input id="tr-memo" placeholder="메모" style="{INPUT};flex:1;min-width:110px">'
-        '<button onclick="addTrade()" style="padding:8px 16px;border:none;border-radius:8px;background:var(--accent,#3b82f6);color:#fff;font-weight:700;font-size:13px;cursor:pointer">＋ 추가</button>'
+        f'<input id="tr-price" placeholder="가격" style="{INPUT};width:96px">'
+        f'<input id="tr-memo" placeholder="메모 (선택)" style="{INPUT};flex:1;min-width:110px">'
+        '<button onclick="trAdd()" style="padding:9px 18px;border:none;border-radius:8px;'
+        'background:#154c8c;color:#fff;font-weight:800;font-size:13px;cursor:pointer">＋ 추가</button>'
         '</div>'
+        '<div style="padding:0 14px;font-size:11px;color:var(--text3)">'
+        '추가하면 이 기기에 바로 저장·표시됩니다. 모든 기기와 다음 브리핑에 반영하려면 '
+        '목록의 <b>☁ 영구 저장</b>을 누르세요.</div>'
     )
 
     js = JS_TRADES
@@ -1020,66 +1023,68 @@ def trades_section_html(trades):
             f'</div>{js}</div>')
 
 
-JS_TRADES = """
+JS_TRADES = r"""
 <script>
-var TR_KEY = "pb_local_trades_v1";
-var TR_EDIT = "https://github.com/minseonprivacy-gif/portfolio-briefing/edit/main/trades.csv";
-function trLoad(){ try{ return JSON.parse(localStorage.getItem(TR_KEY))||[]; }catch(e){ return []; } }
-function trSave(a){ localStorage.setItem(TR_KEY, JSON.stringify(a)); }
-function trEsc(s){ return (s||"").toString().replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;").replace(/"/g,"&quot;"); }
-function trIsBuy(a){ return ["buy","매수","b","bought"].indexOf((a||"").toLowerCase())>=0; }
-function addTrade(){
-  var g=function(id){return (document.getElementById(id).value||"").trim();};
-  var t={date:g("tr-date")||new Date().toISOString().slice(0,10),ticker:g("tr-ticker"),name:g("tr-name"),
-         market:document.getElementById("tr-market").value,action:document.getElementById("tr-action").value,
-         qty:g("tr-qty"),price:g("tr-price"),memo:g("tr-memo")};
-  if(!t.ticker && !t.name){ alert("티커 또는 종목명을 입력하세요."); return; }
-  var a=trLoad(); a.push(t); trSave(a); trRender();
-  ["tr-ticker","tr-name","tr-qty","tr-price","tr-memo"].forEach(function(id){document.getElementById(id).value="";});
-}
-function delTrade(i){ var a=trLoad(); a.splice(i,1); trSave(a); trRender(); }
-function trCsv(){
-  return trLoad().map(function(t){
-    return [t.date,t.ticker,t.name,t.market,t.action,t.qty,t.price,(t.memo||"").replace(/\n/g," ")].join(",");
-  }).join("\n");
-}
-function trSync(){
-  var csv=trCsv();
-  if(!csv){ alert("기기에 저장된 매매가 없습니다."); return; }
-  if(navigator.clipboard){ navigator.clipboard.writeText(csv); }
-  alert("아래 줄이 클립보드에 복사되었습니다.\n열리는 GitHub 편집창 맨 아래에 붙여넣고 'Commit changes'를 누르면 모든 기기에 반영됩니다.\n\n"+csv);
-  window.open(TR_EDIT,"_blank");
-}
-function trRow(t,i){
-  var buy=trIsBuy(t.action), cls=buy?"t-red":"t-blue", txt=buy?"매수":"매도";
-  var price=t.price?("@ "+trEsc(t.price)):"";
-  var memo=t.memo?('<span style="color:var(--text3);font-size:11px;margin-left:6px">· '+trEsc(t.memo)+'</span>'):"";
-  return '<div style="display:flex;align-items:center;gap:8px;padding:9px 11px;border:1px dashed var(--border);border-radius:var(--r-sm,10px);margin-bottom:6px;background:var(--surface);flex-wrap:wrap">'
-    +'<span class="tag '+cls+'">'+txt+'</span>'
-    +'<span style="font-weight:700">'+trEsc(t.name||t.ticker)+'</span>'
-    +'<span style="color:var(--text3);font-size:12px">'+trEsc(t.ticker)+'</span>'
-    +'<span style="font-size:11px;color:var(--text3)">'+trEsc(t.date)+'</span>'
-    +'<span style="margin-left:auto;font-size:13px;font-weight:600">'+trEsc(t.qty)+'주 '+price+'</span>'
-    +memo
-    +'<button onclick="delTrade('+i+')" title="삭제" style="border:none;background:none;cursor:pointer;color:var(--text3);font-size:14px">🗑</button>'
-    +'</div>';
-}
-function trRender(){
-  var box=document.getElementById("tr-local"); if(!box) return;
-  var a=trLoad();
-  if(!a.length){ box.innerHTML=""; return; }
-  a=a.map(function(t,i){return {t:t,i:i};}).sort(function(x,y){return (y.t.date||"").localeCompare(x.t.date||"");});
-  var rows=a.map(function(o){return trRow(o.t,o.i);}).join("");
-  var bar='<div style="display:flex;gap:8px;align-items:center;margin:10px 0 6px">'
-    +'<span class="tag t-blue" style="background:none;border:1px dashed var(--border);color:var(--text2)">내 기기 기록 '+a.length+'건</span>'
-    +'<button onclick="trSync()" style="margin-left:auto;padding:6px 12px;border:1px solid var(--border);border-radius:8px;background:var(--surface);color:var(--text1);font-size:12px;font-weight:700;cursor:pointer">☁ GitHub에 저장(모든 기기)</button>'
-    +'<button onclick="if(confirm(\'기기 기록을 모두 지울까요? (GitHub 저장분은 유지)\')){trSave([]);trRender();}" style="padding:6px 12px;border:1px solid var(--border);border-radius:8px;background:var(--surface);color:var(--text3);font-size:12px;cursor:pointer">비우기</button>'
-    +'</div>';
-  box.innerHTML=bar+rows;
-}
 (function(){
-  var d=document.getElementById("tr-date"); if(d && !d.value){ d.value=new Date().toISOString().slice(0,10); }
-  trRender();
+var KEY = "pb_trades_v2";
+var EDIT = "https://github.com/minseonprivacy-gif/portfolio-briefing/edit/main/trades.csv";
+var NL = String.fromCharCode(10);
+function load(){ try{ return JSON.parse(localStorage.getItem(KEY)) || []; }catch(e){ return []; } }
+function save(a){ localStorage.setItem(KEY, JSON.stringify(a)); }
+function esc(s){ return (s==null?"":String(s)).replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;").replace(/"/g,"&quot;"); }
+function clean(s){ return (s||"").split(",").join(" "); }
+window.trAdd = function(){
+  var g = function(id){ return (document.getElementById(id).value || "").trim(); };
+  var t = { date: g("tr-date") || new Date().toISOString().slice(0,10),
+            name: g("tr-name"), side: document.getElementById("tr-side").value,
+            qty: g("tr-qty"), price: g("tr-price"), memo: g("tr-memo") };
+  if(!t.name){ alert("종목(티커 또는 이름)을 입력하세요."); return; }
+  if(!t.qty){ alert("수량을 입력하세요."); return; }
+  var a = load(); a.unshift(t); save(a); render();
+  ["tr-name","tr-qty","tr-price","tr-memo"].forEach(function(id){ document.getElementById(id).value=""; });
+};
+window.trDel = function(i){
+  var a = load(); a.splice(i,1); save(a); render();
+};
+window.trSync = function(){
+  var a = load();
+  if(!a.length){ alert("이 기기에 저장된 기록이 없습니다."); return; }
+  var csv = a.map(function(t){
+    var mkt = /^[0-9]{6}$/.test(t.name) ? "KR" : "US";
+    return [t.date, clean(t.name), clean(t.name), mkt, t.side, t.qty, t.price, clean(t.memo)].join(",");
+  }).join(NL);
+  var done = function(){
+    alert("매매 기록이 클립보드에 복사됐습니다." + NL + "열리는 GitHub 화면 맨 아랫줄에 붙여넣고 [Commit changes]를 누르면 모든 기기와 다음 브리핑에 반영됩니다.");
+    window.open(EDIT, "_blank");
+  };
+  if(navigator.clipboard && navigator.clipboard.writeText){
+    navigator.clipboard.writeText(csv).then(done, done);
+  } else { prompt("아래 내용을 복사해 trades.csv 맨 아래에 붙여넣으세요", csv); window.open(EDIT, "_blank"); }
+};
+function row(t, i){
+  var buy = (t.side === "매수");
+  return '<div style="display:flex;align-items:center;gap:8px;padding:9px 11px;border:1px dashed var(--border);border-radius:8px;margin-bottom:6px;background:var(--surface);flex-wrap:wrap">'
+    + '<span class="tag ' + (buy ? "t-red" : "t-blue") + '">' + esc(t.side) + '</span>'
+    + '<span style="font-weight:700">' + esc(t.name) + '</span>'
+    + '<span style="font-size:11px;color:var(--text3)">' + esc(t.date) + '</span>'
+    + '<span style="margin-left:auto;font-size:13px;font-weight:600">' + esc(t.qty) + '주' + (t.price ? " @ " + esc(t.price) : "") + '</span>'
+    + (t.memo ? '<span style="color:var(--text3);font-size:11px">· ' + esc(t.memo) + '</span>' : "")
+    + '<button onclick="trDel(' + i + ')" style="border:none;background:none;cursor:pointer;color:var(--text3);font-size:14px">✕</button>'
+    + '</div>';
+}
+function render(){
+  var box = document.getElementById("tr-local"); if(!box) return;
+  var a = load();
+  if(!a.length){ box.innerHTML = ""; return; }
+  var head = '<div style="display:flex;gap:8px;align-items:center;margin:12px 0 6px">'
+    + '<span style="font-size:12px;font-weight:800;color:var(--text2)">📱 이 기기 기록 ' + a.length + '건</span>'
+    + '<button onclick="trSync()" style="margin-left:auto;padding:6px 12px;border:1px solid var(--border);border-radius:8px;background:var(--surface);font-size:12px;font-weight:700;cursor:pointer">☁ 영구 저장 (GitHub)</button>'
+    + '</div>';
+  box.innerHTML = head + a.map(row).join("");
+}
+var d = document.getElementById("tr-date");
+if(d && !d.value){ d.value = new Date().toISOString().slice(0,10); }
+render();
 })();
 </script>
 """
