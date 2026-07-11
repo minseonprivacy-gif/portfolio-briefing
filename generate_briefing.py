@@ -97,6 +97,49 @@ def safe(v, digits=2, default=None):
     except (TypeError, ValueError):
         return default
 
+def nz(v, digits):
+    """safe() + 0을 결측으로 취급 (KRX는 데이터 없을 때 0을 반환함)"""
+    x = safe(v, digits)
+    return None if (x is None or x == 0) else x
+
+def dlog(msg):
+    """콘솔 + debug_fetch.log 동시 기록 (Actions 로그 접근 불가 환경 대비)"""
+    print(msg)
+    try:
+        with open("debug_fetch.log", "a", encoding="utf-8") as f:
+            f.write(f"{datetime.now().isoformat(timespec='seconds')} {msg}\n")
+    except Exception:
+        pass
+
+def naver_kr_fundamentals(code):
+    """2차 폴백: 네이버 모바일 증권 API (클라우드 IP에서도 안정적)"""
+    out = {}
+    try:
+        r = requests.get(
+            f"https://m.stock.naver.com/api/stock/{code}/integration",
+            timeout=10, headers={"User-Agent": "Mozilla/5.0"})
+        j = r.json()
+        infos = {}
+        for item in (j.get("totalInfos") or []):
+            k = str(item.get("code") or item.get("key") or "").lower()
+            v = str(item.get("value") or "")
+            v = re.sub(r"[,원배%\s]", "", v)
+            infos[k] = v
+        dlog(f"  [naver] {code} keys={list(infos.keys())}")
+        out["per"] = nz(infos.get("per"), 1)
+        out["pbr"] = nz(infos.get("pbr"), 2)
+        out["eps"] = nz(infos.get("eps"), 0)
+        out["bps"] = nz(infos.get("bps"), 0)
+        for k in infos:
+            if "dividend" in k or "배당" in k:
+                out.setdefault("div", safe(infos[k], 2))
+        if any(out.get(x) is not None for x in ("per", "pbr", "eps")):
+            dlog(f"  [naver-fallback OK] {code}: PER={out.get('per')} PBR={out.get('pbr')} EPS={out.get('eps')}")
+            return out
+    except Exception as e:
+        dlog(f"  [naver-fallback WARN] {code}: {e}")
+    return {}
+
 def pct_chg(new, old):
     try:
         return round((float(new) / float(old) - 1) * 100, 2)
@@ -127,10 +170,10 @@ def yf_kr_fundamentals(code):
                        "div": div, "dps": dps, "suffix": suf,
                        "price": safe(price, 0),
                        "prev_close": safe(info.get("regularMarketPreviousClose"), 0)}
-                print(f"  [yf-fallback] {code}{suf}: PER={per} PBR={pbr} EPS={eps}")
+                dlog(f"  [yf-fallback OK] {code}{suf}: PER={per} PBR={pbr} EPS={eps}")
                 return out
         except Exception as e:
-            print(f"  [yf-fallback WARN] {code}{suf}: {e}")
+            dlog(f"  [yf-fallback WARN] {code}{suf}: {e}")
     return out
 
 def fmt_krw(v, unit="억원"):
@@ -391,21 +434,28 @@ def fetch_kr_stock(ticker_code, name):
     try:
         df_f = krx.get_market_fundamental(BD5_STR, LAST_BD_STR, ticker_code)
         df_f = df_f.dropna(how="all") if not df_f.empty else df_f
+        dlog(f"  [pykrx-fund] {ticker_code} rows={0 if df_f is None or df_f.empty else len(df_f)} "
+             f"last={df_f.iloc[-1].to_dict() if df_f is not None and not df_f.empty else '{}'}")
         if not df_f.empty and len(df_f) > 0:
             row = df_f.iloc[-1]
-            s["per"] = safe(row.get("PER"), 1)
-            s["pbr"] = safe(row.get("PBR"), 2)
-            s["eps"] = safe(row.get("EPS"), 0)
-            s["bps"] = safe(row.get("BPS"), 0)
-            s["div"] = safe(row.get("DIV"), 2)   # 배당수익률 %
+            s["per"] = nz(row.get("PER"), 1)
+            s["pbr"] = nz(row.get("PBR"), 2)
+            s["eps"] = nz(row.get("EPS"), 0)
+            s["bps"] = nz(row.get("BPS"), 0)
+            s["div"] = safe(row.get("DIV"), 2)   # 배당수익률 % (0 = 무배당, 유효값)
             s["dps"] = safe(row.get("DPS"), 0)   # 주당배당금 원
             print(f"  Fund: PER={s['per']} PBR={s['pbr']} EPS={s['eps']}")
     except Exception as e:
-        print(f"[WARN] KR fund {ticker_code}: {e}")
+        dlog(f"[WARN] KR fund {ticker_code}: {e}")
 
-    # — Fallback: if pykrx fundamentals missing, use yfinance —
+    # — Fallback 1: yfinance / Fallback 2: 네이버 금융 —
     if not s.get("per") and not s.get("pbr") and not s.get("eps"):
         fb = yf_kr_fundamentals(ticker_code)
+        if not (fb.get("per") or fb.get("pbr") or fb.get("eps")):
+            nv = naver_kr_fundamentals(ticker_code)
+            for k, v in nv.items():
+                if v is not None:
+                    fb[k] = v
         if fb:
             for k in ("per", "pbr", "eps", "bps", "div", "dps"):
                 if fb.get(k) is not None:
@@ -1315,8 +1365,14 @@ def main():
     print(f"[STEP 4] Trades loaded: {len(trades)}")
     html = build_html(mkt, us_data, kr_data, trades)
 
-    # 5. Write output
+    # 5. Write output (+ 진단 로그를 주석으로 포함 — Actions 로그 접근 불가 환경 대비)
     out_path = "index.html"
+    try:
+        with open("debug_fetch.log", encoding="utf-8") as df:
+            dbg = df.read().replace("--", "- -")
+        html += f"\n<!-- DEBUG_FETCH\n{dbg}\n-->\n"
+    except Exception:
+        pass
     with open(out_path, "w", encoding="utf-8") as f:
         f.write(html)
     print(f"[OK] Written: {out_path} ({len(html):,} chars)")
